@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1000">
+<title>CSシステム</title>
+<link type="text/css" rel="stylesheet" href="css/style.css">
+<link type="text/css" rel="stylesheet" href="css/style-system.css">
+<link rel="shortcut icon" href="">
+
+<script src="js/jquery-2.2.4.min.js"></script>
+<script src="js/InputControl-v3.js"></script>
+<script type="text/javascript">
+window.paceOptions = {
+  restartOnPushState: false,
+  ajax: false
+};
+</script>
+<script src="js/pace-min.js?v=20200531_20200612"></script>
+<script src="js/jquery-2.2.4.min.js"></script>
+<script src="js/jquery-ui.min.js"></script>
+<script src="js/jquery.ui-1.10.4.datepicker.min.js"></script>
+<script src="js/jquery.ui.datepicker-ja.js"></script>
+<script src="js/jquery.floatThead.js"></script>
+<script src="js/DataTables/datatables.min.js"></script>
+<script src="js/InputControl-v3.js?v=20200531_20200612"></script>
+<script src="js/CommonControl.js?v=20200531_20200612"></script>
+<script src="js/modal.js?v=20200531_20200612"></script>
+<script type="text/javascript">
+gTopPath = "";
+</script>
+<script src="js/estimate.js?v=20200531_20200612"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+</head>
+<body class="system">
+
+<div id="wrapper">
+  <div id="wrapperInner">
+    <header>
+      <span>
+        <a href="user-edit.php">株式会社日弘ヒーティング</a>
+      </span>
+      <div class="head">
+        <a href="main.php"><div class="head-name">リフォーム倶楽部</div></a>
+        <ul class="head-menu">
+        <li class="head-koshin">
+            <input type="button" value="">
+          </li>
+        </ul>
+      </div><!-- .head -->
+    </header>
+
+
+ <div id="container">
+      <div id="container-inner">
+      <div class="s-nav">
+<ul>
+<li><a href="cs-customer-inquiry-edit.html">CS情報</a></li>
+<li><a href="system-customer-reception.html">受付入力</a></li>
+<li><a href="system-customer-reception-list.html">受付一覧</a></li>
+<li><a href="system-estimate-edit.html">見積作成</a></li>
+<li><a href="system-estimate-list.html#">見積一覧</a></li>
+
+<li><a href="system-customer-order-list.html">受注一覧</a></li>
+<li><a href="system-claim-list.html">請求/入金管理</a></li>
+<li><a href="system-sale-list.html">売上一覧</a></li>
+
+
+</ul>
+</div>
+<h2>受付入力<span>マドック太郎様</span></h2>
+<div class="system-index">
+<div class="system-index-a">
+<div class="system-schedule">
+<section>
+<table border="0" cellspacing="0" cellpadding="0" class="s-table01">
+<tbody>
+<tr>
+<th>受付日時</th>
+<td><input type="text" name="MituDate" id="MituDate" value="2020-07-13"></td>
+<th>ハウスメーカー</th>
+<td>積水ハウス</td>
+</tr>
+<tr>
+<th>住所</th>
+<td>003-0029<br>
+札幌白石区平和通り</td>
+<th>顧客コード（電話番号）</th>
+<td>06-666-6666</td>
+</tr>
+</tbody>
+</table>
+
+<h3>エリア担当</h3>
+<table border="0" cellspacing="0" cellpadding="0" class="s-table01">
+<tbody>
+<tr>
+<th>依頼元</th>
+<td><input type="text" name="" class="" value=""><input type="button" value="参照" class="input-search" /></td>
+<th>担当者</th>
+<td><input type="text" name="" class="" value=""><input type="button" value="参照" class="input-search" /></td>
+</tr>
+<tr>
+<th>連絡先</th>
+<td><input type="text" name="input4" class="" value=""></td>
+<th>請求先</th>
+<td><select name="select" id="select">
+<option>依頼元</option>
+<option>代理店</option>
+</select></td>
+</tr>
+</tbody>
+</table>
+<h3>受付記録</h3>
+<table border="0" cellspacing="0" cellpadding="0" class="s-table01">
+<tbody>
+<tr>
+<th>手配先</th>
+<td colspan="3">
+<label><input type="radio" name="radio" id="radio" value="radio">
+<select name="select" id="select">
+<option>田中一郎</option>
+<option>佐藤二朗</option>
+</select>
+<label>
+　
+<input type="radio" name="radio" id="radio2" value="radio">
+外注業者　
+<input type="text" name="input7" class="" value=""></label>
+
+</td>
+</tr>
+<tr>
+<th>訪問希望</th>
+<td><input type="text" name="MituDate" id="MituDate" class="gofwd" value="2020-07-13">
+<input type="time" name="input5" /></td>
+<th>訪問予定</th>
+<td><input type="text" name="MituDate" id="MituDate" class="gofwd" value="2020-07-13">
+<input type="time" name="input6" /></td>
+</tr>
+<tr>
+<th>依頼内容</th>
+<td colspan="3"><textarea name="textarea3" rows="5" id="textarea3"></textarea></td>
+</tr>
+
+</tbody>
+</table>
+
+</section>
+
+
+
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+    <!-- #container -->
+  </div><!-- #wrapperInner -->
+</div><!-- #wrapper -->
+<div id="foot"></div>
+<script src="js/component.js?v=20200531_20200612"></script>
+
+
+
+  
+
+</body>
+</html>

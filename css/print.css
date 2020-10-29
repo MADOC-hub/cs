@@ -1,0 +1,553 @@
+@charset "utf-8";
+@page {
+	padding-right: 30px;
+	padding-left: 10px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+}
+body {
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	background-color: #FFFFFF;
+	font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+}
+.clear {
+    clear:both;
+}
+.t10 {
+	font-size: 10px;
+}
+.t14 {
+	font-size: 14px;
+}
+.t16 {
+	font-size: 16px;
+}
+#container {
+	padding-top: 0px;
+}
+.print_page,.print-inner{
+	width: 95%;
+	margin-left: auto;
+	margin-right: auto;
+}
+header{display: none;
+}
+#wrapper,footer {
+	margin-left: 0px;
+	margin-right: 0px;
+	clear: both;
+	background-color: hsla(0,0%,100%,1.00);
+	border-radius: 10px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+}
+#container {
+	float: none;
+	-webkit-box-shadow: 0px 0px #FFFFFF;
+	box-shadow: 0px 0px #FFFFFF;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+}
+#container-inner {
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+}
+.clear hr  {
+	display: none;
+}
+.print-inner .c-table {
+	position: absolute;
+	width: 100%;
+	bottom: 0px;
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+	font-family: "ＭＳ ゴシック", "MS Gothic", "Osaka－等幅", Osaka-mono, monospace;
+}
+.c-table {
+ border-left: 1px solid #000;
+ line-height: 100%;
+ font-size: 80%;
+}
+.c-table th,.c-table td {
+ font-size: 90%;
+ border-right: 1px solid #727272;
+ padding-left: 1px;
+ padding-right: 1px;
+}
+.c-table th{
+ background-color: #E4E4E4;
+!important;
+ border-top: 1px solid #000000;
+ border-bottom: 1px solid #000;
+ border-right: 1px solid #000;
+ padding-top: 6px;
+ padding-bottom: 6px;
+}
+.print_page{
+	page-break-after: always;
+}
+.print_page:last-child{
+    page-break-after: auto; /* 最後のページの改ページを防ぐ */
+}
+.print-head {
+	position: relative;
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 20px;
+}
+.print_page:after{
+    position: absolute; /* 位置の相対指定 */
+    right: 0; /* 右から０ピクセルの位置指定 */
+    bottom: 0; /* 下から０ピクセルの位置指定 */
+}
+.print-head h2 {
+	text-align: center;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	font-family: "ＭＳ Ｐ明朝", "MS PMincho", "ヒラギノ明朝 Pro W3", "Hiragino Mincho Pro", serif;
+	padding-bottom: 10px;
+	padding-top: 10px;
+	border-width: 0px;
+	letter-spacing: 15px;
+}
+.print-inner div {
+	position: absolute;
+	left: 13px;
+}
+.print-inner .p1 {
+	bottom: 28px;
+}
+.print-inner .p2 {
+	left: 280px;
+	bottom: 28px;
+}
+.print-inner .p3 {
+	font-size: 95%;
+	text-align: right;
+	right: 0px;
+	bottom: 65px;
+}
+.print-inner .p4 {
+	text-align: right;
+	right: 0px;
+	bottom: 28px;
+}
+.print-inner .p5 {
+ width: 100%;
+ text-align: right;
+ position: absolute;
+ bottom: -650px;
+ padding-top: 5px;
+ border-top: 1px solid #787878;
+ left: 0px;
+ background-color: rgba(255,255,255,1.00);
+}
+.print-inner .p5-a3 {
+	width: 100%;
+	text-align: right;
+	position: absolute;
+	bottom: -960px;
+	padding-top: 5px;
+	border-top: 1px solid #787878;
+	left: 0px;
+}
+.t01,.t01d {
+	width: 2.5%;
+}
+.t02,.t02d {
+ width: 28%;
+}
+.t03,.t03d {
+ width: 25%;
+}
+.t04,.t04d {
+ width: 9%;
+}
+.t05,.t05d {
+ width: 4%;
+}
+.t06,.t06d {
+ width: 8%;
+}
+.t07,.t07d {width: 10%;}
+.t08,.t08d {
+	width: auto;
+}
+.t09,.t09d {width: 50%;}
+.t11,.t11d {
+	width: 12%;
+}
+.t12,.t12d {
+	width: 4.5%;
+}
+.t13,.t13d {
+	width: 2%;
+	text-align: center;
+}
+.t14,.t14d {
+	width: 3%;
+}
+.t01d,.t05d,.t12d{text-align:center;}
+.t04d,.t06d,.t08d,.t07d{text-align: right;}tr td textarea {
+	width: 100%;
+}
+.-dashuboard table   {
+ height: 100%;
+ width: 100%;
+}
+.-dashuboard {
+	height: 610px;
+	margin-bottom: 50px;
+}
+.-dashuboard td  {
+	border-left: 0 solid #888888;
+	border-right: 1px solid #888888;
+	border-bottom: 1px solid #888888;
+	border-top: 0 solid #888888;
+	line-height: 100%;
+}
+.print-inner {
+	position: relative;
+	height: 60px;
+	font-family: "ＭＳ Ｐ明朝", "MS PMincho", "ヒラギノ明朝 Pro W3", "Hiragino Mincho Pro", serif;
+	font-size: 90%;
+}
+.printbt {
+	text-align: center;
+	margin-top: 50px;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	margin-left: 10px;
+}
+.print-hyoshi {
+	margin-left: auto;
+	margin-right: auto;
+	font-size: 90%;
+}
+.print-hyoshi-inner {
+	position: relative;
+	width: 88%;
+	margin-left: auto;
+	margin-right: auto;
+	border-bottom: 3px double #232323;
+	font-size: 110%;
+	max-height: 820px;
+	min-height: 710px;
+	overflow-y: hidden;
+	overflow-x: hidden;
+}
+.print-hyoshi-inner h2 {
+	border-bottom: 5px double #4A4A4A;
+	letter-spacing: 25px;
+	font-weight: normal;
+	text-align: center;
+	font-size: 170%;
+	position: absolute;
+	top: 6%;
+	width: 100%;
+}
+.hy0,.hy1,.hy2,.hy3,.hy4,.hy5,.hy6,.hy7,.hy8,.hy9,.hy10,.hy11 {
+	position: absolute;
+	padding-bottom: 2px;
+}
+.hy0 {
+	top: 25%;
+	left: 0%;
+	width: 65%;
+	border-bottom: thin solid #666;
+	font-size: 150%;
+	padding-left: 10px;
+	font-family: "ＭＳ Ｐ明朝", "MS PMincho", "ヒラギノ明朝 Pro W3", "Hiragino Mincho Pro", serif;
+	font-style: normal;
+	font-weight: bold;
+}
+.hy1 {
+	top: 12%;
+	font-family: "ＭＳ Ｐ明朝", "MS PMincho", "ヒラギノ明朝 Pro W3", "Hiragino Mincho Pro", serif;
+	font-size: 110%;
+}
+.hy2 {
+	top: 17%;
+	text-align: right;
+	font-family: "ＭＳ Ｐ明朝", "MS PMincho", "ヒラギノ明朝 Pro W3", "Hiragino Mincho Pro", serif;
+	right: 0%;
+	font-size: 110%;
+	letter-spacing: 1px;
+}
+.hy3 {
+	top: 33%;
+	left: 0%;
+	border-bottom: thin solid #666;
+	padding-left: 20px;
+	width: 59%;
+	font-size: 120%;
+	font-family: "ＭＳ Ｐ明朝", "MS PMincho", "ヒラギノ明朝 Pro W3", "Hiragino Mincho Pro", serif;
+	font-weight: bolder;
+}
+.hy4 {
+	top: 42%;
+	left: 2%;
+	width: 52%;
+	font-family: "ＭＳ Ｐ明朝", "MS PMincho", "ヒラギノ明朝 Pro W3", "Hiragino Mincho Pro", serif;
+	font-size: 100%;
+	line-height: 130%;
+}
+.hy5 {
+	top: 75%;
+	left: 0%;
+	width: 48%;
+	font-family: "ＭＳ Ｐ明朝", "MS PMincho", "ヒラギノ明朝 Pro W3", "Hiragino Mincho Pro", serif;
+	font-size: 90%;
+}
+.hy6 {
+	top: 37%;
+	text-align: right;
+	width: 45%;
+	right: 0%;
+	font-size: 90%;
+	line-height: 140%;
+}
+.hy7 {
+	top: 76%;
+	width: 46%;
+	font-size: 70%;
+	right: 0%;
+	font-family: "ＭＳ Ｐ明朝", "MS PMincho", "ヒラギノ明朝 Pro W3", "Hiragino Mincho Pro", serif;
+	line-height: 130%;
+}
+.hy7-alt {
+	top: 84%;
+}
+.hy8 {
+	top: 95%;
+	left: 0%;
+	width: 46%;
+	font-size: 70%;
+}
+.hy9 {
+	top: 95%;
+	width: 47%;
+	right: 0%;
+	font-family: "ＭＳ Ｐ明朝", "MS PMincho", "ヒラギノ明朝 Pro W3", "Hiragino Mincho Pro", serif;
+	font-size: 70%;
+}
+.hy10 {
+	top: 64%;
+	right: 0%;
+}
+.hy10-alt {
+	top: 72%;
+}
+.hy11 {
+	top: 80%;
+	right: 6%;
+}
+.hy5 dl {
+	border-bottom: thin solid #666;
+	line-height: 100%;
+}
+.hy4 .hy4-1 {
+	float: left;
+	font-size: 140%;
+	line-height: 150%;
+}
+.hy4 .hy4-2 {
+	font-size: 180%;
+	padding-right: 10%;
+	line-height: 100%;
+	float: right;
+}
+.hy4 p {
+	margin-bottom: 50px;
+}
+.hy10 td,.hy11 td  {
+	border-left: 1px solid #000000;
+	border-right: 0 solid #000000;
+	border-bottom: 1px solid #000000;
+	border-top: 1px solid #000000;
+	width: 48px;
+	height: 48px;
+}
+.hy6 img {
+	height: 100px;
+	width: auto;
+	margin-bottom: 8px;
+}
+.hy7 b,.hy8 b,.hy9 b   {
+	border-bottom: thin solid #666;
+	font-size: 130%;
+	display: block;
+	font-family: "ＭＳ Ｐ明朝", "MS PMincho", "ヒラギノ明朝 Pro W3", "Hiragino Mincho Pro", serif;
+	margin-bottom: 10px;
+	font-weight: normal;
+	padding-bottom: 4px;
+}
+.hy7 ol {
+	list-style-position: outside;
+	padding-left: 20px;
+}
+.hy10 table,.hy11 table {
+	margin-left: auto;
+	margin-top: 10px;
+	border-right: 1px solid #000000;
+	margin-right: 15px;
+}
+#container-inner dt {
+	float: left;
+	width: 28%;
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+	line-height: 100%;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	padding-top: 10px;
+	padding-left: 2%;
+	padding-bottom: 2px;
+}
+#container-inner dl {
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+}
+#container-inner dd   {
+	float: right;
+	width: 70%;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	line-height: 100%;
+	padding-top: 10px;
+	padding-bottom: 2px;
+}
+#container-inner dd span {
+	display: block;
+}
+.hy4 article {
+	border-bottom: 1px solid #313131;
+	font-weight: bold;
+}
+.hy4 article .hy4-2 {
+}
+.hy4 .t-10 {
+	font-size: 125%;
+}
+.hy7 div {
+	text-align: right;
+}
+.hurikomi {
+	text-align: left;
+	margin-left: 20px;
+}
+.hurikomi div {
+	text-align: right;
+}
+.hy4 .t-20 {
+	font-size: 120%;
+}
+.hy4 article {
+	border-bottom: thin solid #666;
+	font-weight: bold;
+	margin-bottom: 10px;
+	margin-top: 0px;
+}
+.hy6 p {
+	margin-top: 20px;
+	font-size: 80%;
+	line-height: 100%;
+}
+.c-table .gr,.-dashuboard .gr{
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	border-top: 0px none #FFFFFF;
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+	width: 3px;
+	border-bottom: 0px none #FFFFFF;
+}.mitsumori-a3 .-dashuboard {
+	height: 920px;
+	font-size: 85%;
+}
+.hy4 .hy4-th {
+	font-size: 120%;
+}
+.hy4 .hy4-td {
+	font-size: 140%;
+}
+.up10   {
+	padding-top: 15px;
+}
+.page {
+	position: relative;
+	width: 100%;
+	font-family: "ＭＳ Ｐ明朝", "MS PMincho", "ヒラギノ明朝 Pro W3", "Hiragino Mincho Pro", serif;
+}
+.page div {
+	position: absolute;
+  right: 0px;
+  top: -65px;
+  display: none;
+}
+.t-90 {
+ font-size: 80%;
+}
+.t-90 td  {
+ padding-top: 2px;
+ padding-bottom: 1px;
+ line-height: 90%;
+}
+.page2 {
+	text-align: right;
+	font-family: "ＭＳ Ｐ明朝", "MS PMincho", "ヒラギノ明朝 Pro W3", "Hiragino Mincho Pro", serif;
+}
+.a3-wid {
+	min-width: 1400px;
+}
+.mn {
+	text-align: right;
+}
+.mitsumori-a3 .t08d {
+	text-align: left;
+}
+.c-table td:last-child{
+ border-right: 1px solid #000000;
+}
+.c-table tr:last-child td{
+border-bottom: 1px solid #000000;}

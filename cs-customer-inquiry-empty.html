@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1000">
+<title>CSシステム</title>
+<link type="text/css" rel="stylesheet" href="css/style.css">
+<link type="text/css" rel="stylesheet" href="css/style-system.css">
+<link rel="shortcut icon" href="">
+
+
+<script src="js/jquery-2.2.4.min.js"></script>
+<script src="js/InputControl-v3.js"></script>
+<script type="text/javascript">
+window.paceOptions = {
+  restartOnPushState: false,
+  ajax: false
+};
+</script>
+<script src="js/pace-min.js?v=20200531_20200612"></script>
+<script src="js/jquery-2.2.4.min.js"></script>
+<script src="js/jquery-ui.min.js"></script>
+<script src="js/jquery.ui-1.10.4.datepicker.min.js"></script>
+<script src="js/jquery.ui.datepicker-ja.js"></script>
+<script src="js/jquery.floatThead.js"></script>
+<script src="js/DataTables/datatables.min.js"></script>
+<script src="js/InputControl-v3.js?v=20200531_20200612"></script>
+<script src="js/CommonControl.js?v=20200531_20200612"></script>
+<script src="js/modal.js?v=20200531_20200612"></script>
+<script type="text/javascript">
+gTopPath = "";
+</script>
+<script src="js/estimate.js?v=20200531_20200612"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+</head>
+<body class="system">
+<div class="modal-overlay" style="display:block;"></div>
+<div id="wrapper">
+  <div id="wrapperInner">
+    <header>
+      <span>
+        <a href="user-edit.php">株式会社日弘ヒーティング</a>
+      </span>
+      <div class="head">
+        <a href="main.php"><div class="head-name">リフォーム倶楽部</div></a>
+        
+
+
+      </div><!-- .head -->
+    </header>
+
+
+ <div id="container">
+      <div id="container-inner">
+      
+<div class="s-nav">
+<ul>
+<li><a href="cs-customer-inquiry-edit.html">CS情報</a></li>
+<li><a href="system-customer-reception.html">受付入力</a></li>
+<li><a href="system-customer-reception-list.html">受付一覧</a></li>
+<li><a href="system-estimate-edit.html">見積作成</a></li>
+<li><a href="system-estimate-list.html#">見積一覧</a></li>
+
+<li><a href="system-customer-order-list.html">受注一覧</a></li>
+<li><a href="system-claim-list.html">請求/入金管理</a></li>
+<li><a href="system-sale-list.html">売上一覧</a></li>
+
+
+</ul>
+</div>
+      
+<h2>CS情報照会</h2>
+<section class="body-empty">
+
+<div class="entry-btn">
+<a class="modal-open" data-target="modal_code_menu">顧客検索</a>
+</div>
+
+</section>
+
+</div>
+</div>
+
+    <!-- #container -->
+  </div><!-- #wrapperInner -->
+</div><!-- #wrapper -->
+
+
+<div id="modal_code_menu" class="modal-content modal_window" data-pre-open="JS_PreOpen" data-post-close="JS_PostClose">
+  <h2>顧客検索</h2>
+  <div class="flex">
+<div class="f9">
+<table border="0" cellspacing="0" cellpadding="0" class="s-table02">
+<tbody>
+<tr>
+<th>顧客名 </th>
+<td><input type="text" name="" class="" value=""></td>
+<th>顧客名（カナ）</th>
+<td><input type="text" name="" class="" value=""></td>
+</tr>
+<tr>
+<th>電話番号</th>
+<td><input type="text" name="input6" class="" value=""></td>
+<th>住所</th>
+<td><input type="text" name="input" class="" value=""></td>
+</tr>
+<tr>
+<th>ハウスメーカー</th>
+<td><input type="text" name="input5" class="" value=""></td>
+<th>ボイラー機種</th>
+<td><input type="text" name="input7" class="" value=""></td>
+</tr>
+<tr>
+<th>工事担当者</th>
+<td><input type="text" name="input2" class="" value=""></td>
+<th>営業担当者</th>
+<td><input type="text" name="input3" class="" value=""></td>
+</tr>
+<tr>
+<th>引渡日</th>
+<td><input type="text" name="MituDate" id="MituDate" class="gofwd" value=""></td>
+<th>設置日</th>
+<td><input type="text" name="MituDate" id="MituDate" class="gofwd" value=""></td>
+</tr>
+</tbody>
+</table>
+<div class="s-input">
+<input type="button" value="検索">
+
+</div>
+</div>
+<div class="f1"></div>
+
+</div>
+<table border="0" cellspacing="0" cellpadding="0" class="s-table02">
+<tbody>
+<tr>
+<th class="w-30">　</th>
+<th>顧客名</th>
+</tr>
+<tr>
+<td><input type="radio" name="sub"></td>
+<td>マドックタロウ</td>
+</tr>
+<tr>
+<td><input type="radio" name="sub"></td>
+<td>ドリーム次郎</td>
+</tr>
+<tr>
+<td><input type="radio" name="sub"></td>
+<td>マイフット三郎</td>
+</tr>
+</tbody>
+</table>
+<div class="s-input">
+<input type="button" value="この顧客情報を適用"  onClick="location.href='cs-customer-inquiry-edit.html'">
+
+</div>
+
+
+  </div>
+  
+  
+</body>
+</html>

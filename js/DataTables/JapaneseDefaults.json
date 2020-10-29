@@ -1,0 +1,26 @@
+{
+	"sInfo":           " _TOTAL_件中 _START_～_END_を表示",
+	"sInfoFiltered":   "（全 _MAX_ 件より抽出）",
+	"sInfoPostFix":    "",
+	"sInfoThousands":  ",",
+	"sLengthMenu":     "_MENU_ 件表示",
+	"sLoadingRecords": "読み込み中...",
+	"sProcessing":     "処理中...",
+	"sSearch":         "検索：",
+	"oPaginate": {
+		"sFirst":    "&lt;&lt;",
+		"sLast":     "&gt;&gt;",
+		"sNext":     "&gt;",
+		"sPrevious": "&lt;"
+	},
+	"oAria": {
+		"sSortAscending":  ": 列を昇順に並べ替えるにはアクティブにする",
+		"sSortDescending": ": 列を降順に並べ替えるにはアクティブにする",
+		"oPaginate": {
+			"sFirst":    "先頭へ",
+			"sLast":     "最終へ",
+			"sNext":     "次へ",
+			"sPrevious": "前へ"
+		}
+	}
+}

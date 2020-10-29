@@ -1,0 +1,30 @@
+@charset "utf-8";
+/* CSS Document */
+@page {
+	size: A3 landscape;
+}
+.printbt {
+	display: none;
+}
+.print-head {
+	position: fixed;
+}
+.print_page .mitsumori,.print_page .mitsumori-a3 {
+	padding-top: 124px;
+	padding-bottom: 15px;
+}
+.a3-wid {
+	width: 100%;
+}
+.page2 {
+	position: relative;
+	width: 100%;
+}
+.page2 div {
+	position: absolute;
+	right: 0px;
+	top: -80px;
+}
+#foot {
+	display: none;
+}

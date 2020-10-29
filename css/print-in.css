@@ -1,0 +1,35 @@
+@charset "utf-8";
+/* CSS Document */
+@page {
+	size: A4 landscape;
+}
+
+.print-head {
+	position: fixed;
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 20px;
+}
+
+.printbt {
+	display: none;
+}
+.print-head {
+	position: fixed;
+}
+.print_page .mitsumori,.print_page .mitsumori-a3 {
+	padding-top: 124px;
+	padding-bottom: 15px;
+}
+
+.page div {
+ display: block;
+}
+
+.-dashuboard {
+	margin-bottom: 0px;
+}
+#foot {
+	display: none;
+}

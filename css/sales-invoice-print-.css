@@ -1,0 +1,91 @@
+@charset "UTF-8";
+/* Scss Document */
+@page {
+  padding-right: 30px;
+  padding-left: 10px;
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px; 
+}
+hr {
+  page-break-after: always;
+}
+
+.a4-w section {
+  top: 0 !IMPORTANT;
+  left: 0 !IMPORTANT;
+  height: 200mm !IMPORTANT;
+  page-break-after: auto !important;
+}
+.a4-w .section, .a4-w section {
+  width: 267mm !IMPORTANT;
+  page-break-before: always;
+  page-break-after: auto !important;
+}
+
+.a4-h section {
+  top: 0 !IMPORTANT;
+  left: 0 !IMPORTANT;
+  height: 267mm !IMPORTANT;
+  page-break-after: auto !important;
+}
+
+.a4-h .section, .a4-h section {
+  width: 200mm !IMPORTANT;
+  page-break-before: always;
+  page-break-after: auto !important;
+}
+
+.logo {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 30px;
+}
+
+.temp-a .logo,
+.temp-c .logo {
+  bottom: 5%;
+  text-align: center;
+  width: 100%;
+}
+
+.head-fix {
+  position: fixed;
+  width: 95%;
+}
+
+.temp-b .table {
+  margin-top: 40%;
+}
+
+.printbt {
+  display: none;
+}
+
+.print_page {
+	page-break-after: always;
+}
+
+.print_page:last-child {
+    page-break-after: auto; /* 最後のページの改ページを防ぐ */
+}
+.uriage-ichiran-full header { background-color:rgba(255,255,255,0.00); }
+.a3-w header {
+ top: 10mm;
+}
+.a3-w section {padding-top: 10mm;
+  top: 0 !IMPORTANT;
+  left: 0 !IMPORTANT;
+  height: 260mm !IMPORTANT;
+  page-break-after: auto !important;
+}
+.a3-w .section, .a3-w section {
+    width: 400mm !IMPORTANT;
+  page-break-before: always;
+  page-break-after: auto !important;
+}
+.a3-w .table-aria table th, .a3-w .table-aria table td {
+ font-size: 0.3em;
+}

@@ -1,0 +1,715 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1000">
+<title>CSシステム</title>
+<link type="text/css" rel="stylesheet" href="css/style.css">
+<link type="text/css" rel="stylesheet" href="css/style-system.css">
+<link rel="shortcut icon" href="">
+
+
+<script src="js/jquery-2.2.4.min.js"></script>
+<script src="js/InputControl-v3.js"></script>
+<script type="text/javascript">
+window.paceOptions = {
+  restartOnPushState: false,
+  ajax: false
+};
+</script>
+<script src="js/pace-min.js?v=20200531_20200612"></script>
+<script src="js/jquery-2.2.4.min.js"></script>
+<script src="js/jquery-ui.min.js"></script>
+<script src="js/jquery.ui-1.10.4.datepicker.min.js"></script>
+<script src="js/jquery.ui.datepicker-ja.js"></script>
+<script src="js/jquery.floatThead.js"></script>
+<script src="js/DataTables/datatables.min.js"></script>
+<script src="js/InputControl-v3.js?v=20200531_20200612"></script>
+<script src="js/CommonControl.js?v=20200531_20200612"></script>
+<script src="js/modal.js?v=20200531_20200612"></script>
+<script type="text/javascript">
+gTopPath = "";
+</script>
+<script src="js/estimate.js?v=20200531_20200612"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+</head>
+<body class="system">
+<div class="modal-overlay" style="display:block;"></div>
+<div id="wrapper">
+  <div id="wrapperInner">
+    <header>
+      <span>
+        <a href="user-edit.php">株式会社日弘ヒーティング</a>
+      </span>
+      <div class="head">
+        <a href="main.php"><div class="head-name">リフォーム倶楽部</div></a>
+        
+        <ul class="head-menu">
+        <li class="head-koshin">
+            <input type="button" value="">
+          </li>
+        </ul>
+
+      </div><!-- .head -->
+    </header>
+
+
+ <div id="container">
+      <div id="container-inner">
+      
+<div class="s-nav">
+<ul>
+<li><a href="cs-customer-inquiry-edit.html">CS情報</a></li>
+<li><a href="system-customer-reception.html">受付入力</a></li>
+<li><a href="system-customer-reception-list.html">受付一覧</a></li>
+<li><a href="system-estimate-edit.html">見積作成</a></li>
+<li><a href="system-estimate-list.html#">見積一覧</a></li>
+
+<li><a href="system-customer-order-list.html">受注一覧</a></li>
+<li><a href="system-claim-list.html">請求/入金管理</a></li>
+<li><a href="system-sale-list.html">売上一覧</a></li>
+
+
+</ul>
+</div>
+      
+<h2>CS情報編集<span>マドック太郎様</span></h2>
+
+
+<section>
+<h3>CS情報</h3>
+
+<table border="0" cellspacing="0" cellpadding="0" class="s-table01">
+<tbody>
+<tr>
+<th>顧客コード</th>
+<td class="td-mod">123456789 <a class="modal-open" data-target="modal_code_menu">顧客検索</a>
+
+</td>
+<th>営業担当者</th>
+<td><input type="text" name="" class="" value=""><input type="button" value="参照" class="input-search" /></td>
+</tr>
+<tr>
+<th>顧客名</th>
+<td>マドック太郎（マドックタロウ） </td>
+<th>工事担当者</th>
+<td><input type="text" name="" class="" value=""><input type="button" value="参照" class="input-search" /></td>
+</tr>
+<tr>
+<th>住所</th>
+<td colspan="3"> 003-0029<br>
+札幌白石区平和通り<br></td>
+</tr>
+<tr>
+<th>ハウスメーカー</th>
+<td class="td-num"><input type="text" name="" class="" value=""><input type="button" value="参照" class="input-search" /></td>
+<th> 担当</th>
+<td><input type="text" name="" class="" value=""><input type="button" value="参照" class="input-search" /></td>
+</tr>
+<tr>
+<th>アフター注意点<br>
+お客様情報</th>
+<td colspan="3"><textarea name="textarea" rows="5" id="textarea"></textarea></td>
+</tr>
+<tr>
+<th>備考</th>
+<td colspan="3"><textarea name="textarea" rows="5" id="textarea"></textarea></td>
+</tr>
+<tr>
+<th>画像</th>
+<td colspan="3"><ul class="img-sample-input">
+<li>
+画像1<br>
+<input type="file"></li>
+<li>
+画像2<br>
+<input type="file"></li>
+<li>
+画像3<br>
+<input type="file"></li>
+<li>
+画像4<br>
+<input type="file"></li>
+<li>
+画像5<br>
+<input type="file"></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+
+
+
+</section>
+
+<section>
+<h3>契約情報</h3>
+<div class="facility">
+
+<label class="on modal-open"  data-target="modal_plan_menu">あんしんプラン<span>契約日2020/01/01</span></label>
+<label class="modal-open" data-target="modal_plan_menu">LPG<span>未契約</span></label>
+<label class="modal-open on" data-target="modal_plan_menu">灯油<span>契約日2020/01/01</span></label>
+<label class="modal-open" data-target="modal_plan_menu">電気<span>未契約</span></label>
+</div>
+</section>
+
+
+<section>
+<h3>設置設備（型番／設置日／設置場所）</h3>
+
+<table border="0" cellspacing="0" cellpadding="0" class="s-table02">
+<tbody>
+<tr>
+<th>No</th>
+<th>設置日</th>
+<th>設備名</th>
+<th>機種</th>
+<th>製造番号</th>
+<th>備考</th>
+<th>　</th>
+<th>&nbsp;</th>
+</tr>
+<tr>
+<td class="td-c">1</td>
+<td>2020-07-13</td>
+<td>設備名設備名設備名</td>
+<td >機種名機種名機種名</td>
+<td>0666---</td>
+<td>備考など備考など備考など備考など備考など備考など</td>
+<td  class="td-c"><input type="button" name="button" id="button4" value="編集"  class="modal-open" data-target="modal_facility"></td>
+<td class="td-c"><input type="button" name="button5" id="button5" value="削除"></td>
+</tr>
+<tr>
+<td class="td-c">2</td>
+<td>2020-07-13</td>
+<td>設備名</td>
+<td >機種名</td>
+<td>0666---</td>
+<td>備考など</td>
+<td  class="td-c"><input type="button" name="button" id="button4" value="編集"  class="modal-open" data-target="modal_facility"></td>
+<td class="td-c"><input type="button" name="button6" id="button7" value="削除"></td>
+</tr>
+<tr>
+<td class="td-c">3</td>
+<td>2020-07-13</td>
+<td>設備名</td>
+<td >機種名</td>
+<td>0666---</td>
+<td>備考など</td>
+<td  class="td-c"><input type="button" name="button" id="button4" value="編集"  class="modal-open" data-target="modal_facility"></td>
+<td class="td-c"><input type="button" name="button7" id="button6" value="削除"></td>
+</tr>
+</tbody>
+</table>
+<div class="a-btm2"><a class="modal-open" data-target="modal_facility">設置設備追加</a></div>
+</section>
+
+<section>
+<h3>温水暖房端末</h3>
+<table border="0" cellspacing="0" cellpadding="0" class="s-table02">
+<tbody>
+<tr>
+<th>階数</th>
+<th>名称</th>
+<th>台数</th>
+<th>備考</th>
+<th>　</th>
+<th>&nbsp;</th>
+</tr>
+<tr>
+<td class="td-c">1階</td>
+<td>名称名称名称名称名称名称</td>
+<td class="td-c">1</td>
+<td>備考など備考など備考など備考など備考など備考など</td>
+<td  class="td-c"><input type="button" name="button" id="button4" value="編集"  class="modal-open"  data-target="modal_terminal"></td>
+<td class="td-c"><input type="button" name="button4" id="button3" value="削除"></td>
+</tr>
+<tr>
+<td class="td-c">2階</td>
+<td>名称名称名称名称名称名称</td>
+<td class="td-c">2</td>
+<td>備考など</td>
+<td  class="td-c"><input type="button" name="button" id="button4" value="編集"  class="modal-open"  data-target="modal_terminal"></td>
+<td class="td-c"><input type="button" name="button3" id="button2" value="削除"></td>
+</tr>
+<tr>
+<td class="td-c">地下1F</td>
+<td>名称名称名称名称名称名称</td>
+<td class="td-c">3</td>
+<td>備考など</td>
+<td  class="td-c"><input type="button" name="button" id="button4" value="編集"  class="modal-open"  data-target="modal_terminal"></td>
+<td class="td-c"><input type="button" name="button2" id="button" value="削除"></td>
+</tr>
+</tbody>
+</table>
+<div class="a-btm2"><a class="modal-open" data-target="modal_terminal">端末追加</a></div>
+</section>
+
+<section>
+<h3>Project200見積一覧</h3>
+
+<section class="dashuboard">
+
+
+            <table border="0" cellspacing="0" cellpadding="0" id="TblResult">
+              <thead>
+                <tr>
+                  <th nowrap>見積Ｎｏ<span><a href="#" onclick="return doSort(1);">▲</a><a href="#" onclick="return doSort(2);">▼</a></span></th>
+                  <th nowrap>工事名<span><a href="#" onclick="return doSort(3);">▲</a><a href="#" onclick="return doSort(4);">▼</a></span></th>
+                  <th nowrap>顧客名<span><a href="#" onclick="return doSort(5);">▲</a><a href="#" onclick="return doSort(6);">▼</a></span></th>
+                  <th nowrap>担当者<span><a href="#" onclick="return doSort(13);">▲</a><a href="#" onclick="return doSort(14);">▼</a></span></th>
+                  <th nowrap>見積日付<span><a href="#" onclick="return doSort(7);">▲</a><a href="#" onclick="return doSort(8);">▼</a></span></th>
+                  <th nowrap>売上確定日<span><a href="#" onclick="return doSort(11);">▲</a><a href="#" onclick="return doSort(12);">▼</a></span></th>
+                  <th nowrap>金額<span><a href="#" onclick="return doSort(15);">▲</a><a href="#" onclick="return doSort(16);">▼</a></span></th>
+                  <th nowrap>金額(税込)</th>
+                  <th nowrap>工種</th>
+                  <th nowrap>メモ</th>
+                </tr>
+              </thead>
+              <tbody>
+                 <tr>
+                  <td>00300006</td>
+                  <td><a href="#" onclick="return doEdit(7802);">ＬＬＬテスト</a></td>
+                  <td>㈲寺尾電気</td>
+                  <td>高瀬　所長</td>
+                  <td nowrap="nowrap">2020年05月08日</td>
+                  <td nowrap="nowrap"></td>
+                  <td class="mn-td">70,000</td>
+                  <td class="mn-td">75,600</td>
+                  <td class="">エアコン</td>
+                  <td class=""></td>
+                </tr>
+                 <tr>
+                  <td>00300002</td>
+                  <td><a href="#" onclick="return doEdit(7798);">テスト</a></td>
+                  <td>人工</td>
+                  <td>高瀬　所長</td>
+                  <td nowrap="nowrap">2020年05月02日</td>
+                  <td nowrap="nowrap">2020年05月08日</td>
+                  <td class="mn-td">518,000</td>
+                  <td class="mn-td">559,440</td>
+                  <td class="">床暖房</td>
+                  <td class=""></td>
+                </tr>
+                 <tr>
+                  <td>00300003</td>
+                  <td><a href="#" onclick="return doEdit(7799);">テスト</a></td>
+                  <td>㈱新津組</td>
+                  <td>越懸澤　直</td>
+                  <td nowrap="nowrap">2020年05月02日</td>
+                  <td nowrap="nowrap">2020年05月03日</td>
+                  <td class="mn-td">459,000</td>
+                  <td class="mn-td">495,720</td>
+                  <td class="">エアコン</td>
+                  <td class=""></td>
+                </tr>
+               </tbody>
+            </table>
+
+
+</section>
+<div class="a-btm2">
+ <a class="modal-open" data-target="modal_estimate">見積追加</a></div>
+</section>
+
+
+
+</div>
+</div>
+
+    <!-- #container -->
+  </div><!-- #wrapperInner -->
+</div><!-- #wrapper -->
+
+
+<div id="modal_code_menu" class="modal-content modal_window" data-pre-open="JS_PreOpen" data-post-close="JS_PostClose">
+  <h2>顧客検索</h2>
+  <div class="flex">
+<div class="f9">
+<table border="0" cellspacing="0" cellpadding="0" class="s-table02">
+<tbody>
+<tr>
+<th>顧客名 </th>
+<td><input type="text" name="" class="" value=""></td>
+<th>顧客名（カナ）</th>
+<td><input type="text" name="" class="" value=""></td>
+</tr>
+<tr>
+<th>電話番号</th>
+<td><input type="text" name="input6" class="" value=""></td>
+<th>住所</th>
+<td><input type="text" name="input" class="" value=""></td>
+</tr>
+<tr>
+<th>ハウスメーカー</th>
+<td><input type="text" name="input5" class="" value=""></td>
+<th>ボイラー機種</th>
+<td><input type="text" name="input7" class="" value=""></td>
+</tr>
+<tr>
+<th>工事担当者</th>
+<td><input type="text" name="input2" class="" value=""></td>
+<th>営業担当者</th>
+<td><input type="text" name="input3" class="" value=""></td>
+</tr>
+<tr>
+<th>引渡日</th>
+<td><input type="text" name="MituDate" id="MituDate" class="gofwd" value=""></td>
+<th>設置日</th>
+<td><input type="text" name="MituDate" id="MituDate" class="gofwd" value=""></td>
+</tr>
+</tbody>
+</table>
+<div class="s-input">
+<input type="button" value="検索">
+
+</div>
+</div>
+<div class="f1"></div>
+
+</div>
+<table border="0" cellspacing="0" cellpadding="0" class="s-table02">
+<tbody>
+<tr>
+<th class="w-30">　</th>
+<th>顧客名</th>
+</tr>
+<tr>
+<td><input type="radio" name="sub"></td>
+<td>マドックタロウ</td>
+</tr>
+<tr>
+<td><input type="radio" name="sub"></td>
+<td>ドリーム次郎</td>
+</tr>
+<tr>
+<td><input type="radio" name="sub"></td>
+<td>マイフット三郎</td>
+</tr>
+</tbody>
+</table>
+<div class="s-input">
+<input type="button" value="この顧客情報を適用"  onClick="location.href='cs-customer-inquiry-edit.html'">
+
+</div>
+
+
+  </div>
+  <!--顧客検索-->
+  <div id="modal_memory_menu" class="modal-content modal_window" data-pre-open="JS_PreOpen" data-post-close="JS_PostClose">
+  <h2>作業記録</h2>
+  <section>
+<table border="0" cellspacing="0" cellpadding="0" class="s-table02">
+<tbody>
+<tr>
+<th>表示期間</th>
+<td><input type="text" name="MituDate" id="MituDate" class="gofwd" value="2020-07-13">
+～
+<input type="text" name="MituDate" id="MituDate" class="gofwd" value="2020-07-13">
+<input type="button" value="参照" class="input-search" /></td>
+</tr>
+</tbody>
+</table>
+
+</section>
+
+<section>
+<table border="0" cellspacing="0" cellpadding="0" class="s-table02 sc-list">
+<tbody>
+<tr>
+
+<th>作業日</th>
+<th>担当者</th>
+<th>現場名・依頼内容</th>
+<th>内訳</th>
+<th>金額</th>
+</tr>
+<tr>
+
+<td>2020/07/16</td>
+<td>渡辺真也</td>
+<td>安全点検</td>
+<td>暖房・給湯ボイラー交換工事</td>
+<td>543,730</td>
+</tr>
+<tr>
+
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+
+
+
+</section>
+  </div>
+  <!--顧客検索-->
+  
+  <!--設備メニュー-->
+  <div id="modal_plan_menu" class="modal-content modal_window" data-pre-open="JS_PreOpen" data-post-close="JS_PostClose">
+  <h2>契約内容</h2>
+  <section>
+<table border="0" cellspacing="0" cellpadding="0" class="s-table01-min">
+<tr>
+<th>契約</th>
+<th>設備</th>
+<th>契約終了日</th>
+</tr>
+<tbody>
+<tr>
+<td><input type="checkbox" name="checkbox" id="checkbox"></td>
+<td>あんしんプラン</td>
+<td><input type="text" name="MituDate" id="MituDate" class="gofwd" value="2020-07-13"></td>
+</tr>
+<tr>
+<td><input type="checkbox" name="checkbox2" id="checkbox2"></td>
+<td>LPG</td>
+<td><input type="text" name="MituDate" id="MituDate" class="gofwd" value="2020-07-13"></td>
+</tr>
+<tr>
+<td><input type="checkbox" name="checkbox2" id="checkbox3"></td>
+<td>灯油</td>
+<td><input type="text" name="MituDate" id="MituDate" class="gofwd" value="2020-07-13"></td>
+</tr>
+<tr>
+<td><input type="checkbox" name="checkbox2" id="checkbox4"></td>
+<td>電気</td>
+<td><input type="text" name="MituDate" id="MituDate" class="gofwd" value="2020-07-13"></td>
+</tr>
+
+</tbody>
+</table>
+<div class="s-input">
+<input type="button" value="この契約を適用"  >
+
+</div>
+
+</section>
+
+
+  </div>
+  <!--設備メニュー-->
+  
+  <!--設置設備追加-->
+  <div id="modal_facility" class="modal-content modal_window" data-pre-open="JS_PreOpen" data-post-close="JS_PostClose">
+  <h2>設置設備</h2>
+  <section>
+  <table border="0" cellspacing="0" cellpadding="0" class="s-table02">
+<tbody>
+
+<tr><th>設置日</th><td><input type="text" name="MituDate" id="MituDate" class="gofwd" value="2020-07-13"></td></tr>
+<tr><th>設備名</th><td><input type="text" name="input" class="" value=""></td></tr>
+<tr><th>機種</th><td><input type="text" name="input4" class="" value=""></td></tr>
+<tr><th>製造番号</th><td><input type="text" name="input2" class="" value=""></td></tr>
+<tr><th>備考</th><td><input type="text" name="input3" class="" value=""></td></tr>
+
+
+</tbody>
+</table>
+  </section>
+  <div class="s-input">
+<input type="button" value="OK" >
+</div>
+  </div>
+<!--設置設備追加-->
+  
+   <!--端末設備追加-->
+  <div id="modal_terminal" class="modal-content modal_window" data-pre-open="JS_PreOpen" data-post-close="JS_PostClose">
+  <h2>端末設備</h2>
+  <section>
+  <table border="0" cellspacing="0" cellpadding="0" class="s-table02">
+<tbody>
+<tr><th>階数</th><td><input type="text" name="input12" class="" value=""></td></tr>
+<tr><th>名称</th><td><input type="text" name="input12" class="" value=""></td></tr>
+<tr><th>台数</th><td><input type="text" name="input12" class="" value=""></td></tr>
+<tr><th>備考</th><td><input type="text" name="input12" class="" value=""></td></tr>
+
+</tbody>
+</table>
+<div class="s-input">
+<input type="button" value="OK" >
+</div>
+  </section>
+  </div>
+<!--端末設備追加-->
+  
+  
+    <!--見積検索-->
+  <div id="modal_estimate" class="modal-content modal_window" data-pre-open="JS_PreOpen" data-post-close="JS_PostClose">
+  <h2>見積検索</h2>
+<section>
+<div class="mitsumori">
+
+<table border="0" cellspacing="0" cellpadding="0"  class="s-table02">
+              <tr>
+                <th>見積Ｎｏ</th>
+                <td>
+                  <input type="text" name="MituCode" class="gofwd" value=""> ※完全一致
+                </td>
+              </tr>
+              <tr>
+                <th>見積日付</th>
+                <td>
+                  <input type="text" name="MituDateS" class="datepicker gofwd" value="2020-05-02">
+                  ～
+                  <input type="text" name="MituDateE" class="datepicker gofwd" value="">
+                </td>
+              </tr>
+              <tr>
+                <th>顧客名</th>
+                <td>
+                  <input type="text" name="CustName"  class="input-300 gofwd" value=""> ※あいまい検索
+                </td>
+              </tr>
+              <tr>
+                <th>工事名</th>
+                <td>
+                  <input type="text" name="KoujiName"  class="input-300 gofwd" value=""> ※あいまい検索（スペース区切りでAND検索）
+                </td>
+              </tr>
+              <tr>
+                <th>担当者</th>
+                <td>
+                  <input name="TantoName"  class="gofwd" type="text" value="" class="textField" id="tField3" list="staffList"> ※あいまい検索
+                  <datalist id="staffList">
+                    <option value="朝霧　真也"></option>
+                    <option value="越懸澤　直"></option>
+                    <option value="高瀬　所長"></option>
+                  </datalist>
+                </td>
+              </tr>
+              <tr>
+                <th>工種</th>
+                <td>
+                  <select name="WorkType" id="ref_WorkType" class="gofwd">
+                    <option value="">未選択</option>
+                    <option value="1">灯油CH</option>
+                    <option value="2">電気CH</option>
+                    <option value="3">ガスCH</option>
+                    <option value="4">ウェルエコ</option>
+                    <option value="5">ヒートポンプ</option>
+                    <option value="6">Ⅱ</option>
+                    <option value="7">換気（１種）</option>
+                    <option value="8">換気（３種）</option>
+                    <option value="9">空調システム</option>
+                    <option value="10">床暖房</option>
+                    <option value="11">エコウィル</option>
+                    <option value="12">蓄熱暖房</option>
+                    <option value="13">エアコン</option>
+                    <option value="14">エコキュート</option>
+                    <option value="15">ＦＦストーブ</option>
+                    <option value="16">ルームヒーター</option>
+                    <option value="17">融雪</option>
+                    <option value="18">商品</option>
+                    <option value="19">セルフィール</option>
+                    <option value="20">床下放熱器</option>
+                    <option value="21">修理</option>
+                    <option value="22">ボイラー交換</option>
+                    <option value="23">その他</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <th>メモ</th>
+                <td>
+                  <input type="text" name="Memo"  class="stop-gofwd" value="" class="input-300"> ※あいまい検索
+                </td>
+              </tr>
+            </table>
+ <span class="regi-btn"><span class="search-btn"><input type="button" class="input" value="検　索" onclick="return doSearch();"></span></span>
+
+            <div class="clear"><hr></div>
+</div>
+</section>
+
+<section class="dashuboard">
+
+            <h2>検索結果　5件　（更新日時 降順）</h2>
+
+            <table border="0" cellspacing="0" cellpadding="0" id="TblResult">
+              <thead>
+                <tr>
+                  <th nowrap class="w-30">&nbsp;</th>
+                  <th nowrap>見積Ｎｏ<span><a href="#" onclick="return doSort(1);">▲</a><a href="#" onclick="return doSort(2);">▼</a></span></th>
+                  <th nowrap>工事名<span><a href="#" onclick="return doSort(3);">▲</a><a href="#" onclick="return doSort(4);">▼</a></span></th>
+                  <th nowrap>顧客名<span><a href="#" onclick="return doSort(5);">▲</a><a href="#" onclick="return doSort(6);">▼</a></span></th>
+                  <th nowrap>担当者<span><a href="#" onclick="return doSort(13);">▲</a><a href="#" onclick="return doSort(14);">▼</a></span></th>
+                  <th nowrap>見積日付<span><a href="#" onclick="return doSort(7);">▲</a><a href="#" onclick="return doSort(8);">▼</a></span></th>
+                  <th nowrap>売上確定日<span><a href="#" onclick="return doSort(11);">▲</a><a href="#" onclick="return doSort(12);">▼</a></span></th>
+                  <th nowrap>金額<span><a href="#" onclick="return doSort(15);">▲</a><a href="#" onclick="return doSort(16);">▼</a></span></th>
+                  <th nowrap>金額(税込)</th>
+                  <th nowrap>工種</th>
+                  <th nowrap>メモ</th>
+                </tr>
+              </thead>
+              <tbody>
+                 <tr>
+                  <td class="a-btm"><input type="checkbox" name="checkbox" id="checkbox"></td>
+                  <td>00300006</td>
+                  <td><a href="system-estimate-edit.html" onclick="return doEdit(7802);">ＬＬＬテスト</a></td>
+                  <td>㈲寺尾電気</td>
+                  <td>高瀬　所長</td>
+                  <td nowrap="nowrap">2020年05月08日</td>
+                  <td nowrap="nowrap"></td>
+                  <td class="mn-td">70,000</td>
+                  <td class="mn-td">75,600</td>
+                  <td class="">エアコン</td>
+                  <td class=""></td>
+                </tr>
+                 <tr>
+                  <td class="a-btm"><input type="checkbox" name="checkbox2" id="checkbox2"></td>
+                  <td>00300002</td>
+                  <td><a href="system-estimate-edit.html" onclick="return doEdit(7798);">テスト</a></td>
+                  <td>人工</td>
+                  <td>高瀬　所長</td>
+                  <td nowrap="nowrap">2020年05月02日</td>
+                  <td nowrap="nowrap">2020年05月08日</td>
+                  <td class="mn-td">518,000</td>
+                  <td class="mn-td">559,440</td>
+                  <td class="">床暖房</td>
+                  <td class=""></td>
+                </tr>
+                 <tr>
+                  <td class="a-btm"><input type="checkbox" name="checkbox3" id="checkbox3"></td>
+                  <td>00300003</td>
+                  <td><a href="system-estimate-edit.html" onclick="return doEdit(7799);">テスト</a></td>
+                  <td>㈱新津組</td>
+                  <td>越懸澤　直</td>
+                  <td nowrap="nowrap">2020年05月02日</td>
+                  <td nowrap="nowrap">2020年05月03日</td>
+                  <td class="mn-td">459,000</td>
+                  <td class="mn-td">495,720</td>
+                  <td class="">エアコン</td>
+                  <td class=""></td>
+                </tr>
+               </tbody>
+            </table>
+ <div class="a-btm2">
+ <a class="modal-open" data-target="modal_estimate">追加</a></div>
+
+</section>
+
+  </div>
+  <!--見積検索-->
+</body>
+</html>

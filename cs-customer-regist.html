@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1000">
+<title>CSシステム</title>
+<link type="text/css" rel="stylesheet" href="css/style.css">
+<link type="text/css" rel="stylesheet" href="css/style-system.css">
+<link rel="shortcut icon" href="">
+
+
+<script src="js/jquery-2.2.4.min.js"></script>
+<script src="js/InputControl-v3.js"></script>
+<script type="text/javascript">
+window.paceOptions = {
+  restartOnPushState: false,
+  ajax: false
+};
+</script>
+<script src="js/pace-min.js?v=20200531_20200612"></script>
+<script src="js/jquery-2.2.4.min.js"></script>
+<script src="js/jquery-ui.min.js"></script>
+<script src="js/jquery.ui-1.10.4.datepicker.min.js"></script>
+<script src="js/jquery.ui.datepicker-ja.js"></script>
+<script src="js/jquery.floatThead.js"></script>
+<script src="js/DataTables/datatables.min.js"></script>
+<script src="js/InputControl-v3.js?v=20200531_20200612"></script>
+<script src="js/CommonControl.js?v=20200531_20200612"></script>
+<script src="js/modal.js?v=20200531_20200612"></script>
+<script type="text/javascript">
+gTopPath = "";
+</script>
+<script src="js/estimate.js?v=20200531_20200612"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+</head>
+<body class="system">
+<div class="modal-overlay" style="display:block;"></div>
+<div id="wrapper">
+  <div id="wrapperInner">
+    <header>
+      <span>
+        <a href="user-edit.php">株式会社日弘ヒーティング</a>
+      </span>
+      <div class="head">
+        <a href="main.php"><div class="head-name">リフォーム倶楽部</div></a>
+        
+        <ul class="head-menu">
+        <li class="head-koshin">
+            <input type="button" value="">
+          </li>
+        </ul>
+
+      </div><!-- .head -->
+    </header>
+
+
+ <div id="container">
+      <div id="container-inner">
+      
+
+      
+<h2>顧客新規登録</h2>
+<section>
+<h3>顧客情報</h3>
+<table border="0" cellspacing="0" cellpadding="0" class="s-table01">
+<tbody>
+<tr>
+<th>顧客名</th>
+<td><span class="td-num">
+<input type="text" name="input" class="" value="">
+</span></td>
+<th>フリガナ</th>
+<td><span class="td-num">
+<input type="text" name="input2" class="" value="">
+</span></td>
+<th>法人区分</th>
+<td><select name="select2" id="select2">
+<option>法人</option>
+<option>個人</option>
+</select></td>
+</tr>
+<tr>
+<th>郵便番号</th>
+<td><span class="td-num">
+<input type="text" name="input3" class="" value="">
+</span></td>
+<th>住所</th>
+<td colspan="3"><textarea name="textarea" rows="2" id="textarea"></textarea></td>
+</tr>
+<tr>
+<th>電話番号</th>
+<td><span class="td-num">
+<input type="text" name="input4" class="" value="">
+</span></td>
+<th>FAX番号</th>
+<td><span class="td-num">
+<input type="text" name="input5" class="" value="">
+</span></td>
+<th>Email</th>
+<td><span class="td-num">
+<input type="text" name="input6" class="" value="">
+</span></td>
+</tr>
+<tr>
+<th>代表者</th>
+<td><span class="td-num">
+<input type="text" name="input8" class="" value="">
+</span></td>
+<td colspan="4">&nbsp;</td>
+</tr>
+<tr>
+<th>締日</th>
+<td><input type="text"  value=""></td>
+<th>入金日</th>
+<td><input type="text"  value=""></td>
+<th>入金方法</th>
+<td><select name="select" id="select">
+<option>振り込み</option>
+<option>引き落とし</option>
+<option>集金</option>
+</select></td>
+</tr>
+<tr>
+<th>手形サイト</th>
+<td><span class="td-num">
+<input type="text" name="input9" class="" value="">
+</span></td>
+<th>手形比率</th>
+<td><span class="td-num">
+<input type="text" name="input10" class="" value="">
+</span></td>
+<td colspan="2">&nbsp;</td>
+</tr>
+<tr>
+<th>単価種類選択</th>
+<td><span class="td-num">
+<input type="text" name="input11" class="" value="">
+</span></td>
+<th>単価掛け率</th>
+<td><span class="td-num">
+<input type="text" name="input12" class="" value="">
+</span></td>
+<td colspan="2">&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<h4>担当者</h4>
+<table border="0" cellspacing="0" cellpadding="0" class="s-table01-min">
+<tr>
+<th>担当部門</th>
+<td><span class="td-num">
+<input type="text" name="input14" class="" value="">
+</span></td>
+<th>担当者</th>
+<td><input type="text" name="input14" class="" value=""></td>
+<td  class="td-c"><input type="button" name="button" id="button4" value="編集"  class="modal-open"  data-target="modal_add"></td>
+<td class="td-c"><input type="button" name="button" id="button6" value="削除"></td>
+</tr>
+<tbody>
+</tbody>
+</table>
+<div class="a-btm2">
+ <a class="modal-open" data-target="modal_add">追加</a></div>
+</section>
+<section>
+<h3>請求先</h3>
+<table border="0" cellspacing="0" cellpadding="0" class="s-table01">
+<tr>
+<th>請求先</th>
+<td  class="td-mod"><input type="radio" name="radio" id="radio" value="radio">上記と同じ
+<input type="radio" name="radio" id="radio2" value="radio">
+上記と別 <a class="modal-open" data-target="modal_code_menu">顧客検索</a></td>
+<td colspan="4">&nbsp;</td>
+</tr>
+<tbody>
+<tr>
+<th>会社名</th>
+<td><span class="td-num">
+<input type="text" name="input13" class="" value="">
+</span></td>
+<th>代表者名</th>
+<td><span class="td-num">
+<input type="text" name="input" class="" value="">
+</span></td>
+<th>フリガナ</th>
+<td><span class="td-num">
+<input type="text" name="input2" class="" value="">
+</span></td>
+</tr>
+<tr>
+<th>郵便番号</th>
+<td><span class="td-num">
+<input type="text" name="input3" class="" value="">
+</span></td>
+<th>住所</th>
+<td colspan="3"><textarea name="textarea" rows="2" id="textarea"></textarea></td>
+</tr>
+<tr>
+<th>電話番号</th>
+<td><span class="td-num">
+<input type="text" name="input4" class="" value="">
+</span></td>
+<th>Email</th>
+<td colspan="3"><span class="td-num">
+<input type="text" name="input6" class="" value="">
+</span></td>
+</tr>
+<tr>
+<th>担当部門</th>
+<td><span class="td-num">
+<input type="text" name="input7" class="" value="">
+</span></td>
+<th>担当者</th>
+<td colspan="3"><input type="text" name="" class="" value="">
+<input type="button" value="参照" class="input-search" /></td>
+</tr>
+</tbody>
+</table>
+</section>
+
+
+</div>
+</div>
+
+    <!-- #container -->
+  </div><!-- #wrapperInner -->
+</div><!-- #wrapper -->
+
+
+<div id="modal_code_menu" class="modal-content modal_window" data-pre-open="JS_PreOpen" data-post-close="JS_PostClose">
+  <h2>顧客検索</h2>
+  <div class="flex">
+<div class="f9">
+<table border="0" cellspacing="0" cellpadding="0" class="s-table02">
+<tbody>
+<tr>
+<th>顧客名 </th>
+<td><input type="text" name="" class="" value=""></td>
+<th>顧客名（カナ）</th>
+<td><input type="text" name="" class="" value=""></td>
+</tr>
+<tr>
+<th>電話番号</th>
+<td><input type="text" name="input6" class="" value=""></td>
+<th>住所</th>
+<td><input type="text" name="input" class="" value=""></td>
+</tr>
+<tr>
+<th>ハウスメーカー</th>
+<td><input type="text" name="input5" class="" value=""></td>
+<th>ボイラー機種</th>
+<td><input type="text" name="input7" class="" value=""></td>
+</tr>
+<tr>
+<th>工事担当者</th>
+<td><input type="text" name="input2" class="" value=""></td>
+<th>営業担当者</th>
+<td><input type="text" name="input3" class="" value=""></td>
+</tr>
+<tr>
+<th>引渡日</th>
+<td><input type="text" name="MituDate" id="MituDate" class="gofwd" value=""></td>
+<th>設置日</th>
+<td><input type="text" name="MituDate" id="MituDate" class="gofwd" value=""></td>
+</tr>
+</tbody>
+</table>
+<div class="s-input">
+<input type="button" value="検索">
+
+</div>
+</div>
+<div class="f1"></div>
+
+</div>
+<table border="0" cellspacing="0" cellpadding="0" class="s-table02">
+<tbody>
+<tr>
+<th class="w-30">　</th>
+<th>顧客名</th>
+</tr>
+<tr>
+<td><input type="radio" name="sub"></td>
+<td>マドックタロウ</td>
+</tr>
+<tr>
+<td><input type="radio" name="sub"></td>
+<td>ドリーム次郎</td>
+</tr>
+<tr>
+<td><input type="radio" name="sub"></td>
+<td>マイフット三郎</td>
+</tr>
+</tbody>
+</table>
+<div class="s-input">
+<input type="button" value="この顧客情報を適用"  onClick="location.href='cs-customer-regist.html'">
+
+</div>
+
+
+  </div>
+  
+  <div id="modal_memory_menu" class="modal-content modal_window" data-pre-open="JS_PreOpen" data-post-close="JS_PostClose">
+  <h2>作業記録</h2>
+  <section>
+<table border="0" cellspacing="0" cellpadding="0" class="s-table02">
+<tbody>
+<tr>
+<th>表示期間</th>
+<td><input type="text" name="MituDate" id="MituDate" class="gofwd" value="2020-07-13">
+～
+<input type="text" name="MituDate" id="MituDate" class="gofwd" value="2020-07-13">
+<input type="button" value="参照" class="input-search" /></td>
+</tr>
+</tbody>
+</table>
+
+</section>
+
+<section>
+<table border="0" cellspacing="0" cellpadding="0" class="s-table02 sc-list">
+<tbody>
+<tr>
+
+<th>作業日</th>
+<th>担当者</th>
+<th>現場名・依頼内容</th>
+<th>内訳</th>
+<th>金額</th>
+</tr>
+<tr>
+
+<td>2020/07/16</td>
+<td>渡辺真也</td>
+<td>安全点検</td>
+<td>暖房・給湯ボイラー交換工事</td>
+<td>543,730</td>
+</tr>
+<tr>
+
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+
+
+
+</section>
+  </div>
+  
+     <!--追加-->
+  <div id="modal_add" class="modal-content modal_window" data-pre-open="JS_PreOpen" data-post-close="JS_PostClose">
+  <h2>担当者</h2>
+  <section>
+  <table border="0" cellspacing="0" cellpadding="0" class="s-table02">
+<tbody>
+<tr><th>担当部門</th><td><input type="text" name="input12" class="" value=""></td></tr>
+<tr><th>担当者</th><td><input type="text" name="input12" class="" value=""></td></tr>
+
+</tbody>
+</table>
+<div class="s-input">
+<input type="button" value="OK" >
+</div>
+  </section>
+  </div>
+<!--端末設備追加-->
+  
+</body>
+</html>

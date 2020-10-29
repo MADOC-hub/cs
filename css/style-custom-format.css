@@ -1,0 +1,301 @@
+@charset "UTF-8";
+/* Scss Document */
+/* Sass Document */
+/* Scss Document */
+/* 全体
+============================================================================================================*/
+* { padding: 0px; margin: 0px; }
+
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video { margin: 0; padding: 0; border: 0; outline: 0; font-size: 100%; }
+
+th { font-weight: normal; }
+
+/* body
+============================================================================================================*/
+body { color: #000000; font-size: 0.8em; line-height: 1.8; /* 1 */ -webkit-text-size-adjust: 100%; /* 2 */ font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif; margin-top: 0px; background-color: #fff; }
+
+img { border-style: none; max-width: 100%; height: auto; vertical-align: bottom; line-height: 100%; }
+
+a { text-decoration: none; color: #003399; }
+a img { border-style: none; }
+
+.clear { clear: both; }
+.clear hr { display: none; }
+
+a:hover { text-decoration: underline; color: #FF6600; }
+a:hover img { opacity: 0.6; filter: alpha(opacity=60); }
+
+ul li { list-style-type: none; }
+
+.ankerbox { position: relative; }
+.ankerbox a { position: absolute; top: -120px; }
+
+.w-10 { width: 10%; }
+
+.w-15 { width: 15%; }
+
+.w-20 { width: 20%; }
+
+.w-25 { width: 25%; }
+
+.w-30 { width: 30%; }
+
+.w-35 { width: 35%; }
+
+.w-40 { width: 40%; }
+
+.w-45 { width: 45%; }
+
+.w-50 { width: 50%; }
+
+.w-55 { width: 55%; }
+
+.w-60 { width: 60%; }
+
+.w-65 { width: 65%; }
+
+.w-70 { width: 70%; }
+
+.w-75 { width: 75%; }
+
+.w-80 { width: 80%; }
+
+.w-85 { width: 85%; }
+
+.w-90 { width: 90%; }
+
+.w-95 { width: 95%; }
+
+.w-100 { width: 100%; }
+
+/* Scss Document */
+/* Scss Document */
+/* Scss Document contents */
+section { padding-left: 5px; padding-right: 5px; height: 760px; max-width: 1200px; min-width: 748px; margin-left: auto; margin-right: auto; }
+
+.section { max-width: 1200px; min-width: 748px; margin-left: auto; margin-right: auto; }
+
+.mn { text-align: right; }
+
+.pa { text-align: center; }
+
+hr { border: 1px solid transparent; }
+
+header { margin-left: auto; margin-right: auto; }
+
+.a4-w section { height: 700px; }
+
+.a4-h section { height: 1200px; }
+
+.cover-sec {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ width: 100%;
+ height: 85%;
+}
+
+.cover {
+ border: 1px solid black;
+ padding: 10px;
+ height: 90%;
+ width: 100%;
+ font-size: 110%;
+}
+.cover .inner { border: 1px solid black; height: 100%; position: relative; font-family: "ＭＳ Ｐ明朝", "MS PMincho", "ヒラギノ明朝 Pro W3", "Hiragino Mincho Pro", serif; }
+.cover .inner div { position: absolute; }
+.cover .inner .day { right: 7%; top: 5%; }
+.cover .inner .midashi { left: 10%; top: 5%; text-align: center; width: 60%; }
+.cover .inner .midashi h1 { border-bottom: 1px black solid; font-size: 200%; margin-bottom: 30px; position: relative; }
+.cover .inner .midashi h1:after { position: absolute; content: ""; display: block; right: 0; bottom: 0; }
+.cover .inner .midashi h2 { font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif; font-size: 190%; font-weight: bold; margin-bottom: 20px; letter-spacing: 1em; text-indent: 1em; display: flex; justify-content: center; line-height: 110%; transform: scale(0.9, 1); }
+.cover .inner .midashi h2 p { border-bottom: 1px black solid; }
+.cover .inner .address { right: 5%; top: 18%; text-align: right; }
+.cover .inner .address ul li:first-child { margin-bottom: 10px; }
+.cover .inner .mitsumori { left: 5%; bottom: 5%; width: 50%; font-size: 120%;display: flex; flex-direction: column;justify-content: space-between;height: 52%;}
+.cover .inner .mitsumori dl { display: flex; justify-content: space-between; }
+.cover .inner .mitsumori dl dt { width: 20%; border-bottom: 1px black solid; white-space: nowrap; }
+.cover .inner .mitsumori dl dd {
+ width: 67%;
+ text-decoration: none;border-bottom: 1px black solid;
+}
+.cover .inner .stamp {
+ right: 5%;
+ bottom: 25%;
+}
+.cover .inner .stamp table { border-left: 2px solid black; border-right: 1px solid black; border-bottom: 2px solid black; border-top: 1px solid black; }
+.cover .inner .stamp table th, .cover .inner .stamp table td { border-left: 0px solid black; border-right: 1px solid black; border-bottom: 0px solid black; border-top: 1px solid black; width: 90px; }
+.cover .inner .stamp table td { height: 60px; }
+
+.temp-a .cell table { border-left: 2px solid black; border-right: 1px solid black; border-bottom: 2px solid black; border-top: 1px solid black; width: 100%; height: 90%; margin-top: 2%; }
+.temp-a .cell table th, .temp-a .cell table td {
+ border-left: 0px solid black;
+ border-right: 1px solid black;
+ border-bottom: 0px solid black;
+ border-top: 1px solid black;
+ line-height: 110%;
+ padding-top: 1px;
+ padding-right: 3px;
+ padding-left: 3px;
+ padding-bottom: 1px;
+}
+.temp-a .cell table .code { width: 4%; }
+.temp-a .cell table .num { width: 18%; }
+.temp-a .cell table .size { width: 15%; }
+.temp-a .cell table .cou { width: 8%; }
+.temp-a .cell table .tani { width: 4%; }
+.temp-a .cell table .price { width: 8%; }
+.temp-a .cell table .price2 { width: 10%; }
+.temp-a .cell table .price3 { width: 10%; }
+.temp-a .cover-sec { position: relative; }
+.temp-a section { position: relative; }
+.temp-a .logo {
+ text-align: center;
+ bottom: 10px;
+ width: 100%;
+}
+
+.temp-b { font-family: "ＭＳ Ｐ明朝", "MS PMincho", "ヒラギノ明朝 Pro W3", "Hiragino Mincho Pro", serif; }
+.temp-b section { display: flex; justify-content: space-between; flex-direction: column; width: 70%; margin-left: auto; margin-right: auto; position: relative; padding-top: 15px; }
+.temp-b section h1 { flex-basis: 5%; font-size: 200%; letter-spacing: 1em; text-indent: 1em; transform: scale(0.9, 1); text-align: center; }
+.temp-b section header {
+ flex-basis: 20%;
+ display: flex;
+ justify-content: space-between;
+ width: 100%;
+ font-size: 120%;
+ margin-bottom: 15px;
+}
+.temp-b section header .temp-b-a { flex-basis: 50%; }
+.temp-b section header .temp-b-a ul { display: flex; justify-content: space-between; flex-direction: column; height: 80%; font-size: 110%; padding-top: 5%; }
+.temp-b section header .temp-b-a ul li:first-child{font-size: 130%;font-weight: 800;}
+.temp-b section header .temp-b-a ul li dl { display: flex; }
+.temp-b section header .temp-b-a ul li dl dt { flex-basis: 25%; }
+.temp-b section header .temp-b-a ul li dl dd:before { content: ":"; margin-right: 10px;  flex-basis: 73%;}
+.temp-b section header .temp-b-b { display: flex; justify-content: space-between; flex-direction: column; flex-basis: 50%; text-align: right; }
+.temp-b section header .temp-b-b h2 {
+ font-size: 120%;
+ line-height: 140%;
+}
+.temp-b section header .temp-b-b .stamp table { border-left: 2px solid black; border-right: 1px solid black; border-bottom: 2px solid black; border-top: 1px solid black; margin-left: auto; }
+.temp-b section header .temp-b-b .stamp table th, .temp-b section header .temp-b-b .stamp table td { border-left: 0px solid black; border-right: 1px solid black; border-bottom: 0px solid black; border-top: 1px solid black; width: 60px; }
+.temp-b section header .temp-b-b .stamp table td { height: 60px; }
+.temp-b section .table { flex-grow: 1; }
+.temp-b section .table table {
+ font-size: 90%;
+ margin-top: 1%;
+ border-left: 2px solid black;
+ border-right: 1px solid black;
+ border-bottom: 2px solid black;
+ border-top: 1px solid black;
+ width: 100%;
+ height: 100%;
+}
+.temp-b section .table table th, .temp-b section .table table td {
+ border-left: 0px solid black;
+ border-right: 1px solid black;
+ border-bottom: 0px solid black;
+ border-top: 1px solid black;
+ width: 90px;
+ padding-left: 3px;
+ padding-right: 3px;
+}
+ .table table td{
+ line-height: 110%;
+}
+.temp-b section .table table .num,.temp-b section .table table .mn{font-size: 150%;}
+.temp-b section .table table .sep { border-right: double 3px black; }
+.temp-b section .table table .num { width: 19%; }
+.temp-b section .table table .size { width: 18%; }
+.temp-b section .table table .cou { width: 5%; }
+.temp-b section .table table .price { width: 10%; }
+.temp-b section .title { text-align: center; font-size: 140%; }
+.temp-b section .total {
+ flex-basis: 10%;
+ font-size: 120%;
+ padding-top: 30px;
+}
+.temp-b section .total dl { padding: 10px; border-bottom: 1px black solid; display: flex; justify-content: space-between; width: 40%; margin-left: auto; margin-right: auto; }
+.temp-b section .logo {
+ position: absolute;
+ bottom: 0;
+ right: 10px;
+}
+
+.temp-c { font-family: "ＭＳ Ｐ明朝", "MS PMincho", "ヒラギノ明朝 Pro W3", "Hiragino Mincho Pro", serif; }
+.temp-c section { display: flex; justify-content: space-between; flex-direction: column; width: 70%; margin-left: auto; margin-right: auto; padding-top: 15px; position: relative; }
+.temp-c section h1 { flex-basis: 4%; font-size: 200%; letter-spacing: 1em; text-indent: 1em; transform: scale(0.9, 1); text-align: center; }
+.temp-c section header { flex-basis: 35%; width: 100%; font-size: 120%; position: relative; }
+.temp-c section header h3 { font-size: 160%; border-bottom: 1px black solid; width: 60%; padding: 10px; display: flex; justify-content: space-between; }
+.temp-c section header h3:before { content: " "; flex-grow: 1; text-align: center; }
+.temp-c section header h3:after { content: " "; flex-grow: 1; text-align: center; }
+.temp-c section header .temp-b-a { width: 90%; }
+.temp-c section header .temp-b-a ul { display: flex; justify-content: space-between; flex-direction: column; height: 80%; font-size: 110%; padding-top: 5%; }
+.temp-c section header .temp-b-a ul li dl { display: flex; padding-top: 5px; }
+.temp-c section header .temp-b-a ul li dl dt { flex-basis: 20%; border-bottom: 2px solid black; padding-left: 20px; }
+.temp-c section header .temp-b-a ul li dl dd { flex-basis: 40%; border-bottom: 1px dotted black; margin-left: 15px; text-align: center; font-size: 1r0%; padding-left: 20px; padding-right: 20px; }
+.temp-c section header .temp-b-a ul li dl .other { flex-basis: 70%; font-size: 90%; text-align: left; }
+/* 次行を生かす方が不自然
+.temp-c section header .temp-b-a ul li dl .price { display: flex; justify-content: space-between; } */
+.temp-c section header .temp-b-a ul li dl .price:before { content: "￥"; flex-grow: 1; text-align: center; }
+.temp-c section header .temp-b-a ul li dl .price:after { content: "-"; flex-grow: 1; text-align: center; }
+.temp-c section header .temp-b-b { display: flex; justify-content: space-between; flex-direction: column; flex-basis: 40%; text-align: right; position: absolute; right: 0; top: 0; }
+.temp-c section header .temp-b-b h2 {
+ font-size: 120%;
+ line-height: 140%;
+}
+.temp-c section header .temp-b-b .stamp table { border-left: 2px solid black; border-right: 1px solid black; border-bottom: 2px solid black; border-top: 1px solid black; margin-left: auto; }
+.temp-c section header .temp-b-b .stamp table th, .temp-c section header .temp-b-b .stamp table td { border-left: 0px solid black; border-right: 1px solid black; border-bottom: 0px solid black; border-top: 1px solid black; width: 60px; }
+.temp-c section header .temp-b-b .stamp table td { height: 60px; }
+.temp-c section .table { flex-grow: 1; }
+.temp-c section .table table { font-size: 90%; margin-top: 1%; border-left: 2px solid black; border-right: 1px solid black; border-bottom: 2px solid black; border-top: 1px solid black; width: 100%; height: 100%; }
+.temp-c section .table table th, .temp-c section .table table td { border-left: 0px solid black; border-right: 1px solid black; border-bottom: 0px solid black; border-top: 1px solid black; width: 90px; }
+.temp-c section .table table .sep { border-right: solid 2px black; }
+.temp-c section .table table .num { width: 19%; }
+.temp-c section .table table .size { width: 18%; }
+.temp-c section .table table .cou { width: 5%; }
+.temp-c section .table table .price { width: 10%; }
+.temp-c section .title { text-align: center; font-size: 140%; }
+.temp-c section .cv { font-size: 140%; }
+.temp-c section .cv table { height: 90%; }
+.temp-c section .cv table td {padding: 4px;}
+
+
+.temp-c section .cv table .mn,.temp-c section .cv table .price {font-size: 110%;}
+.temp-c section .cv table .num { width: 10%; }
+.temp-c section .cv table .other { width: 14%; }
+.temp-c section .cv table .price { width: 25%; }
+.temp-c section .cv table .line { padding: 1px; height: 3px; border-right: 0; border-left: 0; }
+
+.temp-c section table .mn,.temp-c section table .num {
+ font-size: 150%;
+}
+
+
+.temp-c .logo { text-align: center; }
+.logo img {
+ width: auto;
+ max-height: 30px;
+/* height: 30px; */
+}
+
+.page {text-align: center;margin-top: 20px;}
+.temp-a .printbt { text-align: center; position: absolute; top: 30px; width: 100%; }
+.temp-b .printbt { text-align: center; position: absolute; top: 30px; right: 5px; }
+
+
+
+.cover .inner .mitsumori dl dd span{
+ font-size: 180%;
+}
+.cover .inner .mitsumori dl:nth-child(1) dd {line-height: 160%;}
+.cover .inner .mitsumori dl:nth-child(2) dd p{
+ padding-left: 10%;
+ text-indent: -10%;
+}
+.cover .inner .mitsumori dl:last-child dd {
+ font-size: 80%;
+ line-height: 120%;
+ text-decoration: none;
+}
+.cover .inner .extra{position: absolute;bottom: 5%;right: 5%;width: 35%;height: 15%;}

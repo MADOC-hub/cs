@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1000">
+<title>CSシステム</title>
+<link type="text/css" rel="stylesheet" href="css/style.css">
+<link type="text/css" rel="stylesheet" href="css/style-system.css">
+<link rel="shortcut icon" href="">
+
+<script src="js/jquery-2.2.4.min.js"></script>
+<script src="js/InputControl-v3.js"></script>
+<script type="text/javascript">
+window.paceOptions = {
+  restartOnPushState: false,
+  ajax: false
+};
+</script>
+<script src="js/pace-min.js?v=20200531_20200612"></script>
+<script src="js/jquery-2.2.4.min.js"></script>
+<script src="js/jquery-ui.min.js"></script>
+<script src="js/jquery.ui-1.10.4.datepicker.min.js"></script>
+<script src="js/jquery.ui.datepicker-ja.js"></script>
+<script src="js/jquery.floatThead.js"></script>
+<script src="js/DataTables/datatables.min.js"></script>
+<script src="js/InputControl-v3.js?v=20200531_20200612"></script>
+<script src="js/CommonControl.js?v=20200531_20200612"></script>
+<script src="js/modal.js?v=20200531_20200612"></script>
+<script type="text/javascript">
+gTopPath = "";
+</script>
+<script src="js/estimate.js?v=20200531_20200612"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+</head>
+<body class="system">
+<div class="modal-overlay" style="display:block;"></div>
+<div id="wrapper">
+  <div id="wrapperInner">
+    <header>
+      <span>
+        <a href="user-edit.php">株式会社日弘ヒーティング</a>
+      </span>
+      <div class="head">
+        <a href="main.php"><div class="head-name">リフォーム倶楽部</div></a>
+        <ul class="head-menu">
+
+                  <li class="head-print">
+            <input type="button" class="modal-open" data-target="modal_print_menu" value="帳票印刷">
+          </li>
+        </ul>
+      </div><!-- .head -->
+    </header>
+
+
+ <div id="container">
+      <div id="container-inner">
+      
+<h2>請求/入金管理</h2>
+<div class="system-index">
+<div class="system-index-a">
+<div class="system-schedule">
+
+<section>
+<div class="mitsumori">
+            <table border="0" cellspacing="0" cellpadding="0" class="s-table02">
+              <tr>
+                <th>請求Ｎｏ</th>
+                <td>
+                  <input type="text" name="MituCode" class="gofwd" value=""> ※完全一致
+                </td>
+              </tr>
+<tr>
+<th>請求日付</th>
+<td><input type="text" name="MituDateS2" class="datepicker gofwd" value="">
+～
+<input type="text" name="MituDateE2" class="datepicker gofwd" value=""></td>
+</tr>
+              <tr>
+                <th>売上確定月</th>
+                <td><input type="month" name="example1"></td>
+              </tr>
+              <tr>
+                <th>顧客名</th>
+                <td>
+                  <input type="text" name="CustName"  class="input-300 gofwd" value=""> ※あいまい検索
+                </td>
+              </tr>
+<tr>
+<th>工事名</th>
+<td><input type="text" name="KoujiName2"  class="input-300 gofwd" value="">
+※あいまい検索（スペース区切りでAND検索） </td>
+</tr>
+              <tr>
+                <th>住所</th>
+                <td>
+                  <input type="text" name="KoujiName"  class="input-300 gofwd" value=""> ※あいまい検索（スペース区切りでAND検索）
+                </td>
+              </tr>
+              <tr>
+                <th>担当者</th>
+                <td>
+                  <input name="TantoName"  class="gofwd" type="text" value="" class="textField" id="tField3" list="staffList"> ※あいまい検索
+                  <datalist id="staffList">
+                    <option value="朝霧　真也"></option>
+
+                    <option value="越懸澤　直"></option>
+                    <option value="高瀬　所長"></option>
+                  </datalist>
+                </td>
+              </tr>
+              <tr>
+                <th>工種</th>
+                <td>
+                  <select name="WorkType" id="ref_WorkType" class="gofwd">
+                    <option value="">未選択</option>
+                    <option value="1">灯油CH</option>
+                    <option value="2">電気CH</option>
+                    <option value="3">ガスCH</option>
+                    <option value="4">ウェルエコ</option>
+                    <option value="5">ヒートポンプ</option>
+                    <option value="6">Ⅱ</option>
+                    <option value="7">換気（１種）</option>
+                    <option value="8">換気（３種）</option>
+                    <option value="9">空調システム</option>
+                    <option value="10">床暖房</option>
+                    <option value="11">エコウィル</option>
+                    <option value="12">蓄熱暖房</option>
+                    <option value="13">エアコン</option>
+                    <option value="14">エコキュート</option>
+                    <option value="15">ＦＦストーブ</option>
+                    <option value="16">ルームヒーター</option>
+                    <option value="17">融雪</option>
+                    <option value="18">商品</option>
+                    <option value="19">セルフィール</option>
+                    <option value="20">床下放熱器</option>
+                    <option value="21">修理</option>
+                    <option value="22">ボイラー交換</option>
+                    <option value="23">その他</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <th>メモ</th>
+                <td>
+                  <input type="text" name="Memo"  class="stop-gofwd" value="" class="input-300"> ※あいまい検索
+                </td>
+              </tr>
+<tr>
+<th>その他</th>
+<td><input type="checkbox" name="checkbox" id="checkbox">入金完了　<input type="checkbox" name="checkbox2" id="checkbox2">一部入金　<input type="checkbox" name="checkbox2" id="checkbox2">未入金</td>
+</tr>
+            </table>
+
+            <div class="regi-btn">
+              <div class="search-btn"><input type="button" class="input" value="検　索" onclick="return doSearch();">
+              </div>
+            </div>
+
+            <div class="clear"><hr></div>
+</div>
+</section>
+
+<section class="dashuboard">
+
+<h2>検索結果　5件　（更新日時 降順）</h2>
+
+            <table border="0" cellspacing="0" cellpadding="0" id="TblResult">
+              <thead>
+                <tr>
+                  <th nowrap>請求Ｎｏ<span><a href="#" onclick="return doSort(1);">▲</a><a href="#" onclick="return doSort(2);">▼</a></span></th>
+                  <th nowrap>工事名<span><a href="#" onclick="return doSort(3);">▲</a><a href="#" onclick="return doSort(4);">▼</a></span></th>
+                  <th nowrap>顧客名<span><a href="#" onclick="return doSort(5);">▲</a><a href="#" onclick="return doSort(6);">▼</a></span></th>
+<th nowrap>住所<span><a href="#" onclick="return doSort(13);">▲</a><a href="#" onclick="return doSort(14);">▼</a></span></th>
+                  <th nowrap>担当者<span><a href="#" onclick="return doSort(13);">▲</a><a href="#" onclick="return doSort(14);">▼</a></span></th>
+                  <th nowrap>売上確定日<span><a href="#" onclick="return doSort(11);">▲</a><a href="#" onclick="return doSort(12);">▼</a></span></th>
+<th nowrap>請求日付<span><a href="#" onclick="return doSort(7);">▲</a><a href="#" onclick="return doSort(8);">▼</a></span></th>
+                  <th nowrap>請求金額<span><a href="#" onclick="return doSort(15);">▲</a><a href="#" onclick="return doSort(16);">▼</a></span></th>
+<th nowrap>入金日</th>
+                  <th nowrap>今回入金額</th>
+<th nowrap>入金総額</th>
+<th nowrap>預り金</th>
+<th nowrap>未入金</th>
+                </tr>
+              </thead>
+              <tbody>
+                 <tr>
+                  <td>00300006</td>
+                  <td><a href="#" onclick="return doEdit(7802);">ＬＬＬテスト</a></td>
+                  <td>㈲寺尾電気</td>
+<td>高瀬　所長</td>
+                  <td>高瀬　所長</td>
+<td nowrap="nowrap">2020年05月08日</td>
+                 <td nowrap="nowrap">2020年05月08日</td>
+                  <td class="mn-td">70,000</td>
+<td class="sm-cal"><input type="text" name="MituDate" id="MituDate" value="2020-07-13"></td>
+                  <td nowrap="nowrap" class="mn"><input type="text" name="Price1" class="input-form-70" value=""><input type="button" name="button" id="button" value="確定"></td>
+<td class="mn-td">75,600</td>
+<td class="mn-td">75,600</td>
+<td class="mn-td">75,600</td>
+                </tr>
+               </tbody>
+            </table>
+
+
+</section>
+
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+    <!-- #container -->
+  </div><!-- #wrapperInner -->
+</div><!-- #wrapper -->
+<div id="foot"></div>
+<script src="js/component.js?v=20200531_20200612"></script>
+
+
+
+  
+
+</body>
+</html>

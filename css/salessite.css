@@ -1,0 +1,39 @@
+/* 営業所がある場合のoverwrite styles */
+
+.t02,.t02d {
+ width: 28%;
+}
+.t03,.t03d {
+ width: 25%;
+}
+.t04,.t04d {
+ width: 9%;
+}
+.t06,.t06d {
+ width: 8%;
+}
+.hy3 {
+width: 52%;
+}
+.hy6 {
+ top: 30%;
+}
+.hy7 {
+ top: 84%;
+}
+.hy10 {
+ top: 66%;
+}
+.hy11 {
+ right: 0%;
+}
+.hy10 td,.hy11 td  {
+ width: 75px;
+ height: 75px;
+}
+.hy10 table,.hy11 table {
+ margin-right: auto;
+}
+.hy6 div {
+ margin-top: 10px;
+}

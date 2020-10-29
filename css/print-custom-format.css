@@ -1,0 +1,14 @@
+/* Scss Document */
+@page { padding-right: 30px; padding-left: 10px; margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; }
+hr { page-break-after: always; }
+
+.a4-w section { top: 0 !IMPORTANT; left: 0 !IMPORTANT; height: 200mm !IMPORTANT; }
+.a4-w .section, .a4-w section { width: 267mm !IMPORTANT;page-break-before: always; }
+
+.a4-h section { top: 0 !IMPORTANT; left: 0 !IMPORTANT; height: 267mm !IMPORTANT; }
+.a4-h .section, .a4-h section { width: 200mm !IMPORTANT;page-break-before: always; }
+
+
+.temp-a .logo,.temp-c .logo{position: fixed;bottom: 5%;width: 100%;text-align: center;}
+.printbt {display: none;}
+

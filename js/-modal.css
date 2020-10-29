@@ -1,0 +1,254 @@
+.modal-overlay {
+    z-index:2;
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+	height:100%;/*for old Safari*/
+    height:100vh;
+    background-color:rgba(0,0,0,.5)}
+.modal-overlay (:target) {height:100%\9} /* IE9,10 */
+a.modal-open:hover {cursor:pointer}
+
+#modal_print_menu {
+    position:fixed;
+    display:none;
+    z-index:3;
+    margin:10px;
+    padding:15px;
+    border-radius:20px;
+    background:#fff;
+    width:700px;}
+#modal_print_menu img {width:auto;max-height:70vh}
+#modal_print_menu h1 {font-size:120%; margin-bottom:0.5em}
+#modal_print_menu p {max-width:565px; text-align:left}
+/**/
+a.modal-close {
+	position:absolute;
+	top:0;
+	right:10px;
+	color:#b29c33;
+	font-size:35px;
+	line-height:1;
+	font-weight:bold;
+	text-decoration:none}
+a.modal-close:hover {
+	cursor:pointer;
+	opacity:.6}
+@media screen and (max-height: 640px) {
+	#modal_print_menu {padding:10px}
+	#modal_print_menu h1 {font-size:100%; margin-bottom:3px}
+	#modal_print_menu p {font-size:75%;width:70%; margin:auto}
+	a.modal-close:hover {opacity:1}
+}
+@media screen and (max-width: 640px) {
+	#modal_print_menu {padding:10px}
+	#modal_print_menu img {max-height:inherit; width:100%; height:auto}
+	#modal_print_menu p {font-size:75%; width:100%;}
+	a.modal-close:hover {opacity:1}
+}
+
+.ui-widget {
+}
+.ui-dialog-titlebar {
+  background: #fff none repeat scroll 0 0;
+  border: none;
+  border-bottom: 1px dotted #7c7c7c;
+  padding-top: 0;
+}
+.ui-widget-header {
+  font-weight: normal;
+}
+.ui-dialog-title {
+  color: hsla(223, 100%, 15%, 1);
+  line-height: 150%;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+.detail-modal-dialog {
+  margin:10px;
+  padding:10px;
+  border-radius:20px;
+  background:#fff
+}
+.detail-modal-dialog .ui-dialog-content {
+  padding: 5px;
+}
+.detail-modal-dialog .ui-dialog-titlebar-close {
+  display: none;
+}
+#detail-modal-dialog-inner .head-menu {
+  padding: 8px 0 10px;
+}
+.material-modal-dialog,
+.refer-modal-dialog {
+  margin:10px;
+  padding:10px;
+  border-radius:20px;
+  background:#fff
+}
+
+.ui-widget-overlay {
+  background: #333 none repeat scroll 0 0;
+  opacity: 0.7;
+}
+
+.loading-box {
+ text-align: center;
+}
+
+.loading-box img {
+ margin-top: 20px;
+}
+
+.loading-modal-dialog .ui-dialog-titlebar-close {
+  display: none;
+}
+
+.search-result-error {
+  color: #ff0000;
+}
+
+.refview-modal-dialog .button-bar {
+  margin-top: 5px;
+}
+
+/* ▼帳票印刷メニュー */
+#modal_print_menu .print_menu_groups {
+ margin-top: 8px;
+ margin-bottom: 8px;
+ padding-top: 10px;
+ padding-left: 10px;
+ border-top: solid 1px #ccc;
+}
+
+#modal_print_menu .print_menu_groups.first {
+  margin-top: -5px;
+  border-top: none;
+}
+
+#modal_print_menu .print_menu_groups .print_menu_subgroup span {
+  vertical-align: top;
+}
+
+#modal_print_menu .print_menu_groups .print_menu_subgroup .twin {
+  display: inline-block;
+  width: 32%;
+}
+
+#modal_print_menu .print_menu_groups .print_menu_subgroup .triplet {
+  display: inline-block;
+  width: 25%;
+}
+
+#modal_print_menu .print_menu_groups .print_menu_subgroup .triplet:last-child {
+  display: inline-block;
+  width: 46%;
+}
+
+#modal_print_menu .print_menu_groups .print_menu_subgroup .toggle_switch {
+  margin-left: 15px;
+  cursor: pointer;
+}
+/*
+#modal_print_menu .print_menu_groups .print_menu_subgroup .right {
+  text-align: right;
+}
+*/
+#modal_print_menu .print_menu_group {
+ margin-bottom: 8px;
+}
+
+#modal_print_menu .print_menu_group .print_options {
+  display: inline-block;
+  padding-left: 8px;
+}
+
+#modal_print_menu .print_menu_group .print_options label {
+  margin-left: 15px;
+}
+
+#modal_print_menu .print_menu_group .print_options label:first-child {
+  margin-left: 0;
+}
+
+#modal_print_menu .print_menu_group input.button-print {
+  float: right;
+  background-image: url(../img/head-icon3.png);
+  width: 90px;
+  height: 38px;
+  border-width: 0px;
+  cursor: pointer;
+  text-indent: 999px;
+}
+
+#modal_print_menu .nodisp {
+  display: none;
+}
+/* ▲帳票印刷メニュー */
+
+/* ▼各種変換メニュー */
+.modal-convert-control {
+  position:fixed;
+  display:none;
+  z-index:3;
+  margin:10px;
+  padding:15px;
+  border-radius:20px;
+  background:#fff;
+  width:500px;
+}
+.modal-convert-control li input.cnv_text {
+  width: 60px;
+  margin: 8px;
+  padding: 5px;
+  border-radius: 5px;
+  border-width: 1px;
+  border-style: solid;
+}
+.modal-convert-control li input#cnv5_price,
+.modal-convert-control li input#cur_price {
+  width: 8em;
+}
+.modal-convert-control li input#cnv5_rate,
+.modal-convert-control li input#cur_rate {
+  width: 4em;
+}
+.modal-convert-control div.label {
+  width:35%;
+  text-align:right;
+  padding-top: 15px;
+  padding-right: 8px;
+  margin-left: 0;
+}
+.modal-convert-control article.value {
+  width:65%;
+  text-align:left;
+}
+#modal_convert4_menu, #modal_convert5_menu {
+  width:400px;
+}
+#modal_convert4_menu .conversion-list,
+#modal_convert5_menu .conversion-list {
+  display:block;
+  text-align:center;
+}
+
+#modal_convert5_menu .nodisp {
+  display: none;
+}
+/* ▲各種変換メニュー */
+
+/* ▼未実装 */
+#modal_notyet {
+  position:fixed;
+  display:none;
+  z-index:3;
+  margin:10px;
+  padding:15px;
+  border-radius:20px;
+  background:#fff;
+  width:350px;
+}
+/* ▲未実装 */

@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1000">
+<title>CSシステム</title>
+<link type="text/css" rel="stylesheet" href="css/style.css">
+<link type="text/css" rel="stylesheet" href="css/style-system.css">
+<link rel="shortcut icon" href="">
+
+<script src="js/jquery-2.2.4.min.js"></script>
+<script src="js/InputControl-v3.js"></script>
+<script type="text/javascript">
+window.paceOptions = {
+  restartOnPushState: false,
+  ajax: false
+};
+</script>
+<script src="js/pace-min.js?v=20200531_20200612"></script>
+<script src="js/jquery-2.2.4.min.js"></script>
+<script src="js/jquery-ui.min.js"></script>
+<script src="js/jquery.ui-1.10.4.datepicker.min.js"></script>
+<script src="js/jquery.ui.datepicker-ja.js"></script>
+<script src="js/jquery.floatThead.js"></script>
+<script src="js/DataTables/datatables.min.js"></script>
+<script src="js/InputControl-v3.js?v=20200531_20200612"></script>
+<script src="js/CommonControl.js?v=20200531_20200612"></script>
+<script src="js/modal.js?v=20200531_20200612"></script>
+<script type="text/javascript">
+gTopPath = "";
+</script>
+<script src="js/estimate.js?v=20200531_20200612"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+</head>
+<body class="system">
+<div class="modal-overlay" style="display:block;"></div>
+<div id="wrapper">
+  <div id="wrapperInner">
+    <header>
+      <span>
+        <a href="user-edit.php">株式会社日弘ヒーティング</a>
+      </span>
+      <div class="head">
+        <a href="main.php"><div class="head-name">リフォーム倶楽部</div></a>
+        <ul class="head-menu">
+
+        </ul>
+      </div><!-- .head -->
+    </header>
+
+
+ <div id="container">
+      <div id="container-inner">
+      <div class="s-nav">
+<ul>
+<li><a href="cs-customer-inquiry-edit.html">CS情報</a></li>
+<li><a href="system-customer-reception.html">受付入力</a></li>
+<li><a href="system-customer-reception-list.html">受付一覧</a></li>
+<li><a href="system-estimate-edit.html">見積作成</a></li>
+<li><a href="system-estimate-list.html">見積一覧</a></li>
+
+<li><a href="system-customer-order-list.html">受注一覧</a></li>
+<li><a href="system-claim-list.html">請求/入金管理</a></li>
+<li><a href="system-sale-list.html">売上一覧</a></li>
+
+
+</ul>
+</div>
+<h2>受注一覧<span>マドック太郎様</span></h2>
+<div class="system-index">
+<div class="system-index-a">
+<div class="system-schedule">
+
+<section>
+<div class="mitsumori">
+
+
+            <table border="0" cellspacing="0" cellpadding="0" class="s-table02">
+              <tr>
+                <th>契約Ｎｏ</th>
+                <td>
+                  <input type="text" name="OrderCode" class="gofwd" value=""> ※完全一致
+                </td>
+              </tr>
+              <tr>
+                <th>見積Ｎｏ</th>
+                <td>
+                  <input type="text" name="MituCode" class="gofwd" value=""> ※完全一致
+                </td>
+              </tr>
+              <tr>
+                <th>契約日付</th>
+                <td>
+                  <input type="text" name="OrderDateS" class="datepicker gofwd" value="2020-05-01">
+                  ～
+                  <input type="text" name="OrderDateE" class="datepicker gofwd" value="">
+                </td>
+              </tr>
+              <tr>
+                <th>工事名</th>
+                <td>
+                  <input type="text" name="Subject"  class="input-300 gofwd" value=""> ※あいまい検索
+                </td>
+              </tr>
+              <tr>
+                <th>担当者</th>
+                <td>
+                  <input type="text" name="Staff" class="textField gofwd" list="cboStaff" value=""> ※あいまい検索
+                  <datalist id="cboStaff">
+                    <option value="朝霧　真也"></option>
+                    <option value="越懸澤　直"></option>
+                    <option value="高瀬　所長"></option>
+                  </datalist>
+                </td>
+              </tr>
+              <tr>
+                <th>メモ</th>
+                <td>
+                  <input type="text" name="Memo" class="input-300 stop-gofwd" value=""> ※あいまい検索
+                </td>
+              </tr>
+<tr>
+<th>その他</th>
+<td><input type="checkbox" name="checkbox" id="checkbox">売上確定　
+<input type="checkbox" name="checkbox2" id="checkbox2">
+請求書発行済</td>
+</tr>
+            </table>
+
+<span class="regi-btn"><span class="search-btn"><input type="button" class="input" value="検　索" onclick="return doSearch();"></span></span>
+
+            <div class="clear"><hr></div>
+
+          <!-- #form1 -->
+
+          <br><hr><br>
+
+          <!-- .dashuboard -->
+
+        </div>
+
+</section>
+
+<section class="dashuboard">
+            <h2>検索結果　5件　（更新日時 降順）</h2>
+
+            <table border="0" cellspacing="0" cellpadding="0" id="TblResult">
+              <thead>
+                <tr>
+                  <th nowrap class="w-30">&nbsp;</th>
+                  <th nowrap>契約Ｎｏ<span><a href="#" onclick="return doSort(1);">▲</a><a href="#" onclick="return doSort(2);">▼</a></span></th>
+                  <th nowrap>工事名<span><a href="#" onclick="return doSort(3);">▲</a><a href="#" onclick="return doSort(4);">▼</a></span></th>
+                  <th nowrap>顧客名<span><a href="#" onclick="return doSort(5);">▲</a><a href="#" onclick="return doSort(6);">▼</a></span></th>
+                  <th nowrap>担当者<span><a href="#" onclick="return doSort(13);">▲</a><a href="#" onclick="return doSort(14);">▼</a></span></th>
+                  <th nowrap>契約日付<span><a href="#" onclick="return doSort(7);">▲</a><a href="#" onclick="return doSort(8);">▼</a></span></th>
+                  <th nowrap>売上確定日<span><a href="#" onclick="return doSort(11);">▲</a><a href="#" onclick="return doSort(12);">▼</a></span></th>
+                  <th nowrap>金額<span><a href="#" onclick="return doSort(9);">▲</a><a href="#" onclick="return doSort(10);">▼</a></span></th>
+                  <th nowrap>工種</th>
+                  <th nowrap>メモ</th>
+                  <th nowrap class="w-30">売確</th>
+<th nowrap class="w-30">請求書発行</th>
+                </tr>
+              </thead>
+              <tbody>
+                 <tr>
+                  <td class="a-btm">
+                    <a href="system-budget-edit.html">実行予算</a>
+                  </td>
+                  <td>00300009</td>
+                  <td><a href="system-estimate-edit.html">テスト</a></td>
+                  <td>人工</td>
+                  <td>高瀬　所長</td>
+                  <td nowrap="nowrap">2020年05月08日</td>
+                  <td nowrap="nowrap">2020年05月08日</td>
+                  <td class="mn-td">313,000</td>
+                  <td class="">床暖房</td>
+                  <td class=""></td>
+                  <td class="center">●</td>
+<td class="center">●</td>
+</tr>
+                 <tr>
+<td class="a-btm"><a href="system-budget-edit.html">実行予算</a></td>
+<td>00300007</td>
+                  <td><a href="#" onclick="return doEditBudget(7493);">テスト</a></td>
+                  <td>複数回値引きテスト</td>
+                  <td>高瀬　所長</td>
+                  <td nowrap="nowrap">2020年05月08日</td>
+                  <td nowrap="nowrap">2020年05月15日</td>
+                  <td class="mn-td">741,850</td>
+                  <td class="">エアコン</td>
+                  <td class=""></td>
+                  <td class="center">●</td>
+<td align="center" class="center">&nbsp;</td>
+                </tr>
+               </tbody>
+            </table>
+
+
+
+</section>
+
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+    <!-- #container -->
+  </div><!-- #wrapperInner -->
+</div><!-- #wrapper -->
+<div id="foot"></div>
+<script src="js/component.js?v=20200531_20200612"></script>
+
+
+
+  
+
+</body>
+</html>
