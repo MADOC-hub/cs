@@ -30,8 +30,9 @@
             <a href="/estimate-edit.php"><img src="img/main-c1-icon1.png" width="225" height="85" alt=""></a>
             <a href="/estimate-list.php"><img src="img/main-c1-icon2.png" width="225" height="85" alt=""></a>
             
-            
+            <a href="customer-reception-list.html"><img src="img/main-c1-icon9.png" width="225" height="85" alt=""></a>
             <a href="/order-list.php"><img src="img/main-c1-icon4.png" width="225" height="85" alt=""></a>
+            
             <a href="claim-list.html"><img src="img/main-c1-icon8.png" width="225" height="85" alt=""></a>
             <a href="/sales-list.php"><img src="img/main-c1-icon5.png" width="225" height="85" alt=""></a>
             <a href="/sales-per-customer.php"><img src="img/main-c1-icon6.png" width="225" height="85" alt=""></a>

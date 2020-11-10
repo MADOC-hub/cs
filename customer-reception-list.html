@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1000">
+<title>CSシステム</title>
+<link type="text/css" rel="stylesheet" href="css/style.css">
+<link type="text/css" rel="stylesheet" href="css/style-system.css">
+<link rel="shortcut icon" href="">
+
+<script src="js/jquery-2.2.4.min.js"></script>
+<script src="js/InputControl-v3.js"></script>
+<script type="text/javascript">
+window.paceOptions = {
+  restartOnPushState: false,
+  ajax: false
+};
+</script>
+<script src="js/pace-min.js?v=20200531_20200612"></script>
+<script src="js/jquery-2.2.4.min.js"></script>
+<script src="js/jquery-ui.min.js"></script>
+<script src="js/jquery.ui-1.10.4.datepicker.min.js"></script>
+<script src="js/jquery.ui.datepicker-ja.js"></script>
+<script src="js/jquery.floatThead.js"></script>
+<script src="js/DataTables/datatables.min.js"></script>
+<script src="js/InputControl-v3.js?v=20200531_20200612"></script>
+<script src="js/CommonControl.js?v=20200531_20200612"></script>
+<script src="js/modal.js?v=20200531_20200612"></script>
+<script type="text/javascript">
+gTopPath = "";
+</script>
+<script src="js/estimate.js?v=20200531_20200612"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+</head>
+<body class="system">
+<div class="modal-overlay" style="display:block;"></div>
+<div id="wrapper">
+  <div id="wrapperInner">
+    <header>
+      <span>
+        <a href="user-edit.php">株式会社日弘ヒーティング</a>
+      </span>
+      <div class="head">
+        <a href="main.php"><div class="head-name">リフォーム倶楽部</div></a>
+        <ul class="head-menu">
+
+        </ul>
+      </div><!-- .head -->
+    </header>
+
+
+ <div id="container">
+      <div id="container-inner">
+      
+<h2>受付一覧</h2>
+<div class="system-index">
+<div class="system-index-a">
+<div class="system-schedule">
+
+<section>
+<table border="0" cellspacing="0" cellpadding="0" class="s-table02">
+<tbody>
+<tr>
+<th>表示期間</th>
+<td><input type="text" name="MituDate" id="MituDate" class="gofwd" value="2020-07-13">
+～
+<input type="text" name="MituDate" id="MituDate" class="gofwd" value="2020-07-13">
+<input type="button" value="参照" class="input-search" /></td>
+</tr>
+</tbody>
+</table>
+
+</section>
+
+<section class="dashuboard">
+<table border="0" cellspacing="0" cellpadding="0" class="s-table02 sc-list">
+<tbody>
+<tr>
+<th>&nbsp;</th>
+<th>受付日</th>
+<th>担当者</th>
+<th>依頼内容</th>
+<th>作業日</th>
+<th>作業内容</th>
+<th>見積作成日</th>
+<th>受注日</th>
+</tr>
+<tr>
+<td><input type="button" name="button4" id="button4" value="編集"  onClick="location.href='system-customer-reception.html'"></td>
+<td>2020/07/16</td>
+<td>入力済みさん</td>
+<td>安全点検</td>
+<td>2020/07/16</td>
+<td><a class="modal-open" data-target="modal_code_menu">概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要概要</a></td>
+<td><a href="system-estimate-edit.html">2020/07/16</a></td>
+<td><a class="modal-open" data-target="modal_order">2020/07/16</a></td>
+</tr>
+<tr>
+<td><input type="button" name="button4" id="button4" value="編集"  onClick="location.href='system-customer-reception.html'">
+<input type="button" name="button4" id="button5" value="作業記録"  class="modal-open" data-target="modal_code_menu">
+<input type="button" name="button4" id="button6" value="見積作成" onClick="location.href='system-estimate-edit.html'">
+<input type="button" name="button4" id="button5" value="受注登録"  class="modal-open" data-target="modal_order">
+</td>
+<td>2020/07/16</td>
+<td>受付のみさん</td>
+<td>安全点検</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td><input type="button" name="button4" id="button4" value="編集"  onClick="location.href='system-customer-reception.html'"></td>
+<td>&nbsp;</td>
+<td>見積りのみさん</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td><a href="system-estimate-edit.html">2020/07/16</a></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+
+
+
+</section>
+
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+    <!-- #container -->
+  </div><!-- #wrapperInner -->
+</div><!-- #wrapper -->
+<div id="foot"></div>
+<script src="js/component.js?v=20200531_20200612"></script>
+
+<!--作業記録モーダル-->
+<div id="modal_code_menu" class="modal-content modal_window" data-pre-open="JS_PreOpen" data-post-close="JS_PostClose">
+  <h2>作業記録</h2>
+<table border="0" cellspacing="0" cellpadding="0" class="s-table01">
+<tbody>
+<tr>
+<th>作業者</th>
+<td><select name="select2" id="select2">
+<option>田中一郎</option>
+<option>佐藤二朗</option>
+</select></td>
+<th>作業完了</th>
+<td><input type="text" name="MituDate" id="MituDate" class="gofwd" value="2020-07-13"></td>
+</tr>
+<tr>
+<th>作業内容</th>
+<td colspan="3"><textarea name="textarea4" rows="5" id="textarea4"></textarea></td>
+</tr>
+</tbody>
+</table>
+ <div class="head-menu" align="center">
+        <span class="head-koshin"><input type="button" value=""></span>
+        </div>
+
+  </div>
+  
+<!--受注登録モーダル-->
+<div id="modal_order" class="modal-content modal_window" data-pre-open="JS_PreOpen" data-post-close="JS_PostClose">
+  <h2>受注登録
+  <dl><dt>工種</dt><dd><select name="select" id="select">
+<option>工種1</option>
+<option>工種2</option>
+</select></dd></dl>
+  
+  </h2>
+<table border="0" cellspacing="0" cellpadding="0" class="s-table02 order-regist">
+<tr>
+<th>サービス内容</th>
+<th>数量</th>
+<th>単価</th>
+<th>金額</th>
+</tr>
+<tbody>
+<tr>
+<td>保守点検</td>
+<td>
+<input type="text" name="input" class="" value="">
+</td>
+<td>
+<input type="text" name="input2" class="" value="">
+</td>
+<td>
+<input type="text" name="input3" class="" value="">
+</td>
+</tr>
+<tr>
+<td>不凍液交換料</td>
+<td>
+<input type="text" name="input" class="" value="">
+</td>
+<td>
+<input type="text" name="input2" class="" value="">
+</td>
+<td>
+<input type="text" name="input3" class="" value="">
+</td>
+</tr>
+<tr>
+<td>技術費</td>
+<td>
+<input type="text" name="input" class="" value="">
+</td>
+<td>
+<input type="text" name="input2" class="" value="">
+</td>
+<td>
+<input type="text" name="input3" class="" value="">
+</td>
+</tr>
+<tr>
+<td>出張費</td>
+<td>
+<input type="text" name="input" class="" value="">
+</td>
+<td>
+<input type="text" name="input2" class="" value="">
+</td>
+<td>
+<input type="text" name="input3" class="" value="">
+</td>
+</tr>
+<tr>
+<td>部品費</td>
+<td>
+<input type="text" name="input" class="" value="">
+</td>
+<td>
+<input type="text" name="input2" class="" value="">
+</td>
+<td>
+<input type="text" name="input3" class="" value="">
+</td>
+</tr>
+<tr>
+<td>休日夜間深夜割増</td>
+<td>
+<input type="text" name="input" class="" value="">
+</td>
+<td>
+<input type="text" name="input2" class="" value="">
+</td>
+<td>
+<input type="text" name="input3" class="" value="">
+</td>
+</tr>
+<tr>
+<td>高速道路料金（往復）</td>
+<td>
+<input type="text" name="input" class="" value="">
+</td>
+<td>
+<input type="text" name="input2" class="" value="">
+</td>
+<td>
+<input type="text" name="input3" class="" value="">
+</td>
+</tr>
+<tr>
+<td><input type="text" name="input4" class="" value=""></td>
+<td><input type="text" name="input" class="" value=""></td>
+<td><input type="text" name="input2" class="" value=""></td>
+<td><input type="text" name="input3" class="" value=""></td>
+</tr>
+<tr>
+<td><input type="text" name="input5" class="" value=""></td>
+<td><input type="text" name="input" class="" value=""></td>
+<td><input type="text" name="input2" class="" value=""></td>
+<td><input type="text" name="input3" class="" value=""></td>
+</tr>
+<tr>
+<td>小計</td>
+<td>00</td>
+<td>00000000</td>
+<td>0000000</td>
+</tr>
+<tr>
+<td>消費税</td>
+<td>00</td>
+<td>000000</td>
+<td>00000</td>
+</tr>
+<tr>
+<td>合計</td>
+<td>00</td>
+<td>000000000</td>
+<td>000000</td>
+</tr>
+</tbody>
+</table>
+ <div class="head-menu" align="center">
+ <span class="head-koshin"><input type="button" value=""></span>
+</div>
+
+  </div>
+  
+</body>
+</html>
