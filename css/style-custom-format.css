@@ -200,7 +200,7 @@ header { margin-left: auto; margin-right: auto; }
  padding-left: 3px;
  padding-right: 3px;
 }
- .table table td{
+.table table td{
  line-height: 110%;
 }
 .temp-b section .table table .num,.temp-b section .table table .mn{font-size: 150%;}
@@ -266,12 +266,9 @@ header { margin-left: auto; margin-right: auto; }
 .temp-c section .cv table .other { width: 14%; }
 .temp-c section .cv table .price { width: 25%; }
 .temp-c section .cv table .line { padding: 1px; height: 3px; border-right: 0; border-left: 0; }
-
 .temp-c section table .mn,.temp-c section table .num {
  font-size: 150%;
 }
-
-
 .temp-c .logo { text-align: center; }
 .logo img {
  width: auto;
@@ -282,8 +279,6 @@ header { margin-left: auto; margin-right: auto; }
 .page {text-align: center;margin-top: 20px;}
 .temp-a .printbt { text-align: center; position: absolute; top: 30px; width: 100%; }
 .temp-b .printbt { text-align: center; position: absolute; top: 30px; right: 5px; }
-
-
 
 .cover .inner .mitsumori dl dd span{
  font-size: 180%;
@@ -299,3 +294,34 @@ header { margin-left: auto; margin-right: auto; }
  text-decoration: none;
 }
 .cover .inner .extra{position: absolute;bottom: 5%;right: 5%;width: 35%;height: 15%;}
+.temp-c .temp-b-a ul li:nth-child(1) .price{font-size:130%;}
+
+.sale-list section{font-family: 'Noto Sans JP', sans-serif;position: relative;height: 800px;}
+.sale-list .page{position: absolute;bottom: 0;width: 100%;text-align: center;}
+.sale-list header{position: relative;}
+.sale-list header h1{font-family: 'Noto Serif JP', serif;font-size: 160%;text-align: center;}
+.sale-list header .sale-day{text-align: center;}
+.sale-list header .print-day {position: absolute;top: 0;right: 0;}
+.sale-list header .tanto {position: absolute;bottom: 0;left: 0;}
+.sale-list table{width: 100%;border-top: 1px solid gray;border-right: 1px solid gray;max-height: 90%;min-height: 50%;}
+.sale-list table th,.sale-list table td{border-bottom: 1px solid gray; border-left: 1px solid gray;padding: 2px;line-height: 110%;}
+.sale-list .sale-table .number{width: 8%;}
+.sale-list .sale-table .customer{width: 18%;}
+.sale-list .sale-table .place{}
+.sale-list .sale-table .sale{width: 8%;}
+.sale-list .sale-table .cost{width: 8%;}
+.sale-list .sale-table .cost2{width: 8%;}
+.sale-list .sale-table .profit{width: 7%;}
+.sale-list .sale-table .out{width: 7%;}
+.sale-list .sale-table .total{font-size: 110%;font-weight: 600;}
+
+.sale-list .urikake-table  .customer{width: 18%;}
+.sale-list .urikake-table  .code{width: 10%;}
+.sale-list .urikake-table  .money{width: 10%;}
+.sale-list .urikake-table  .recovery{width: 5%;}
+.sale-list .urikake-table  .total{text-align: right;}
+
+.sale-list .kaishu-table .customer{width: 8%;}
+.sale-list .kaishu-table .money{width: 8%;}
+.sale-list .kaishu-table .t-day{width: 6%;}
+.sale-list .kaishu-table  .total{text-align: right;}

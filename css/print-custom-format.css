@@ -12,3 +12,6 @@ hr { page-break-after: always; }
 .temp-a .logo,.temp-c .logo{position: fixed;bottom: 5%;width: 100%;text-align: center;}
 .printbt {display: none;}
 
+.sale-list header{position: fixed;width: 100%;height: 60px;}
+.sale-list .table{padding-top: 70px;}
+.sale-list section{height: 100vh;border:  1px solid gray;page-break-before: always;}
