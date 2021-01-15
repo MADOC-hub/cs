@@ -217,7 +217,38 @@ gTopPath = "";
 <div id="foot"></div>
 <script src="js/component.js?v=20200531_20200612"></script>
 
+<!-- ▼帳票印刷用ポップアップ -->
+<div id="modal_print_menu" class="modal-content" data-pre-open="JS_PreOpen" data-post-close="JS_PostClose">
+  <h2>帳票印刷メニュー</h2>
+  <form name="PrintOption" id="form_print_option" method="POST" accept-charset="UTF-8" onSubmit="return JS_Input_Chk();">
+    <div class="print_menu_groups first">
+    <label><input type="radio" name="売掛残高一覧表">売掛残高一覧表　</label><label><input type="radio" name="回収予定表">回収予定表</label>
+    
 
+    
+    
+    </div><!-- .print_menu_groups -->
+    
+    
+    <!-- .print_menu_groups -->
+
+    <!-- .print_menu_groups -->
+
+      <div class="print_menu_groups">
+      <div class="print_menu_group">
+        <div class="print_menu_subgroup">
+          
+          <span class="triplet right">
+            <input type="button" id="btn-print" class="button-print" value="帳票印刷">
+          </span>
+        </div>
+      </div><!-- .print_menu_group -->
+    </div><!-- .print_menu_groups -->
+  </form><!-- #form_print_option -->
+
+  <!-- .dashuboard -->
+</div><!-- #modal_print_menu -->
+<!-- ▲帳票印刷用ポップアップ -->
 
   
 
