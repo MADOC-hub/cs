@@ -27,7 +27,7 @@
         <div class="main-page">
           <div class="main-1">
           <a href="cs-customer-inquiry-empty.html"><img src="img/main-c1-icon7.png" width="225" height="85" alt=""></a>
-            <a href="/estimate-edit.php"><img src="img/main-c1-icon1.png" width="225" height="85" alt=""></a>
+
             <a href="/estimate-list.php"><img src="img/main-c1-icon2.png" width="225" height="85" alt=""></a>
             
             <a href="customer-reception-list.html"><img src="img/main-c1-icon9.png" width="225" height="85" alt=""></a>

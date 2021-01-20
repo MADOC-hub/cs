@@ -51,7 +51,16 @@
 .system .head ul { display: flex; padding-right: 5px; }
 .system .head ul li { margin-left: 5px; }
 .system h2 { color: #202846; display: flex; justify-content: space-between; align-items: center; }
-.system h2 span { display: block; background: red; padding: 3px; font-size: 60%; color: black; font-style: normal; border: 1px solid gray; color: white; }
+.system h2 span {
+ display: block;
+ background: red;
+ padding: 3px;
+ font-size: 75%;
+ color: black;
+ font-style: normal;
+ border: 1px solid gray;
+ color: white;
+}
 .system h2 dl { display: flex; justify-content: space-between; border: 1px solid gray; padding: 2px; }
 .system h2 dl dt { padding: 2px; font-size: 60%; display: flex; justify-content: center; align-items: center; padding-left: 5px; padding-right: 5px; }
 .system h3 { background: #e2edff; padding: 5px; margin-bottom: 5px; color: #1f222f; display: flex; justify-content: space-between; }
