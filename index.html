@@ -1,0 +1,872 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1000">
+<title>CS情報編集（高嶋　光雄様）｜CSシステム</title>
+<link type="text/css" rel="stylesheet" href="css/style.css?v=20210322">
+<link type="text/css" rel="stylesheet" href="css/style-system.css?v=20210322">
+<link type="text/css" rel="stylesheet" href="css/pace-bar.css?v=20210322">
+<link type="text/css" rel="stylesheet" href="css/MyProgressBar.css?v=20210322">
+<link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap">
+<link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link type="text/css" rel="stylesheet" href="css/image-uploader.css?v=20210322">
+<link rel="shortcut icon" href="">
+<script>
+window.paceOptions = {
+  restartOnPushState: false,
+  ajax: false
+};
+var gTopPath = "/nhcs1";
+</script>
+<script src="js/pace-min.js?v=20210322"></script>
+<script src="js/jquery-2.2.4.min.js"></script>
+<script src="js/jquery-ui.min.js"></script>
+<script src="js/jquery.ui-1.10.4.datepicker.min.js"></script>
+<script src="js/jquery.ui.datepicker-ja.js"></script>
+<script src="js/InputControl-v3.js?v=20210322"></script>
+<script src="js/CommonControl.js?v=20210322"></script>
+<script src="js/cs-main.js?v=20210322"></script>
+<script src="js/MyProgressBar.js?v=20210322"></script>
+</head>
+<body id="cs-main" class="system">
+  <div class="modal-overlay" style="display:block;"></div>
+  <div id="wrapper">
+    <div id="wrapperInner">
+    <header>
+      <span>
+        <a href="user-edit.php">株式会社日弘ヒーティング</a>
+      </span>
+      <div class="head">
+        <a href="main.php"><div class="head-name">CSシステム</div></a>
+        <ul class="head-menu">
+          <li class="head-koshin">
+            <input type="button" id="btn-update" value="">
+          </li>
+        </ul>
+      </div><!-- .head -->
+    </header>
+
+      <div id="container">
+        <div id="container-inner">
+
+          <div class="s-nav">
+            <ul>
+              <li class="on"><a href="#" onclick="return false;">CS情報</a></li>
+              <li><a href="cs/request.php">受付入力</a></li>
+              <li><a href="cs/request_history.php">受付一覧</a></li>
+              <li><a href="cs/estimate-list.php">見積一覧</a></li>
+              <li><a href="cs/order-list.php">受注一覧</a></li>
+              <li><a href="cs/payment-list.php">請求/入金管理</a></li>
+              <li><a href="cs/sales-list.php">売上一覧</a></li>
+            </ul>
+          </div><!-- .s-nav -->
+
+          <h2>CS情報編集<span id="target-customer">高嶋　光雄 様</span></h2>
+
+          <section id="basic-info">
+            <h3>CS情報</h3>
+
+            <form name="form1" id="form1" action="" method="post">
+              <input type="hidden" name="AutoID" value="26324">
+              <input type="hidden" name="PropertyID" value="24937">
+              <input type="hidden" name="StaffID" value="72">
+              <input type="hidden" name="MakerID" value="66">
+              <input type="hidden" name="WorkerID" value="244">
+              <input type="hidden" name="deleted_images" value="">
+
+              <table class="s-table01" border="0" cellspacing="0" cellpadding="0">
+                <tbody>
+                  <tr>
+                    <th>顧客コード</th>
+                    <td class="td-mod"><span id="customer-code">993</span><a id="btn-customer-select" href="#" onclick="return doOpenCustomerDialog();">顧客検索</a></td>
+                    <th>営業担当者</th>
+                    <td>
+                      <input type="text" name="SupportStaff" class="ro input-150" value="西舘　正輝" placeholder="選択されていません" readonly>
+                      <input type="button" id="btn-staff-select" class="input-search" value="参照">
+                      <span class="left-20">部署：</span>
+                      <input type="text" name="SupportSection" class="ro input-150" value="" readonly>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>顧客名</th>
+                    <td>高嶋　光雄（ﾀｶｼﾏﾐﾂｵ）</td>
+                    <th>工事担当者</th>
+                    <td><input type="text" name="WorkerName" class="ro input-400" value="エム住設 (三平)" placeholder="選択されていません" readonly><input type="button" id="btn-worker-select" class="input-search" value="参照"></td>
+                  </tr>
+                  <tr>
+                    <th>住所</th>
+                    <td>〒0020853<br>札幌市北区屯田３条２丁目１－３０</td>
+                    <th>電話番号</th>
+                    <td>993</td>
+                  </tr>
+                  <tr>
+                    <th>ハウスメーカー</th>
+                    <td class="td-num"><input type="text" name="MakerName" class="ro input-300" value="三ツ輪建設" placeholder="選択されていません" readonly><input type="button" id="btn-maker-select" class="input-search" value="参照"></td>
+                    <th>担当</th>
+                    <td><input type="text" name="MakerStaff" class="input-400 monitor-changed" value="志村" placeholder="入力されていません"></td>
+                  </tr>
+                  <tr>
+                    <th>アフター注意点<br>
+                    お客様情報</th>
+                    <td colspan="3"><textarea name="Note" rows="5" class="monitor-changed">普段はあまりここには住まない為、　　　　　　　現住所　岩内郡共和町ワイス</textarea></td>
+                  </tr>
+                  <tr>
+                    <th>備考</th>
+                    <td colspan="3"><textarea name="Memo" rows="5" class="monitor-changed">フォリア屯田№3</textarea></td>
+                  </tr>
+                  <tr>
+                    <th>画像</th>                    <td colspan="3">
+                      <div class="image-uploader">
+                        <div class="uploaded-label">
+                          <span class="uploaded-box">&nbsp;</span><span>保存済の画像</span><span class="how2delete">※画像にカーソルを当て、右上に現れる×印をクリックするとその画像は削除されます。</span><span class="note hide">※誤って削除した場合はCS情報を保存せずに画面を再描画してください。</span>
+                        </div>
+
+                        <div class="uploaded">
+                           <div class="uploaded-image live">
+                            <img src="uploaded/property/000025/024937/f632b5c9c1e7206032a664e480819c75.jpg" title="DSCN0566-ss.JPG">
+                            <button class="delete-image"><i class="material-icons">clear</i></button>
+                            <input type="hidden" name="delete-image-1" value="">
+                          </div>
+                           <div class="uploaded-image live">
+                            <img src="uploaded/property/000025/024937/44ff45574fa067102b3eaa86b2941e81.jpg" title="DSCN0537-ss.JPG">
+                            <button class="delete-image"><i class="material-icons">clear</i></button>
+                            <input type="hidden" name="delete-image-3" value="">
+                          </div>
+                           <div class="uploaded-image live">
+                            <img src="uploaded/property/000025/024937/7a5c30b4102260f8c729b5ccd15d8248.jpg" title="DSCN2142.JPG">
+                            <button class="delete-image"><i class="material-icons">clear</i></button>
+                            <input type="hidden" name="delete-image-7" value="">
+                          </div>
+                           <div class="uploaded-image live">
+                            <img src="uploaded/property/000025/024937/afde6121e77468fe46cf30388367f1a8.jpg" title="DSCN0097-ss.JPG">
+                            <button class="delete-image"><i class="material-icons">clear</i></button>
+                            <input type="hidden" name="delete-image-8" value="">
+                          </div>
+                           <div class="uploaded-image live">
+                            <img src="uploaded/property/000025/024937/dfc7d2b4e75f836abd39e15a21530313.jpg" title="Lighthouse.jpg">
+                            <button class="delete-image"><i class="material-icons">clear</i></button>
+                            <input type="hidden" name="delete-image-9" value="">
+                          </div>
+                           <div class="note hide">CS情報を保存する際に保存済画像の削除が確定します。<br>削除が確定した画像を復活させることはできません。<br>&nbsp;</div>
+                        </div><!-- .uploaded -->
+                        <div class="pending-label">
+                          <span class="pending-box">&nbsp;</span><span>未保存（登録／更新待ち）の画像</span><span class="how2add">※下の枠内に画像をドラッグ＆ドラップするか、枠内をクリックしてファイルを追加します（複数可）。</span><span class="how2delete hide">※画像にカーソルを当て、右上に現れる×印をクリックするとその画像は削除されます。</span>
+                        </div>
+
+                        <div id="dragdroparea" class="pending droparea">
+                          <ul class="tx-center" style="margin-top:50px;">
+                            <li>一度に20画像までアップロードできます。</li>
+                            <li>一度に合計50MBまでアップロードできます。</li>
+                            <li>単独で10MBを越えている画像は送信できません。</li>
+                          </ul>
+                        </div><!-- .pending -->
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </form><!-- #form1 -->
+            <form name="form_uploader" id="form-image-uploader" action="" method="post" enctype="multipart/form-data">
+              <input type="hidden" name="cid" value="26324">
+              <input type="hidden" name="pid" value="24937">
+              <input type="hidden" name="deleted_images" value="">
+              <input type="file" name="image-files[]" id="image-files" class="hide" accept="image/gif,image/jpeg,image/png" multiple>
+              <input type="hidden" name="file_count" id="uploader-file-count" value="0">
+              <input type="hidden" name="total_size" id="uploader-total-size" value="0">
+              <input type="hidden" name="oversized" id="uploader-oversized" value="0">
+            </form><!-- #form-upload-images -->
+          </section><!-- #basic-info -->
+
+          <section id="contract-info">
+            <h3>契約情報</h3>
+            <div class="plan">
+              <label class="plan-select" onclick="doOpenPlanDialog();">あんしんプラン<span>未契約</span></label>
+              <label class="plan-select" onclick="doOpenPlanDialog();">LPG<span>未契約</span></label>
+              <label class="plan-select" onclick="doOpenPlanDialog();">灯油<span>未契約</span></label>
+              <label class="plan-select" onclick="doOpenPlanDialog();">電気<span>未契約</span></label>
+            </div><!-- .plan -->
+          </section><!-- #contract-info -->
+
+          <section id="facility-list">
+            <h3>設置設備（設置日／設備名／型番／設置場所）</h3>
+
+            <table class="s-table02" border="0" cellspacing="0" cellpadding="0">
+              <tbody>
+                <tr>
+                  <th class="input-20">No</th>
+                  <th class="input-80">設置日</th>
+                  <th style="width:12em;">設備名</th>
+                  <th>機種</th>
+                  <th>製造番号</th>
+                  <th>備考</th>
+                  <th class="input-50">&nbsp;</th>
+                  <th class="input-50">&nbsp;</th>
+                </tr>
+                <tr id="facility-36274">
+                  <td class="td-c">1</td>
+                  <td class="settled td-c">2002-06-28</td>
+                  <td class="type" data-type-id="1">灯油　暖房</td>
+                  <td class="product">CUG-92FMRF</td>
+                  <td class="serial">10510110</td>
+                  <td class="memo"></td>
+                  <td class="td-c"><input type="button" value="編集" onclick="doEditFacility(this);"></td>
+                  <td class="td-c"><input type="button" value="削除" onclick="doBeforeDeleteFacility(this);"></td>
+                </tr>
+                <tr id="facility-36275">
+                  <td class="td-c">2</td>
+                  <td class="settled td-c">2002-06-28</td>
+                  <td class="type" data-type-id="32">換気設備</td>
+                  <td class="product">FY-18DPX3</td>
+                  <td class="serial"></td>
+                  <td class="memo"></td>
+                  <td class="td-c"><input type="button" value="編集" onclick="doEditFacility(this);"></td>
+                  <td class="td-c"><input type="button" value="削除" onclick="doBeforeDeleteFacility(this);"></td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="a-btm2" style="margin-top:-10px;"><a class="facility-add">設置設備追加</a></div>
+          </section><!-- #facility-list -->
+
+          <section id="frontend-list">
+            <h3>温水暖房端末</h3>
+
+            <table class="s-table02" border="0" cellspacing="0" cellpadding="0">
+              <tbody>
+                <tr>
+                  <th class="input-80">階数</th>
+                  <th>名称</th>
+                  <th class="input-50">台数</th>
+                  <th>備考</th>
+                  <th class="input-50">&nbsp;</th>
+                  <th class="input-50">&nbsp;</th>
+                </tr>
+                <tr id="frontend-25874">
+                  <td class="floor td-c">１階</td>
+                  <td class="product">ダイヤノーム</td>
+                  <td class="quantity td-c">5</td>
+                  <td class="memo"></td>
+                  <td class="td-c"><input type="button" value="編集" onclick="doEditFrontend(this);"></td>
+                  <td class="td-c"><input type="button" value="削除" onclick="doBeforeDeleteFrontend(this);"></td>
+                </tr>
+                <tr id="frontend-25875">
+                  <td class="floor td-c">２階</td>
+                  <td class="product">ダイヤノーム</td>
+                  <td class="quantity td-c">3</td>
+                  <td class="memo"></td>
+                  <td class="td-c"><input type="button" value="編集" onclick="doEditFrontend(this);"></td>
+                  <td class="td-c"><input type="button" value="削除" onclick="doBeforeDeleteFrontend(this);"></td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="a-btm2" style="margin-top:-10px;"><a class="frontend-add">端末追加</a></div>
+          </section><!-- #frontend-list -->
+
+          <section id="rel-estimate">
+            <h3>Project200見積一覧</h3>
+
+            <section class="dashuboard">
+              <table id="TblResult" style="width:100%;" border="0" cellspacing="0" cellpadding="0">
+                <thead class="hide">
+                  <tr>
+                    <th nowrap>見積Ｎｏ<span><a href="#" onclick="return doSort(this,1);">▲</a><a href="#" onclick="return doSort(this,2);">▼</a></span></th>
+                    <th nowrap>工事名<span><a href="#" onclick="return doSort(this,3);">▲</a><a href="#" onclick="return doSort(this,4);">▼</a></span></th>
+                    <th nowrap>顧客名<span><a href="#" onclick="return doSort(this,5);">▲</a><a href="#" onclick="return doSort(this,6);">▼</a></span></th>
+                    <th nowrap>担当者<span><a href="#" onclick="return doSort(this,7);">▲</a><a href="#" onclick="return doSort(this,8);">▼</a></span></th>
+                    <th nowrap>見積日付<span><a href="#" onclick="return doSort(this,9);">▲</a><a href="#" onclick="return doSort(this,10);">▼</a></span></th>
+                    <th nowrap>売上確定日<span><a href="#" onclick="return doSort(this,11);">▲</a><a href="#" onclick="return doSort(this,12);">▼</a></span></th>
+                    <th nowrap>金額<span><a href="#" onclick="return doSort(this,13);">▲</a><a href="#" onclick="return doSort(this,14);">▼</a></span></th>
+                    <th nowrap>金額(税込)</th>
+                    <th nowrap>工種</th>
+                    <th nowrap>メモ</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="empty-row">
+                    <td class="tx-center" style="font-size:100%" colspan="10">Project200の見積りは登録されていません</td>
+                  </tr>
+                </tbody>
+              </table>
+
+            </section><!-- .dashuboard -->
+            <div class="a-btm2">
+              <a class="pj200-add">見積追加</a>
+            </div><!-- .a-btm2 -->
+          </section><!-- #rel-estimate -->
+        </div><!-- #container-inner -->
+      </div><!-- #container -->
+    </div><!-- #wrapperInner -->
+  </div><!-- #wrapper -->
+
+  <div id="update-confirm-modal" class="modal-content" title="変更内容を保存しますか？">
+    <div class="no-flex">
+      <div class="warning" style="margin-bottom:20px;">
+        内容は変更されていませんが、それでも更新しますか？
+      </div><!-- .warning -->
+      <div class="s-input button-block">
+        <input type="button" value="キャンセル" onclick="return doCloseDialog(this);">
+        <input type="button" style="margin-left:20px;" value="　実　行　" onclick="return doUpdateProperty();">
+      </div><!-- .s-input -->
+    </div><!-- .no-flex -->
+  </div><!-- #update-confirm-modal -->
+  <div id="update-before-switch-modal" class="modal-content" title="顧客を切り替える前に変更内容を保存しますか？">
+    <div class="no-flex">
+      <div class="warning" style="margin-bottom:20px;">
+        <p class="" style="width:350px;margin:0 auto;">
+          現在のCS情報は内容が変更されています。<br><br>
+          ・変更内容を保存してから顧客を切り替えるか<br>
+          ・変更内容を破棄して顧客を切り替えるか<br>
+          ・顧客の切り替えをキャンセルすることができます。
+        </p>
+      </div><!-- .warning -->
+      <div class="s-input button-block">
+        <input type="button" value="顧客切替キャンセル" onclick="return doCloseDialog(this);">
+        <input type="button" style="margin-left:20px;" value="保存せずに顧客切替" onclick="return doSwitchCustomer();">
+        <input type="button" style="margin-left:20px;" value="保存後に顧客切替" onclick="return doUpdateProperty();">
+      </div><!-- .s-input -->
+    </div><!-- .no-flex -->
+  </div><!-- #update-before-switch-modal -->
+
+  <div id="customer-select-modal" class="modal-content" title="顧客検索">
+    <div class="no-flex">
+      <form name="form2" id="form2" action="" method="post">
+        <input type="hidden" name="sort" value="">
+        <table class="s-table02" border="0" cellspacing="0" cellpadding="0">
+          <tbody>
+            <tr>
+              <th>顧客名 </th>
+              <td><input type="text" name="name" class="input-100pct gofwd" value=""></td>
+              <th nowrap>顧客名（カナ）</th>
+              <td><input type="text" name="kana" class="input-100pct gofwd" value=""></td>
+            </tr>
+            <tr>
+              <th>電話番号</th>
+              <td><input type="text" name="phone" class="input-100pct gofwd" value=""></td>
+              <th>住所</th>
+              <td><input type="text" name="address" class="input-100pct gofwd" value=""></td>
+            </tr>
+            <tr>
+              <th nowrap>ハウスメーカー</th>
+              <td><input type="text" name="maker" class="input-100pct gofwd" value=""></td>
+              <th>ボイラー機種</th>
+              <td><input type="text" name="facility" class="input-100pct gofwd" value=""></td>
+            </tr>
+            <tr>
+              <th>工事担当者</th>
+              <td><input type="text" name="worker" class="input-100pct gofwd" value=""></td>
+              <th>営業担当者</th>
+              <td><input type="text" name="staff" class="input-100pct gofwd" value=""></td>
+            </tr>
+            <tr>
+              <th>引渡日</th>
+              <td><input type="text" name="passed_from" class="calendar gofwd" value=""> ～ <input type="text" name="passed_to" class="calendar gofwd" value=""></td>
+              <th>設置日</th>
+              <td><input type="text" name="done_from" class="calendar gofwd" value=""> ～ <input type="text" name="done_to" class="calendar gofwd" value=""></td>
+            </tr>
+          </tbody>
+        </table><!-- .s-table02 -->
+        <div class="s-input button-block">
+          <input type="button" value="検索" onclick="return doSearchCustomer(this);">
+        </div><!-- .s-input -->
+      </form><!-- #form2 -->
+    </div><!-- .no-flex -->
+
+    <div class="search-result hide">
+      該当数<span class="numfound">1,000</span>件
+      <span class="sort-order">（登録順／降順）</span>
+      <span class="warning">最初の100件を表示しています。全件を表示するには絞り込みが必要です。</span>
+    </div><!-- .search_result_warning -->
+
+    <table id="customer-list" class="s-table02 hide" border="0" cellspacing="0" cellpadding="0">
+      <tbody>
+        <tr>
+          <th class="minw-50">　</th>
+          <th class="minw-200">顧客名<span class="order-up-arrow"><a href="#" onclick="return doSortCustomer(1);">▲</a></span><span class="order-down-arrow"><a href="#" onclick="return doSortCustomer(2);">▼</a></span></th>
+          <th class="minw-350">住所<span class="order-up-arrow"><a href="#" onclick="return doSortCustomer(3);">▲</a></span><span class="order-down-arrow"><a href="#" onclick="return doSortCustomer(4);">▼</a></span></th>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="waiting-circle tx-center hide"><img src="images/loading-circle-64x64.gif"></div>
+
+  </div><!-- #customer-select-modal -->
+
+  <div id="staff-select-modal" class="modal-content" title="営業担当者検索">
+    <div class="no-flex">
+      <form name="form3" id="form3" action="" method="post">
+        <table class="s-table02" border="0" cellspacing="0" cellpadding="0">
+          <tbody>
+            <tr>
+              <th>担当者名 </th>
+              <td><input type="text" name="name" class="input-100pct gofwd" value=""></td>
+              <th>担当者名（カナ）</th>
+              <td><input type="text" name="kana" class="input-100pct gofwd" value=""></td>
+            </tr>
+          </tbody>
+        </table><!-- .s-table02 -->
+        <div class="s-input button-block">
+          <input type="button" value="検索" onclick="return doSearchStaff(this);">
+          <div class="waiting-circle tx-center hide"><img src="images/loading-circle-64x64.gif"></div>
+        </div><!-- .s-input -->
+      </form><!-- #form3 -->
+    </div><!-- .no-flex -->
+
+    <div class="search-result hide">
+      該当数<span class="numfound">1,000</span>件
+      <span class="sort-order">（ソート順）</span>
+      <span class="warning">最初の100件を表示しています。全件を表示するには絞り込みが必要です。</span>
+    </div><!-- .search_result_warning -->
+
+    <table id="staff-list" class="s-table02 hide" border="0" cellspacing="0" cellpadding="0">
+      <tbody>
+        <tr>
+          <th class="w-30">&nbsp;</th>
+          <th>営業担当者名</th>
+          <th>担当者名（カナ）</th>
+          <th>部署名</th>
+        </tr>
+      </tbody>
+    </table>
+  </div><!-- #customer-select-modal -->
+
+  <div id="worker-select-modal" class="modal-content" title="工事担当者検索">
+    <div class="no-flex">
+      <form name="form4" id="form4" action="" method="post">
+        <table class="s-table02" border="0" cellspacing="0" cellpadding="0">
+          <tbody>
+            <tr>
+              <th>業者名 </th>
+              <td><input type="text" name="name" class="input-100pct gofwd" value=""></td>
+              <th>業者名（カナ）</th>
+              <td><input type="text" name="kana" class="input-100pct gofwd" value=""></td>
+            </tr>
+            <tr>
+              <th>担当者名 </th>
+              <td><input type="text" name="contact" class="input-100pct gofwd" value=""></td>
+              <th>電話番号</th>
+              <td><input type="text" name="phone" class="input-100pct gofwd" value=""></td>
+            </tr>
+          </tbody>
+        </table><!-- .s-table02 -->
+        <div class="s-input button-block">
+          <input type="button" value="検索" onclick="return doSearchWorker(this);">
+          <div class="waiting-circle tx-center hide"><img src="images/loading-circle-64x64.gif"></div>
+        </div><!-- .s-input -->
+      </form><!-- #form4 -->
+    </div><!-- .no-flex -->
+
+    <div class="search-result hide">
+      該当数<span class="numfound">1,000</span>件
+      <span class="sort-order">（ソート順）</span>
+      <span class="warning">最初の100件を表示しています。全件を表示するには絞り込みが必要です。</span>
+    </div><!-- .search_result_warning -->
+
+    <table id="worker-list" class="s-table02 hide" border="0" cellspacing="0" cellpadding="0">
+      <tbody>
+        <tr>
+          <th class="w-30">&nbsp;</th>
+          <th>業者名</th>
+          <th>カナ</th>
+          <th>担当者名</th>
+          <th>電話番号</th>
+        </tr>
+      </tbody>
+    </table>
+  </div><!-- #customer-select-modal -->
+
+  <div id="maker-select-modal" class="modal-content" title="ハウスメーカー検索">
+    <div class="no-flex">
+      <form name="form5" id="form5" action="" method="post">
+        <table class="s-table02" border="0" cellspacing="0" cellpadding="0">
+          <tbody>
+            <tr>
+              <th>メーカー名</th>
+              <td><input type="text" name="name" class="input-100pct gofwd" value=""></td>
+              <th>ヨミガナ</th>
+              <td><input type="text" name="kana" class="input-100pct gofwd" value=""></td>
+            </tr>
+            <tr>
+              <th>所在地</th>
+              <td><input type="text" name="address" class="input-100pct gofwd" value=""></td>
+              <th>電話番号</th>
+              <td><input type="text" name="phone" class="input-100pct gofwd" value=""></td>
+            </tr>
+          </tbody>
+        </table><!-- .s-table02 -->
+        <div class="s-input">
+          <input type="button" value="検索" onclick="return doSearchMaker(this);">
+          <div class="waiting-circle tx-center hide"><img src="images/loading-circle-64x64.gif"></div>
+        </div><!-- .s-input -->
+      </form><!-- #form5 -->
+    </div><!-- .no-flex -->
+
+    <table id="maker-list" class="s-table02 hide" border="0" cellspacing="0" cellpadding="0">
+      <tbody>
+        <tr>
+          <th class="w-30">&nbsp;</th>
+          <th>ハウスメーカー名</th>
+          <th>カナ</th>
+          <th>所在地</th>
+          <th>電話番号</th>
+        </tr>
+      </tbody>
+    </table>
+  </div><!-- #customer-select-modal -->
+
+  <div id="plan-select-modal" class="modal-content" title="契約内容">
+    <section>
+      <form name="form6" id="form6" action="" method="post">
+        <input type="hidden" name="cid" value="26324">
+        <input type="hidden" name="pid" value="24937">
+        <table border="0" cellspacing="0" cellpadding="0" class="s-table01-min">
+          <thead>
+            <tr>
+              <th>契約</th>
+              <th>設備</th>
+              <th>契約日</th>
+              <th>契約終了日</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="tx-center"><input type="checkbox" name="chk_plan1" id="chk-plan1" value="1"></td>
+              <td><label for="chk-plan1">あんしんプラン</label></td>
+              <td><input type="text" name="start1" class="calendar gofwd" value=""></td>
+              <td><input type="text" name="end1" class="calendar gofwd" value=""></td>
+            </tr>
+            <tr>
+              <td class="tx-center"><input type="checkbox" name="chk_plan2" id="chk-plan2" value="2"></td>
+              <td><label for="chk-plan2">LPG</label></td>
+              <td><input type="text" name="start2" class="calendar gofwd" value=""></td>
+              <td><input type="text" name="end2" class="calendar gofwd" value=""></td>
+            </tr>
+            <tr>
+              <td class="tx-center"><input type="checkbox" name="chk_plan3" id="chk-plan3" value="4"></td>
+              <td><label for="chk-plan3">灯油</label></td>
+              <td><input type="text" name="start3" class="calendar gofwd" value=""></td>
+              <td><input type="text" name="end3" class="calendar gofwd" value=""></td>
+            </tr>
+            <tr>
+              <td class="tx-center"><input type="checkbox" name="chk_plan4" id="chk-plan4" value="8"></td>
+              <td><label for="chk-plan4">電気</label></td>
+              <td><input type="text" name="start4" class="calendar gofwd" value=""></td>
+              <td><input type="text" name="end4" class="calendar gofwd" value=""></td>
+            </tr>
+          </tbody>
+        </table>
+      </form><!-- #form6 -->
+    </section>
+    <div class="s-input button-block">
+      <input type="button" value="この契約を適用" onclick="return doSavePlan(this);">
+    </div>
+  </div><!-- #plan-select-modal -->
+
+  <!--設置設備追加-->
+  <div id="facility-edit-modal" class="modal-content" title="設置設備編集">
+    <section>
+      <form name="form7" id="form7" action="" method="post">
+        <input type="hidden" name="cid" value="26324">
+        <input type="hidden" name="pid" value="24937">
+        <input type="hidden" name="fid" value="">
+        <table border="0" cellspacing="0" cellpadding="0" class="s-table02">
+          <tbody>
+            <tr><th>設置日</th><td><input type="text" name="settled" class="calendar gofwd" style="width:6em;" value=""></td></tr>
+            <tr>
+              <th>設備名</th>
+              <td>
+                <select name="type" class="gofwd">
+                  <option value=""> </option>
+                  <option value="1">灯油　暖房</option>
+                  <option value="2">灯油　給湯</option>
+                  <option value="3">灯油　暖給兼用</option>
+                  <option value="4">灯油　ＲＨ・融雪機</option>
+                  <option value="5">ツインストーブ</option>
+                  <option value="6">各種ストーブ</option>
+                  <option value="7">灯油　暖冷房機（業務用）</option>
+                  <option value="8">ガス　暖房</option>
+                  <option value="9">ガス　融雪</option>
+                  <option value="10">ガス　給湯</option>
+                  <option value="11">電気　暖房</option>
+                  <option value="12">電気　温水器</option>
+                  <option value="13">電気　暖給一体型</option>
+                  <option value="14">ガス　エコジョーズ</option>
+                  <option value="15">電気　エコウィル</option>
+                  <option value="16">電気　暖給エコキュート</option>
+                  <option value="17">電気　給湯エコキュート</option>
+                  <option value="18">灯油　暖房エコフィール</option>
+                  <option value="19">灯油　給湯エコフィール</option>
+                  <option value="20">ヒートポンプ</option>
+                  <option value="21">電気　融雪</option>
+                  <option value="22">ＸＬ（サンレッジ）</option>
+                  <option value="23">蓄暖・電気ヒーター</option>
+                  <option value="24">換気暖房</option>
+                  <option value="25">灯油　暖給エコフィール</option>
+                  <option value="26">コレモ（北ガス）</option>
+                  <option value="27">ハイブリッド（ガス＆電気）</option>
+                  <option value="31">エアコン</option>
+                  <option value="32">換気設備</option>
+                  <option value="33">セントラルクリーナー</option>
+                  <option value="34">ＩＨヒーター</option>
+                  <option value="98">家電（ＢＦＣ販売）</option>
+                  <option value="99">その他</option>
+                </select>
+              </td>
+            </tr>
+            <tr><th>機種</th><td><input type="text" name="product" class="input-100pct gofwd" value="" autofocus></td></tr>
+            <tr><th>製造番号</th><td><input type="text" name="serial" class="input-100pct gofwd" value=""></td></tr>
+            <tr><th>備考</th><td><input type="text" name="memo" class="input-100pct" value=""></td></tr>
+          </tbody>
+        </table>
+      </form>
+    </section>
+    <div class="s-input button-block">
+      <input type="button" value="　実　行　" onclick="return doSaveFacility(this);">
+    </div>
+  </div><!-- #facility-edit-modal -->
+
+  <div id="facility-delete-modal" class="modal-content" title="設置設備を削除しようとしています...">
+    <section>
+      <div class="delete-warning" style="margin-bottom:20px;">
+        この処理は回復できません。
+      </div><!-- .warning -->
+      <form name="form7d" id="form7d" action="" method="get">
+        <input type="hidden" name="cid" value="26324">
+        <input type="hidden" name="pid" value="">
+        <input type="hidden" name="fid" value="">
+        <table border="0" cellspacing="0" cellpadding="0" class="s-table02 th-width-150">
+          <tbody>
+            <tr><th>設置日</th><td class="settled"></td></tr>
+            <tr><th>設備名</th><td class="type"></td></tr>
+            <tr><th>機種</th><td class="product"></td></tr>
+            <tr><th>製造番号</th><td class="serial"></td></tr>
+            <tr><th>備考</th><td class="memo"></td></tr>
+          </tbody>
+        </table>
+      </form>
+    </section>
+    <div class="s-input button-block">
+      <input type="button" value="キャンセル" onclick="return doCloseDialog(this);">
+      <input type="button" style="margin-left:20px;" value="　実　行　" onclick="return doDeleteFacility(this);">
+    </div>
+  </div><!-- #facility-delete-modal -->
+
+   <!--端末設備追加-->
+  <div id="frontend-edit-modal" class="modal-content" title="温水暖房端末編集">
+    <section>
+      <form name="form8" id="form8" action="" method="post">
+        <input type="hidden" name="cid" value="26324">
+        <input type="hidden" name="pid" value="24937">
+        <input type="hidden" name="fid" value="">
+        <table border="0" cellspacing="0" cellpadding="0" class="s-table02 th-width-150">
+          <tbody>
+            <tr><th>階数</th><td><input type="text" name="floor" class="input-80 gofwd" value=""></td></tr>
+            <tr><th>名称</th><td><input type="text" name="product" class="input-100pct gofwd" value=""></td></tr>
+            <tr><th>台数</th><td><input type="text" name="quantity" class="tx-right input-50 gofwd" value=""><span class="unit">台</span></td></tr>
+            <tr><th>備考</th><td><input type="text" name="memo" class="input-100pct gofwd" value=""></td></tr>
+          </tbody>
+        </table>
+      </form>
+    </section>
+    <div class="s-input button-block">
+      <input type="button" value="　実　行　" onclick="return doSaveFrontend(this);">
+    </div>
+  </div><!-- #frontend-edit-modal -->
+
+  <div id="frontend-delete-modal" class="modal-content" title="温水暖房端末を削除しようとしています...">
+    <section>
+      <div class="delete-warning" style="margin-bottom:20px;">
+        この処理は回復できません。
+      </div><!-- .warning -->
+      <form name="form8d" id="form8d" action="" method="get">
+        <input type="hidden" name="cid" value="26324">
+        <input type="hidden" name="pid" value="">
+        <input type="hidden" name="fid" value="">
+        <table border="0" cellspacing="0" cellpadding="0" class="s-table02 th-width-150">
+          <tbody>
+            <tr><th>階数</th><td class="floor"></td></tr>
+            <tr><th>名称</th><td class="product"></td></tr>
+            <tr><th>台数</th><td class="quantity"></td></tr>
+            <tr><th>備考</th><td class="memo"></td></tr>
+          </tbody>
+        </table>
+      </form>
+    </section>
+    <div class="s-input button-block">
+      <input type="button" value="キャンセル" onclick="return doCloseDialog(this);">
+      <input type="button" style="margin-left:20px;" value="　実　行　" onclick="return doDeleteFrontend(this);">
+    </div>
+  </div><!-- #facility-delete-modal -->
+
+  <div id="pj200-add-modal" class="modal-content" title="PJ200見積りの追加">
+    <section>
+      まだ追加できません。
+    </section>
+    <div class="s-input button-block">
+      <input type="button" value="残念！" onclick="return doCloseDialog(this);">
+    </div>
+  </div><!-- #pj200-add-modal -->
+
+
+
+    <!--見積検索-->
+  <div id="modal_estimate" class="modal-content modal_window" data-pre-open="JS_PreOpen" data-post-close="JS_PostClose">
+  <h2>見積検索</h2>
+<section>
+<div class="mitsumori">
+
+<table border="0" cellspacing="0" cellpadding="0"  class="s-table02">
+              <tr>
+                <th>見積Ｎｏ</th>
+                <td>
+                  <input type="text" name="MituCode" class="gofwd" value=""> ※完全一致
+                </td>
+              </tr>
+              <tr>
+                <th>見積日付</th>
+                <td>
+                  <input type="text" name="MituDateS" class="datepicker gofwd" value="2020-05-02">
+                  ～
+                  <input type="text" name="MituDateE" class="datepicker gofwd" value="">
+                </td>
+              </tr>
+              <tr>
+                <th>顧客名</th>
+                <td>
+                  <input type="text" name="CustName"  class="input-300 gofwd" value=""> ※あいまい検索
+                </td>
+              </tr>
+              <tr>
+                <th>工事名</th>
+                <td>
+                  <input type="text" name="KoujiName"  class="input-300 gofwd" value=""> ※あいまい検索（スペース区切りでAND検索）
+                </td>
+              </tr>
+              <tr>
+                <th>担当者</th>
+                <td>
+                  <input name="TantoName"  class="gofwd" type="text" value="" class="textField" id="tField3" list="staffList"> ※あいまい検索
+                  <datalist id="staffList">
+                    <option value="朝霧　真也"></option>
+                    <option value="越懸澤　直"></option>
+                    <option value="高瀬　所長"></option>
+                  </datalist>
+                </td>
+              </tr>
+              <tr>
+                <th>工種</th>
+                <td>
+                  <select name="WorkType" id="ref_WorkType" class="gofwd">
+                    <option value="">未選択</option>
+                    <option value="1">灯油CH</option>
+                    <option value="2">電気CH</option>
+                    <option value="3">ガスCH</option>
+                    <option value="4">ウェルエコ</option>
+                    <option value="5">ヒートポンプ</option>
+                    <option value="6">Ⅱ</option>
+                    <option value="7">換気（１種）</option>
+                    <option value="8">換気（３種）</option>
+                    <option value="9">空調システム</option>
+                    <option value="10">床暖房</option>
+                    <option value="11">エコウィル</option>
+                    <option value="12">蓄熱暖房</option>
+                    <option value="13">エアコン</option>
+                    <option value="14">エコキュート</option>
+                    <option value="15">ＦＦストーブ</option>
+                    <option value="16">ルームヒーター</option>
+                    <option value="17">融雪</option>
+                    <option value="18">商品</option>
+                    <option value="19">セルフィール</option>
+                    <option value="20">床下放熱器</option>
+                    <option value="21">修理</option>
+                    <option value="22">ボイラー交換</option>
+                    <option value="23">その他</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <th>メモ</th>
+                <td>
+                  <input type="text" name="Memo"  class="stop-gofwd" value="" class="input-300"> ※あいまい検索
+                </td>
+              </tr>
+            </table>
+ <span class="regi-btn"><span class="search-btn"><input type="button" class="input" value="検　索" onclick="return doSearch(this);"></span></span>
+
+            <div class="clear"><hr></div>
+</div>
+</section>
+
+<section class="dashuboard">
+
+            <h2>検索結果　5件　（更新日時 降順）</h2>
+
+            <table border="0" cellspacing="0" cellpadding="0" id="TblResult">
+              <thead>
+                <tr>
+                  <th nowrap class="w-30">&nbsp;</th>
+                  <th nowrap>見積Ｎｏ<span><a href="#" onclick="return doSort(1);">▲</a><a href="#" onclick="return doSort(2);">▼</a></span></th>
+                  <th nowrap>工事名<span><a href="#" onclick="return doSort(3);">▲</a><a href="#" onclick="return doSort(4);">▼</a></span></th>
+                  <th nowrap>顧客名<span><a href="#" onclick="return doSort(5);">▲</a><a href="#" onclick="return doSort(6);">▼</a></span></th>
+                  <th nowrap>担当者<span><a href="#" onclick="return doSort(13);">▲</a><a href="#" onclick="return doSort(14);">▼</a></span></th>
+                  <th nowrap>見積日付<span><a href="#" onclick="return doSort(7);">▲</a><a href="#" onclick="return doSort(8);">▼</a></span></th>
+                  <th nowrap>売上確定日<span><a href="#" onclick="return doSort(11);">▲</a><a href="#" onclick="return doSort(12);">▼</a></span></th>
+                  <th nowrap>金額<span><a href="#" onclick="return doSort(15);">▲</a><a href="#" onclick="return doSort(16);">▼</a></span></th>
+                  <th nowrap>金額(税込)</th>
+                  <th nowrap>工種</th>
+                  <th nowrap>メモ</th>
+                </tr>
+              </thead>
+              <tbody>
+                 <tr>
+                  <td class="a-btm"><input type="checkbox" name="checkbox" id="checkbox"></td>
+                  <td>00300006</td>
+                  <td><a href="system-estimate-edit.html" onclick="return doEdit(7802);">ＬＬＬテスト</a></td>
+                  <td>㈲寺尾電気</td>
+                  <td>高瀬　所長</td>
+                  <td nowrap="nowrap">2020年05月08日</td>
+                  <td nowrap="nowrap"></td>
+                  <td class="mn-td">70,000</td>
+                  <td class="mn-td">75,600</td>
+                  <td class="">エアコン</td>
+                  <td class=""></td>
+                </tr>
+                 <tr>
+                  <td class="a-btm"><input type="checkbox" name="checkbox2" id="checkbox2"></td>
+                  <td>00300002</td>
+                  <td><a href="system-estimate-edit.html" onclick="return doEdit(7798);">テスト</a></td>
+                  
+                  <td>人工</td>
+                  <td>高瀬　所長</td>
+                  <td nowrap="nowrap">2020年05月02日</td>
+                  <td nowrap="nowrap">2020年05月08日</td>
+                  <td class="mn-td">518,000</td>
+                  <td class="mn-td">559,440</td>
+                  <td class="">床暖房</td>
+                  <td class=""></td>
+                </tr>
+                 <tr>
+                  <td class="a-btm"><input type="checkbox" name="checkbox3" id="checkbox3"></td>
+                  <td>00300003</td>
+                  <td><a href="system-estimate-edit.html" onclick="return doEdit(7799);">テスト</a></td>
+                  <td>㈱新津組</td>
+                  <td>越懸澤　直</td>
+                  <td nowrap="nowrap">2020年05月02日</td>
+                  <td nowrap="nowrap">2020年05月03日</td>
+                  <td class="mn-td">459,000</td>
+                  <td class="mn-td">495,720</td>
+                  <td class="">エアコン</td>
+                  <td class=""></td>
+                </tr>
+               </tbody>
+            </table>
+ <div class="a-btm2">
+ <a class="modal-open" data-target="modal_estimate">追加</a></div>
+
+</section>
+
+  </div>
+  <!--見積検索-->
+</body>
+</html>

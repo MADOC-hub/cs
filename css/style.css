@@ -120,6 +120,7 @@ header {
 	position: fixed;
 	width: 1000px;
 	padding-top: 10px;
+	z-index: 1;
 }
 
 .head {
@@ -565,7 +566,10 @@ footer {
 }
 
 
-.dashuboard table,.mitsumori-table table,.c-table {
+.dashuboard table,
+.mitsumori-table table,
+.c-table,
+.std-table table {
 	border-left: 1px solid #777777;
 	border-right: 0 solid #777777;
 	border-bottom: 0 solid #777777;
@@ -575,11 +579,39 @@ footer {
 .dashuboard table th,.mitsumori-table table th,.c-table th {
 	background-color: #E4E4E4;
 }
+.mitsumori-table table th.material {
+	background-color: #dbe5ff;
+}
+.mitsumori-table table th.process {
+	background-color: #fffbdb;
+}
+.mitsumori-table table th.construct {
+	background-color: #dbffe8;
+}
+.mitsumori-table table th.cost {
+	background-color: #ffdfdb;
+}
+tr.heading td.colored, tr.heading td.colored input {
+	background: rgba(10,114,255,1.00);
+	color: #e4e4e4;
+}
+tr.submaterial td.colored, tr.submaterial td.colored input {
+	background-color: rgba(174,221,255,0.50);
+	color: rgba(31,78,112,1.00);
+}
+tr.arbitrary td.colored,
+tr.arbitrary td.colored input,
+td.arbitrary,
+input.arbitrary {
+	background-color:rgba(250,218,255,1.00);
+}
 
 .dashuboard table th,
 .dashuboard table td,
 .mitsumori-table table th,
 .mitsumori-table table td,
+.std-table table th,
+.std-table table td,
 .c-table th {
 	padding-top: 3px;
 	padding-right: 3px;
@@ -1299,7 +1331,8 @@ header .head {
 .head-material input  {background-image: url(../img/head-icon21.png);}
 .head-conversion2 input {background-image: url(../img/head-icon22.png);}
 .head-conversion2-c input {background-image: url(../img/head-icon22b.png);}
-.head-subtotal input {	background-image: url(../img/head-icon36.png);}
+.head-subtotal input {background-image: url(../img/head-icon36.png);}
+.head-material-search input {background-image: url(../img/head-icon37.png);}
 .head-submenu {display:none;}
 
 .gyome-koshin input  {background-image: url(../img/head-icon5.png);}
@@ -1407,6 +1440,15 @@ header .head {
 .w-80 {
 	width: 80px;
 }
+.minw-50 {
+	min-width: 50px;
+}
+.minw-200 {
+	min-width: 200px;
+}
+.minw-350 {
+	min-width: 350px;
+}
 .img240 img {
 	width: 240px;
 	height: auto;
@@ -1419,10 +1461,15 @@ header .head {
 .form-input .tr-selected,.form-input .tr-selected input {
 	background: #dff3c4;
 }
-.dashuboard {
+
+.dashuboard, .std-table {
 	width: 100%;
 	overflow-x: auto;
 	clear: both;
+}
+
+.std-table {
+	max-height: 500px;
 }
 
 .dashuboard-m, .page-mate-regi {
@@ -1438,6 +1485,11 @@ header .head {
 /*	margin-bottom: 20px; */
 	margin-bottom: 10px;
 	float: left;
+}
+
+.tbm0 .regist-table {
+	margin-top: 0;
+	margin-bottom: 0;
 }
 .regist-table tr th {
 	background-color: hsla(0,0%,89%,1.00);
@@ -1527,6 +1579,12 @@ header .head {
 .search-j-btn input {
 	background-image: url(../img/head-icon29.png);
 }
+.clear-btn input {
+	background-image: url(../img/head-icon35.png);
+}
+.bill-btn input {
+	background-image: url(../img/head-icon38.png);
+}
 
 .csv-ex input  {	background-image: url(../img/head-icon30.png);}
 .csv-in input  {	background-image: url(../img/head-icon31.png);}
@@ -1552,6 +1610,16 @@ header .head {
 .page-customer h2  {
 	color: hsla(99,100%,14%,1.00);
 }
+.page-customer select {
+	width: 110px;
+}
+.page-customer #selNyukinDate {
+	width: 65px;
+}
+.page-customer #txNyukinNote {
+	margin-left: 2px;
+	width: 85px;
+}
 .page-mitsumori .head,.page-mitsumori .dashuboard th {
 	background-image: -webkit-linear-gradient(270deg,rgba(237,242,255,1.00) 0%,rgba(184,225,255,1.00) 100%);
 	background-image: -moz-linear-gradient(270deg,rgba(237,242,255,1.00) 0%,rgba(184,225,255,1.00) 100%);
@@ -1573,7 +1641,8 @@ header .head {
 }
 
 .page-mate-regi .head,
-.page-mate-regi .dashuboard th {
+.page-mate-regi .dashuboard th,
+#material-search-result .std-table th {
 	background-image: -webkit-linear-gradient(270deg,rgba(255,231,211,1.00) 0%,rgba(255,201,170,1.00) 100%);
 	background-image: -moz-linear-gradient(270deg,rgba(255,231,211,1.00) 0%,rgba(255,201,170,1.00) 100%);
 	background-image: -o-linear-gradient(270deg,rgba(255,231,211,1.00) 0%,rgba(255,201,170,1.00) 100%);
@@ -1632,7 +1701,7 @@ th span {
 	line-height: 100%;
 	margin-left: 5px;
 }
-.ro input {
+.ro input, .ro textarea, .ro select, input.ro, textarea.ro, select.ro {
 	border: 1px dotted #C5C5C5;
 }
 
@@ -1830,6 +1899,9 @@ th span {
 }
 .no-input .hyoshi-03 {
  border-color: rgba(172,172,172,1.00) rgba(124,124,124,1.00) rgba(124,124,124,1.00);
+}
+.no-input input,.no-input select,.no-input textarea {
+ border: 1px dotted #C5C5C5;
 }
 div article #sel04 {
  width: 160px;
@@ -2335,6 +2407,19 @@ table.cost tr > .cost-only {
   box-sizing: border-box;
 }
 
+h2.composite { color: #202846; display: flex; justify-content: space-between; align-items: center; }
+.indicator { margin-top: -5px; margin-bottom: 5px; }
+.indicator ul { display: flex; font-size: 12px; color: gray; font-style: normal; font-weight: 400; }
+.indicator li { min-width: 100px; border: #cbcbcb; margin: 2px 5px 2px 2px; text-align: center; }
+.indicator .sales-recorded { background: #b91518; color: white; }
+.indicator .sales-pending { background: #bb8888; color: #ddd; }
+.indicator .bill-issued { background: #183c90; color: white; }
+.indicator .bill-pending { background: #8888bb; color: #ddd; }
+
+.s-table02 { border-left: 1px solid gray; border-top: 1px solid gray; min-width: 100%; margin-bottom: 20px; color: #232323; }
+.s-table02 th, .s-table02 td { border-right: 1px solid gray; border-bottom: 1px solid gray; padding: 5px; }
+.s-table02 th { background: #e3e3e3; }
+
 
 .pass-remaind {margin-top: 20px;text-align: right;font-size: 90%;}
 .pass-remaind a {color: rgba(46,26,26,1.00)}
@@ -2383,16 +2468,6 @@ table.cost tr > .cost-only {
  margin-bottom: 10px;
 }
 
-.tx-left {
- text-align: left;
-}
-.tx-center {
- text-align: center;
-}
-.tx-right {
- text-align: right;
-}
-
 .hide {
 	display: none !important;
 }
@@ -2403,10 +2478,12 @@ table.cost tr > .cost-only {
 
 /* ▼Added for v3.5 2019-10-19 */
 #basic-info th,
-#billing-info th {
+#billing-info th,
+#cs-request th {
 	text-align: center;
 }
 
+.attention,
 .error {
 	color: #e80000;
 }
@@ -2544,3 +2621,127 @@ table.cost tr > .cost-only {
 #ui-datepicker-div {
   z-index: 99999 !important;
 }
+
+
+/* ▼材料一括編集ダイアログ▼ */
+.simple-modal-dialog {
+	text-align: center;
+}
+
+.simple-modal-dialog .note {
+	text-align: left;
+	margin-bottom: 15px;
+}
+
+.simple-modal-dialog .rate {
+ font-size: 120%;
+ margin-bottom: 8px;
+}
+
+
+.simple-modal-dialog .rate input {
+ text-align: right;
+ width: 60px;
+ margin: 0 5px 0 8px;
+}
+
+.simple-modal-dialog .button-area input {
+	margin: 15px 10px 0;
+	padding: 5px 10px;
+	font-size: 120%;
+	border-radius: 5px;
+	cursor: pointer;
+	min-width: 120px;
+}
+
+/* ▲材料一括編集ダイアログ▲ */
+
+/* ▼CS系ダイアログ共通▼ */
+.system .search-result{
+ margin: 20px 0 10px;
+}
+.system .numfound{
+ margin: 0 3px 0 5px;
+}
+.system .search-result .sort-order{
+ margin: 0;
+}
+.system .search-result .warning{
+ color: #e80000;
+}
+.system .delete-warning{
+ color: #e80000;
+ font-size: 120%;
+}
+.system .order-up-arrow{
+ margin-left: 20px;
+}
+.system .order-down-arrow{
+ margin-left: 1px;
+}
+.system input.calendar{
+ width: 6em;
+}
+.system input.timepicker{
+ width: 3em;
+}
+.system input.timetext{
+ width: 16em;
+}
+.system #contract-info{
+ margin-bottom: 20px;
+}
+.system .button-block{
+ margin: 15px auto 0 !important;
+}
+.system .unit{
+ margin-left: 3px;
+}
+.system .th-width-100 th{
+ width: 100px;
+}
+.system .th-width-150 th{
+ width: 150px;
+}
+.system #payment-modal-dialog { margin: 10px 0; padding: 0.5em; }
+.system #payment_detail_block {
+ margin-bottom: 20px;
+ border-bottom: 1px dotted #7c7c7c;
+}
+
+.system .payment-list td { padding:5px 3px !important; font-family:Tahoma; font-size:12px; }
+.system .payment-list th, .system payment-list td { width:78px; }
+.system .payment-list th.narrow, .system .payment-list td.narrow { width:62px; }
+.system .payment-list td input { width:72px; }
+.system .payment-list td.narrow input { width:56px; }
+/* ▲CS系ダイアログ共通▲ */
+
+/* ▼CS系画面共通▼ */
+.system div.h2like{
+ color: #202846;
+ font-size: 1.4em;
+ font-weight: bold;
+ border-bottom: 1px dotted #7c7c7c;
+ margin-bottom: 10px;
+ padding: 10px 0;
+}
+.system div.h2like span{
+ margin-left: 5px;
+ font-weight: normal;
+}
+.system td.seq{
+ width: 2em;
+ text-align: right;
+}
+.system th.date,
+.system td.date{
+ width: 8em;
+ text-align: center;
+}
+.system .w5em{
+ width: 5em;
+}
+.system .w11em{
+ width: 11em;
+}
+/* ▲CS系画面共通▲ */

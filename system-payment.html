@@ -43,8 +43,8 @@ gTopPath = "";
       <div class="head">
         <a href="main.php"><div class="head-name">リフォーム倶楽部</div></a>
         <ul class="head-menu">
+<li class="head-koshin"><input type="button" value=""></li>
 
-                  <li class="head-koshin"><input type="button" value=""></li>
         </ul>
       </div><!-- .head -->
     </header>
@@ -53,41 +53,32 @@ gTopPath = "";
  <div id="container">
       <div id="container-inner">
       
-<h2>請求/入金管理</h2>
+<h2>入金伝票</h2>
 <div class="system-index">
 <div class="system-index-a">
 <div class="system-schedule">
 
 <section>
-<div class="mitsumori">
-            <table border="0" cellspacing="0" cellpadding="0" class="s-table02">
+<div class="goal-search">
+ <table id="search-condition"  class="s-table01-min" border="0" cellspacing="0" cellpadding="0">
               <tr>
                 <th>顧客コード</th>
-                <td>
-                  <input type="text" name="MituCode" class="gofwd" value=""> ※完全一致
+                <td colspan="2"><input type="text" name="" class="payment-input1">-<input type="text" name="" class="payment-input2">
                 </td>
-              </tr>
-<tr>
-<th>顧客名</th>
-<td>
-<input type="button" class="modal-open" data-target="modal_code_menu" value="顧客検索" >
-</td>
-</tr>
-<tr>
-<th>住所</th>
-<td>〒007-0805<br>
-札幌市東区東苗穂5-1-2-1</td>
 </tr>
               <tr>
                 <th>入金日</th>
-                <td><input type="date" name="example1"></td>
-              </tr>
-            </table>
+                <td><p class="regi-btn"><span><input type="date" name="example1"></span><span class="search-btn">　<input type="button" class="input" value="検　索" onclick="return doSearch();"></span></p>
+                </td>
+<td class="payment-w">〒007-0805<br>
+札幌市東区東苗穂5-1-2-1</td>
+</tr>
+            </table><!-- #search-condition -->
 
             <div class="regi-btn">
-              <div class="search-btn"><input type="button" class="input" value="検　索" onclick="return doSearch();">
-              </div>
-            </div>
+              <div class="search2-btn"><input type="button" class="input" value="表示" onclick="return doSearch();">
+              </div><!-- .search-btn -->
+</div><!-- .regi-btn -->
 
             <div class="clear"><hr></div>
 </div>
@@ -115,13 +106,13 @@ gTopPath = "";
                 <tbody>
                    <tr class="month">
 <td class="mn"><input type="text" name="textfield7" id="textfield7"></td>
-<td class="mn"><input type="text" name="textfield7" id="textfield7"></td>
-<td class="mn"><input type="text" name="textfield7" id="textfield7"></td>
-<td class="mn"><input type="text" name="textfield7" id="textfield7"></td>
-<td class="mn"><input type="text" name="textfield7" id="textfield7"></td>
-<td class="mn"><input type="text" name="textfield7" id="textfield7"></td>
-<td class="mn"><input type="text" name="textfield7" id="textfield7"></td>
-<td class="mn"><input type="text" name="textfield7" id="textfield7"></td>
+<td class="mn-td">0</td>
+<td class="mn-td">0</td>
+<td class="mn-td">16,963</td>
+<td class="mn-td">0</td>
+<td class="mn-td">16,963</td>
+<td class="mn-td">16,963</td>
+<td class="mn-td">16,963</td>
 <td class="mn-td">6,657,654</td>
 </tr>
 <tr class="month">
@@ -204,7 +195,7 @@ gTopPath = "";
 <tr class="month">
 <td colspan="7" class="center">&nbsp;</td>
 <th>預り金</th>
-<td class="mn"><input type="text" name="textfield7" id="textfield7"></td>
+<td  class="mn-td">0</td>
 </tr>
 <tr class="month">
 <td colspan="8" class="center">&nbsp;</td>
@@ -245,114 +236,8 @@ gTopPath = "";
 </div><!-- #wrapper -->
 <div id="foot"></div>
 <script src="js/component.js?v=20200531_20200612"></script>
-<!--顧客検索-->
-<div id="modal_code_menu" class="modal-content modal_window" data-pre-open="JS_PreOpen" data-post-close="JS_PostClose">
-  <h2>顧客検索</h2>
-  <div class="flex">
-<div class="f9">
-<table border="0" cellspacing="0" cellpadding="0" class="s-table02">
-<tbody>
-<tr>
-<th>顧客名 </th>
-<td><input type="text" name="" class="" value=""></td>
-<th>顧客名（カナ）</th>
-<td><input type="text" name="" class="" value=""></td>
-</tr>
-<tr>
-<th>電話番号</th>
-<td><input type="text" name="input6" class="" value=""></td>
-<th>住所</th>
-<td><input type="text" name="input" class="" value=""></td>
-</tr>
-<tr>
-<th>ハウスメーカー</th>
-<td><input type="text" name="input5" class="" value=""></td>
-<th>ボイラー機種</th>
-<td><input type="text" name="input7" class="" value=""></td>
-</tr>
-<tr>
-<th>工事担当者</th>
-<td><input type="text" name="input2" class="" value=""></td>
-<th>営業担当者</th>
-<td><input type="text" name="input3" class="" value=""></td>
-</tr>
-<tr>
-<th>引渡日</th>
-<td><input type="text" name="MituDate" id="MituDate" class="gofwd" value=""></td>
-<th>設置日</th>
-<td><input type="text" name="MituDate" id="MituDate" class="gofwd" value=""></td>
-</tr>
-</tbody>
-</table>
-<div class="s-input">
-<input type="button" value="検索">
-
-</div>
-</div>
-<div class="f1"></div>
-
-</div>
-<table border="0" cellspacing="0" cellpadding="0" class="s-table02">
-<tbody>
-<tr>
-<th class="w-30">　</th>
-<th>顧客名</th>
-</tr>
-<tr>
-<td><input type="radio" name="sub"></td>
-<td>マドックタロウ</td>
-</tr>
-<tr>
-<td><input type="radio" name="sub"></td>
-<td>ドリーム次郎</td>
-</tr>
-<tr>
-<td><input type="radio" name="sub"></td>
-<td>マイフット三郎</td>
-</tr>
-</tbody>
-</table>
-<div class="s-input">
-<input type="button" value="この顧客情報を適用"  onClick="location.href='cs-customer-inquiry-edit.html'">
-
-</div>
 
 
-  </div>
-<!--顧客検索-->
-
-<!-- ▼帳票印刷用ポップアップ -->
-<div id="modal_print_menu" class="modal-content" data-pre-open="JS_PreOpen" data-post-close="JS_PostClose">
-  <h2>帳票印刷メニュー</h2>
-  <form name="PrintOption" id="form_print_option" method="POST" accept-charset="UTF-8" onSubmit="return JS_Input_Chk();">
-    <div class="print_menu_groups first">
-    <label><input type="radio" name="売掛残高一覧表">売掛残高一覧表　</label><label><input type="radio" name="回収予定表">回収予定表</label>
-    
-
-    
-    
-    </div><!-- .print_menu_groups -->
-    
-    
-    <!-- .print_menu_groups -->
-
-    <!-- .print_menu_groups -->
-
-      <div class="print_menu_groups">
-      <div class="print_menu_group">
-        <div class="print_menu_subgroup">
-          
-          <span class="triplet right">
-            <input type="button" id="btn-print" class="button-print" value="帳票印刷">
-          </span>
-        </div>
-      </div><!-- .print_menu_group -->
-    </div><!-- .print_menu_groups -->
-  </form><!-- #form_print_option -->
-
-  <!-- .dashuboard -->
-</div><!-- #modal_print_menu -->
-<!-- ▲帳票印刷用ポップアップ -->
 
   
 

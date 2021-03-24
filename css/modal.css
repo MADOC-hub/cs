@@ -42,7 +42,8 @@ a.modal-open:hover {cursor:pointer}
     padding:15px;
     border-radius:20px;
     background:#fff;
-    width:700px;}
+    max-width:700px;
+    min-width: 300px;}
 #modal_print_menu img {width:auto;max-height:70vh}
 #modal_print_menu h1 {font-size:120%; margin-bottom:0.5em}
 #modal_print_menu p {max-width:565px; text-align:left}

@@ -1,0 +1,700 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1000">
+<title>CSシステム</title>
+<link type="text/css" rel="stylesheet" href="css/style.css">
+<link type="text/css" rel="stylesheet" href="css/style-system.css">
+<link rel="shortcut icon" href="">
+
+<script src="js/jquery-2.2.4.min.js"></script>
+<script src="js/InputControl-v3.js"></script>
+<script type="text/javascript">
+window.paceOptions = {
+  restartOnPushState: false,
+  ajax: false
+};
+</script>
+<script src="js/pace-min.js?v=20200531_20200612"></script>
+<script src="js/jquery-2.2.4.min.js"></script>
+<script src="js/jquery-ui.min.js"></script>
+<script src="js/jquery.ui-1.10.4.datepicker.min.js"></script>
+<script src="js/jquery.ui.datepicker-ja.js"></script>
+<script src="js/jquery.floatThead.js"></script>
+<script src="js/DataTables/datatables.min.js"></script>
+<script src="js/InputControl-v3.js?v=20200531_20200612"></script>
+<script src="js/CommonControl.js?v=20200531_20200612"></script>
+<script src="js/modal.js?v=20200531_20200612"></script>
+<script type="text/javascript">
+gTopPath = "";
+</script>
+<script src="js/estimate.js?v=20200531_20200612"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+</head>
+<body class="system">
+<div class="modal-overlay" style="display:block;"></div>
+<div id="wrapper">
+  <div id="wrapperInner">
+    <header>
+      <span>
+        <a href="user-edit.php">株式会社日弘ヒーティング</a>
+      </span>
+      <div class="head">
+        <a href="main.php"><div class="head-name">リフォーム倶楽部</div></a>
+        <ul class="head-menu">
+<li class="head-koshin"><input type="button" value=""></li>
+<li class="head-print"><input type="button" class="modal-open" data-target="modal_print_menu" value="帳票印刷">
+          </li>
+        </ul>
+      </div><!-- .head -->
+    </header>
+
+
+ <div id="container">
+      <div id="container-inner">
+      
+<h2>目標管理設定</h2>
+<div class="system-index">
+<div class="system-index-a">
+<div class="system-schedule">
+
+<section>
+<div class="goal-search">
+ <table id="search-condition"  class="s-table01-min" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <th>年度</th>
+                <td><select name="select" id="select">
+<option>2021</option>
+<option>2022</option>
+<option>2023</option>
+<option>2024</option>
+</select>
+                </td>
+              </tr>
+              <tr>
+                <th>担当者</th>
+                <td>
+                  <input type="text" name="Staff" class="textField gofwd" list="staffList" value=""> ※あいまい検索
+                  <datalist id="staffList">
+                    <option value="朝霧　真也"></option>
+                    <option value="越懸澤　直"></option>
+                    <option value="高瀬　所長"></option>
+                  </datalist>
+                </td>
+              </tr>
+            </table><!-- #search-condition -->
+
+            <div class="regi-btn">
+              <div class="search2-btn"><input type="button" class="input" value="表示" onclick="return doSearch();">
+              </div><!-- .search-btn -->
+</div><!-- .regi-btn -->
+
+            <div class="clear"><hr></div>
+</div>
+</section>
+
+<section class="dashuboard">
+
+            <form name="form2" id="form2" action="/print-sales-results.php" target="_blank" method="POST">
+              <input type="hidden" name="from" value="2020-05-01">
+              <input type="hidden" name="to" value="">
+              <table id="TblResult" border="0" cellspacing="0" cellpadding="0" class="goal-set">
+                <thead>
+                  <tr>
+                    <th>月</th>
+                    <th>種類</th>
+                    <th>保守点検</th>
+                    <th>不凍液交換</th>
+                    <th>ストーブ分</th>
+                    <th>修理</th>
+                    <th>ボイラー交換</th>
+                    <th>設備・リフ…</th>
+                    <th>商品・その他</th>
+<th>…</th>
+<th>…</th>
+<th>…</th>
+<th>…</th>
+                    <th>…</th>
+                  </tr>
+                </thead>
+                <tbody>
+                   <tr class="month">
+<td rowspan="3">4月</td>
+<td>売上</td>
+<td><input type="text" name="textfield" id="textfield"></td>
+<td><input type="text" name="textfield2" id="textfield2"></td>
+<td><input type="text" name="textfield3" id="textfield3"></td>
+<td><input type="text" name="textfield4" id="textfield4"></td>
+<td><input type="text" name="textfield5" id="textfield5"></td>
+<td><input type="text" name="textfield6" id="textfield6"></td>
+<td><input type="text" name="textfield7" id="textfield7"></td>
+<td><input type="text" name="textfield8" id="textfield8"></td>
+<td><input type="text" name="textfield8" id="textfield8"></td>
+<td><input type="text" name="textfield8" id="textfield8"></td>
+<td><input type="text" name="textfield8" id="textfield8"></td>
+                    <td><input type="text" name="textfield8" id="textfield8"></td>
+                  </tr>
+                   <tr>
+<td>利益</td>
+<td><input type="text" name="textfield" id="textfield"></td>
+<td><input type="text" name="textfield2" id="textfield2"></td>
+<td><input type="text" name="textfield3" id="textfield3"></td>
+<td><input type="text" name="textfield4" id="textfield4"></td>
+<td><input type="text" name="textfield5" id="textfield5"></td>
+<td><input type="text" name="textfield6" id="textfield6"></td>
+<td><input type="text" name="textfield7" id="textfield7"></td>
+<td><input type="text" name="textfield8" id="textfield8"></td>
+<td><input type="text" name="textfield8" id="textfield8"></td>
+<td><input type="text" name="textfield8" id="textfield8"></td>
+<td><input type="text" name="textfield8" id="textfield8"></td>
+                   <td><input type="text" name="textfield8" id="textfield8"></td>
+                  </tr>
+<tr>
+<td>件数</td>
+<td><input type="text" name="textfield" id="textfield"></td>
+<td><input type="text" name="textfield2" id="textfield2"></td>
+<td><input type="text" name="textfield3" id="textfield3"></td>
+<td><input type="text" name="textfield4" id="textfield4"></td>
+<td><input type="text" name="textfield5" id="textfield5"></td>
+<td><input type="text" name="textfield6" id="textfield6"></td>
+<td><input type="text" name="textfield7" id="textfield7"></td>
+<td><input type="text" name="textfield8" id="textfield8"></td>
+<td><input type="text" name="textfield8" id="textfield8"></td>
+<td><input type="text" name="textfield8" id="textfield8"></td>
+<td><input type="text" name="textfield8" id="textfield8"></td>
+<td><input type="text" name="textfield8" id="textfield8"></td>
+</tr>
+<tr>
+<td rowspan="3" class="month">5月</td>
+<td>売上</td>
+<td><input type="text" name="textfield9" id="textfield25"></td>
+<td><input type="text" name="textfield9" id="textfield26"></td>
+<td><input type="text" name="textfield9" id="textfield27"></td>
+<td><input type="text" name="textfield9" id="textfield28"></td>
+<td><input type="text" name="textfield9" id="textfield29"></td>
+<td><input type="text" name="textfield9" id="textfield30"></td>
+<td><input type="text" name="textfield9" id="textfield31"></td>
+<td><input type="text" name="textfield9" id="textfield32"></td>
+<td><input type="text" name="textfield9" id="textfield32"></td>
+<td><input type="text" name="textfield9" id="textfield32"></td>
+<td><input type="text" name="textfield9" id="textfield32"></td>
+<td><input type="text" name="textfield9" id="textfield32"></td>
+</tr>
+<tr>
+<td>利益</td>
+<td><input type="text" name="textfield9" id="textfield17"></td>
+<td><input type="text" name="textfield9" id="textfield18"></td>
+<td><input type="text" name="textfield9" id="textfield19"></td>
+<td><input type="text" name="textfield9" id="textfield20"></td>
+<td><input type="text" name="textfield9" id="textfield21"></td>
+<td><input type="text" name="textfield9" id="textfield22"></td>
+<td><input type="text" name="textfield9" id="textfield23"></td>
+<td><input type="text" name="textfield9" id="textfield24"></td>
+<td><input type="text" name="textfield9" id="textfield24"></td>
+<td><input type="text" name="textfield9" id="textfield24"></td>
+<td><input type="text" name="textfield9" id="textfield24"></td>
+<td><input type="text" name="textfield9" id="textfield24"></td>
+</tr>
+<tr>
+<td>件数</td>
+<td><input type="text" name="textfield9" id="textfield9"></td>
+<td><input type="text" name="textfield9" id="textfield10"></td>
+<td><input type="text" name="textfield9" id="textfield11"></td>
+<td><input type="text" name="textfield9" id="textfield12"></td>
+<td><input type="text" name="textfield9" id="textfield13"></td>
+<td><input type="text" name="textfield9" id="textfield14"></td>
+<td><input type="text" name="textfield9" id="textfield15"></td>
+<td><input type="text" name="textfield9" id="textfield16"></td>
+<td><input type="text" name="textfield9" id="textfield16"></td>
+<td><input type="text" name="textfield9" id="textfield16"></td>
+<td><input type="text" name="textfield9" id="textfield16"></td>
+<td><input type="text" name="textfield9" id="textfield16"></td>
+</tr>
+<tr>
+<td rowspan="3" class="month">6月</td>
+<td>売上</td>
+<td><input type="text" name="textfield9" id="textfield49"></td>
+<td><input type="text" name="textfield9" id="textfield50"></td>
+<td><input type="text" name="textfield9" id="textfield51"></td>
+<td><input type="text" name="textfield9" id="textfield52"></td>
+<td><input type="text" name="textfield9" id="textfield53"></td>
+<td><input type="text" name="textfield9" id="textfield54"></td>
+<td><input type="text" name="textfield9" id="textfield55"></td>
+<td><input type="text" name="textfield9" id="textfield56"></td>
+<td><input type="text" name="textfield9" id="textfield56"></td>
+<td><input type="text" name="textfield9" id="textfield56"></td>
+<td><input type="text" name="textfield9" id="textfield56"></td>
+<td><input type="text" name="textfield9" id="textfield56"></td>
+</tr>
+<tr>
+<td>利益</td>
+<td><input type="text" name="textfield9" id="textfield41"></td>
+<td><input type="text" name="textfield9" id="textfield42"></td>
+<td><input type="text" name="textfield9" id="textfield43"></td>
+<td><input type="text" name="textfield9" id="textfield44"></td>
+<td><input type="text" name="textfield9" id="textfield45"></td>
+<td><input type="text" name="textfield9" id="textfield46"></td>
+<td><input type="text" name="textfield9" id="textfield47"></td>
+<td><input type="text" name="textfield9" id="textfield48"></td>
+<td><input type="text" name="textfield9" id="textfield48"></td>
+<td><input type="text" name="textfield9" id="textfield48"></td>
+<td><input type="text" name="textfield9" id="textfield48"></td>
+<td><input type="text" name="textfield9" id="textfield48"></td>
+</tr>
+<tr>
+<td>件数</td>
+<td><input type="text" name="textfield9" id="textfield33"></td>
+<td><input type="text" name="textfield9" id="textfield34"></td>
+<td><input type="text" name="textfield9" id="textfield35"></td>
+<td><input type="text" name="textfield9" id="textfield36"></td>
+<td><input type="text" name="textfield9" id="textfield37"></td>
+<td><input type="text" name="textfield9" id="textfield38"></td>
+<td><input type="text" name="textfield9" id="textfield39"></td>
+<td><input type="text" name="textfield9" id="textfield40"></td>
+<td><input type="text" name="textfield9" id="textfield40"></td>
+<td><input type="text" name="textfield9" id="textfield40"></td>
+<td><input type="text" name="textfield9" id="textfield40"></td>
+<td><input type="text" name="textfield9" id="textfield40"></td>
+</tr>
+<tr class="month">
+<td rowspan="3">7月</td>
+<td>売上</td>
+<td><input type="text" name="textfield9" id="textfield142"></td>
+<td><input type="text" name="textfield9" id="textfield143"></td>
+<td><input type="text" name="textfield9" id="textfield144"></td>
+<td><input type="text" name="textfield9" id="textfield145"></td>
+<td><input type="text" name="textfield9" id="textfield146"></td>
+<td><input type="text" name="textfield9" id="textfield147"></td>
+<td><input type="text" name="textfield9" id="textfield148"></td>
+<td><input type="text" name="textfield9" id="textfield149"></td>
+<td><input type="text" name="textfield9" id="textfield149"></td>
+<td><input type="text" name="textfield9" id="textfield149"></td>
+<td><input type="text" name="textfield9" id="textfield149"></td>
+<td><input type="text" name="textfield9" id="textfield149"></td>
+</tr>
+<tr>
+<td>利益</td>
+<td><input type="text" name="textfield9" id="textfield134"></td>
+<td><input type="text" name="textfield9" id="textfield135"></td>
+<td><input type="text" name="textfield9" id="textfield136"></td>
+<td><input type="text" name="textfield9" id="textfield137"></td>
+<td><input type="text" name="textfield9" id="textfield138"></td>
+<td><input type="text" name="textfield9" id="textfield139"></td>
+<td><input type="text" name="textfield9" id="textfield140"></td>
+<td><input type="text" name="textfield9" id="textfield141"></td>
+<td><input type="text" name="textfield9" id="textfield141"></td>
+<td><input type="text" name="textfield9" id="textfield141"></td>
+<td><input type="text" name="textfield9" id="textfield141"></td>
+<td><input type="text" name="textfield9" id="textfield141"></td>
+</tr>
+<tr>
+<td>件数</td>
+<td><input type="text" name="textfield9" id="textfield126"></td>
+<td><input type="text" name="textfield9" id="textfield127"></td>
+<td><input type="text" name="textfield9" id="textfield128"></td>
+<td><input type="text" name="textfield9" id="textfield129"></td>
+<td><input type="text" name="textfield9" id="textfield130"></td>
+<td><input type="text" name="textfield9" id="textfield131"></td>
+<td><input type="text" name="textfield9" id="textfield132"></td>
+<td><input type="text" name="textfield9" id="textfield133"></td>
+<td><input type="text" name="textfield9" id="textfield133"></td>
+<td><input type="text" name="textfield9" id="textfield133"></td>
+<td><input type="text" name="textfield9" id="textfield133"></td>
+<td><input type="text" name="textfield9" id="textfield133"></td>
+</tr>
+<tr>
+<td rowspan="3" class="month">8月</td>
+<td>売上</td>
+<td><input type="text" name="textfield9" id="textfield118"></td>
+<td><input type="text" name="textfield9" id="textfield119"></td>
+<td><input type="text" name="textfield9" id="textfield120"></td>
+<td><input type="text" name="textfield9" id="textfield121"></td>
+<td><input type="text" name="textfield9" id="textfield122"></td>
+<td><input type="text" name="textfield9" id="textfield123"></td>
+<td><input type="text" name="textfield9" id="textfield124"></td>
+<td><input type="text" name="textfield9" id="textfield125"></td>
+<td><input type="text" name="textfield9" id="textfield125"></td>
+<td><input type="text" name="textfield9" id="textfield125"></td>
+<td><input type="text" name="textfield9" id="textfield125"></td>
+<td><input type="text" name="textfield9" id="textfield125"></td>
+</tr>
+<tr>
+<td>利益</td>
+<td><input type="text" name="textfield9" id="textfield110"></td>
+<td><input type="text" name="textfield9" id="textfield111"></td>
+<td><input type="text" name="textfield9" id="textfield112"></td>
+<td><input type="text" name="textfield9" id="textfield113"></td>
+<td><input type="text" name="textfield9" id="textfield114"></td>
+<td><input type="text" name="textfield9" id="textfield115"></td>
+<td><input type="text" name="textfield9" id="textfield116"></td>
+<td><input type="text" name="textfield9" id="textfield117"></td>
+<td><input type="text" name="textfield9" id="textfield117"></td>
+<td><input type="text" name="textfield9" id="textfield117"></td>
+<td><input type="text" name="textfield9" id="textfield117"></td>
+<td><input type="text" name="textfield9" id="textfield117"></td>
+</tr>
+<tr>
+<td>件数</td>
+<td><input type="text" name="textfield9" id="textfield102"></td>
+<td><input type="text" name="textfield9" id="textfield103"></td>
+<td><input type="text" name="textfield9" id="textfield104"></td>
+<td><input type="text" name="textfield9" id="textfield105"></td>
+<td><input type="text" name="textfield9" id="textfield106"></td>
+<td><input type="text" name="textfield9" id="textfield107"></td>
+<td><input type="text" name="textfield9" id="textfield108"></td>
+<td><input type="text" name="textfield9" id="textfield109"></td>
+<td><input type="text" name="textfield9" id="textfield109"></td>
+<td><input type="text" name="textfield9" id="textfield109"></td>
+<td><input type="text" name="textfield9" id="textfield109"></td>
+<td><input type="text" name="textfield9" id="textfield109"></td>
+</tr>
+<tr>
+<td rowspan="3" class="month">9月</td>
+<td>売上</td>
+<td><input type="text" name="textfield9" id="textfield94"></td>
+<td><input type="text" name="textfield9" id="textfield95"></td>
+<td><input type="text" name="textfield9" id="textfield96"></td>
+<td><input type="text" name="textfield9" id="textfield97"></td>
+<td><input type="text" name="textfield9" id="textfield98"></td>
+<td><input type="text" name="textfield9" id="textfield99"></td>
+<td><input type="text" name="textfield9" id="textfield100"></td>
+<td><input type="text" name="textfield9" id="textfield101"></td>
+<td><input type="text" name="textfield9" id="textfield101"></td>
+<td><input type="text" name="textfield9" id="textfield101"></td>
+<td><input type="text" name="textfield9" id="textfield101"></td>
+<td><input type="text" name="textfield9" id="textfield101"></td>
+</tr>
+<tr>
+<td>利益</td>
+<td><input type="text" name="textfield9" id="textfield86"></td>
+<td><input type="text" name="textfield9" id="textfield87"></td>
+<td><input type="text" name="textfield9" id="textfield88"></td>
+<td><input type="text" name="textfield9" id="textfield89"></td>
+<td><input type="text" name="textfield9" id="textfield90"></td>
+<td><input type="text" name="textfield9" id="textfield91"></td>
+<td><input type="text" name="textfield9" id="textfield92"></td>
+<td><input type="text" name="textfield9" id="textfield93"></td>
+<td><input type="text" name="textfield9" id="textfield93"></td>
+<td><input type="text" name="textfield9" id="textfield93"></td>
+<td><input type="text" name="textfield9" id="textfield93"></td>
+<td><input type="text" name="textfield9" id="textfield93"></td>
+</tr>
+<tr>
+<td>件数</td>
+<td><input type="text" name="textfield9" id="textfield78"></td>
+<td><input type="text" name="textfield9" id="textfield79"></td>
+<td><input type="text" name="textfield9" id="textfield80"></td>
+<td><input type="text" name="textfield9" id="textfield81"></td>
+<td><input type="text" name="textfield9" id="textfield82"></td>
+<td><input type="text" name="textfield9" id="textfield83"></td>
+<td><input type="text" name="textfield9" id="textfield84"></td>
+<td><input type="text" name="textfield9" id="textfield85"></td>
+<td><input type="text" name="textfield9" id="textfield85"></td>
+<td><input type="text" name="textfield9" id="textfield85"></td>
+<td><input type="text" name="textfield9" id="textfield85"></td>
+<td><input type="text" name="textfield9" id="textfield85"></td>
+</tr>
+<tr>
+<td rowspan="3" class="month">10月</td>
+<td>売上</td>
+<td><input type="text" name="textfield9" id="textfield71"></td>
+<td><input type="text" name="textfield9" id="textfield72"></td>
+<td><input type="text" name="textfield9" id="textfield73"></td>
+<td><input type="text" name="textfield9" id="textfield74"></td>
+<td><input type="text" name="textfield9" id="textfield75"></td>
+<td><input type="text" name="textfield9" id="textfield76"></td>
+<td><input type="text" name="textfield9" id="textfield77"></td>
+<td><input type="text" name="textfield9" id="textfield77"></td>
+<td><input type="text" name="textfield9" id="textfield77"></td>
+<td><input type="text" name="textfield9" id="textfield77"></td>
+<td><input type="text" name="textfield9" id="textfield77"></td>
+<td><input type="text" name="textfield9" id="textfield77"></td>
+</tr>
+<tr>
+<td>利益</td>
+<td><input type="text" name="textfield9" id="textfield64"></td>
+<td><input type="text" name="textfield9" id="textfield65"></td>
+<td><input type="text" name="textfield9" id="textfield66"></td>
+<td><input type="text" name="textfield9" id="textfield67"></td>
+<td><input type="text" name="textfield9" id="textfield68"></td>
+<td><input type="text" name="textfield9" id="textfield69"></td>
+<td><input type="text" name="textfield9" id="textfield70"></td>
+<td><input type="text" name="textfield9" id="textfield70"></td>
+<td><input type="text" name="textfield9" id="textfield70"></td>
+<td><input type="text" name="textfield9" id="textfield70"></td>
+<td><input type="text" name="textfield9" id="textfield70"></td>
+<td><input type="text" name="textfield9" id="textfield70"></td>
+</tr>
+<tr>
+<td>件数</td>
+<td><input type="text" name="textfield9" id="textfield57"></td>
+<td><input type="text" name="textfield9" id="textfield58"></td>
+<td><input type="text" name="textfield9" id="textfield59"></td>
+<td><input type="text" name="textfield9" id="textfield60"></td>
+<td><input type="text" name="textfield9" id="textfield61"></td>
+<td><input type="text" name="textfield9" id="textfield62"></td>
+<td><input type="text" name="textfield9" id="textfield63"></td>
+<td><input type="text" name="textfield9" id="textfield63"></td>
+<td><input type="text" name="textfield9" id="textfield63"></td>
+<td><input type="text" name="textfield9" id="textfield63"></td>
+<td><input type="text" name="textfield9" id="textfield63"></td>
+<td><input type="text" name="textfield9" id="textfield63"></td>
+</tr>
+<tr class="month">
+<td rowspan="3">11月</td>
+<td>売上</td>
+<td><input type="text" name="textfield9" id="textfield235"></td>
+<td><input type="text" name="textfield9" id="textfield236"></td>
+<td><input type="text" name="textfield9" id="textfield237"></td>
+<td><input type="text" name="textfield9" id="textfield238"></td>
+<td><input type="text" name="textfield9" id="textfield239"></td>
+<td><input type="text" name="textfield9" id="textfield240"></td>
+<td><input type="text" name="textfield9" id="textfield241"></td>
+<td><input type="text" name="textfield9" id="textfield242"></td>
+<td><input type="text" name="textfield9" id="textfield242"></td>
+<td><input type="text" name="textfield9" id="textfield242"></td>
+<td><input type="text" name="textfield9" id="textfield242"></td>
+<td><input type="text" name="textfield9" id="textfield242"></td>
+</tr>
+<tr>
+<td>利益</td>
+<td><input type="text" name="textfield9" id="textfield227"></td>
+<td><input type="text" name="textfield9" id="textfield228"></td>
+<td><input type="text" name="textfield9" id="textfield229"></td>
+<td><input type="text" name="textfield9" id="textfield230"></td>
+<td><input type="text" name="textfield9" id="textfield231"></td>
+<td><input type="text" name="textfield9" id="textfield232"></td>
+<td><input type="text" name="textfield9" id="textfield233"></td>
+<td><input type="text" name="textfield9" id="textfield234"></td>
+<td><input type="text" name="textfield9" id="textfield234"></td>
+<td><input type="text" name="textfield9" id="textfield234"></td>
+<td><input type="text" name="textfield9" id="textfield234"></td>
+<td><input type="text" name="textfield9" id="textfield234"></td>
+</tr>
+<tr>
+<td>件数</td>
+<td><input type="text" name="textfield9" id="textfield219"></td>
+<td><input type="text" name="textfield9" id="textfield220"></td>
+<td><input type="text" name="textfield9" id="textfield221"></td>
+<td><input type="text" name="textfield9" id="textfield222"></td>
+<td><input type="text" name="textfield9" id="textfield223"></td>
+<td><input type="text" name="textfield9" id="textfield224"></td>
+<td><input type="text" name="textfield9" id="textfield225"></td>
+<td><input type="text" name="textfield9" id="textfield226"></td>
+<td><input type="text" name="textfield9" id="textfield226"></td>
+<td><input type="text" name="textfield9" id="textfield226"></td>
+<td><input type="text" name="textfield9" id="textfield226"></td>
+<td><input type="text" name="textfield9" id="textfield226"></td>
+</tr>
+<tr>
+<td rowspan="3" class="month">12月</td>
+<td>売上</td>
+<td><input type="text" name="textfield9" id="textfield211"></td>
+<td><input type="text" name="textfield9" id="textfield212"></td>
+<td><input type="text" name="textfield9" id="textfield213"></td>
+<td><input type="text" name="textfield9" id="textfield214"></td>
+<td><input type="text" name="textfield9" id="textfield215"></td>
+<td><input type="text" name="textfield9" id="textfield216"></td>
+<td><input type="text" name="textfield9" id="textfield217"></td>
+<td><input type="text" name="textfield9" id="textfield218"></td>
+<td><input type="text" name="textfield9" id="textfield218"></td>
+<td><input type="text" name="textfield9" id="textfield218"></td>
+<td><input type="text" name="textfield9" id="textfield218"></td>
+<td><input type="text" name="textfield9" id="textfield218"></td>
+</tr>
+<tr>
+<td>利益</td>
+<td><input type="text" name="textfield9" id="textfield203"></td>
+<td><input type="text" name="textfield9" id="textfield204"></td>
+<td><input type="text" name="textfield9" id="textfield205"></td>
+<td><input type="text" name="textfield9" id="textfield206"></td>
+<td><input type="text" name="textfield9" id="textfield207"></td>
+<td><input type="text" name="textfield9" id="textfield208"></td>
+<td><input type="text" name="textfield9" id="textfield209"></td>
+<td><input type="text" name="textfield9" id="textfield210"></td>
+<td><input type="text" name="textfield9" id="textfield210"></td>
+<td><input type="text" name="textfield9" id="textfield210"></td>
+<td><input type="text" name="textfield9" id="textfield210"></td>
+<td><input type="text" name="textfield9" id="textfield210"></td>
+</tr>
+<tr>
+<td>件数</td>
+<td><input type="text" name="textfield9" id="textfield195"></td>
+<td><input type="text" name="textfield9" id="textfield196"></td>
+<td><input type="text" name="textfield9" id="textfield197"></td>
+<td><input type="text" name="textfield9" id="textfield198"></td>
+<td><input type="text" name="textfield9" id="textfield199"></td>
+<td><input type="text" name="textfield9" id="textfield200"></td>
+<td><input type="text" name="textfield9" id="textfield201"></td>
+<td><input type="text" name="textfield9" id="textfield202"></td>
+<td><input type="text" name="textfield9" id="textfield202"></td>
+<td><input type="text" name="textfield9" id="textfield202"></td>
+<td><input type="text" name="textfield9" id="textfield202"></td>
+<td><input type="text" name="textfield9" id="textfield202"></td>
+</tr>
+<tr>
+<td rowspan="3" class="month">1月</td>
+<td>売上</td>
+<td><input type="text" name="textfield9" id="textfield187"></td>
+<td><input type="text" name="textfield9" id="textfield188"></td>
+<td><input type="text" name="textfield9" id="textfield189"></td>
+<td><input type="text" name="textfield9" id="textfield190"></td>
+<td><input type="text" name="textfield9" id="textfield191"></td>
+<td><input type="text" name="textfield9" id="textfield192"></td>
+<td><input type="text" name="textfield9" id="textfield193"></td>
+<td><input type="text" name="textfield9" id="textfield194"></td>
+<td><input type="text" name="textfield9" id="textfield194"></td>
+<td><input type="text" name="textfield9" id="textfield194"></td>
+<td><input type="text" name="textfield9" id="textfield194"></td>
+<td><input type="text" name="textfield9" id="textfield194"></td>
+</tr>
+<tr>
+<td>利益</td>
+<td><input type="text" name="textfield9" id="textfield179"></td>
+<td><input type="text" name="textfield9" id="textfield180"></td>
+<td><input type="text" name="textfield9" id="textfield181"></td>
+<td><input type="text" name="textfield9" id="textfield182"></td>
+<td><input type="text" name="textfield9" id="textfield183"></td>
+<td><input type="text" name="textfield9" id="textfield184"></td>
+<td><input type="text" name="textfield9" id="textfield185"></td>
+<td><input type="text" name="textfield9" id="textfield186"></td>
+<td><input type="text" name="textfield9" id="textfield186"></td>
+<td><input type="text" name="textfield9" id="textfield186"></td>
+<td><input type="text" name="textfield9" id="textfield186"></td>
+<td><input type="text" name="textfield9" id="textfield186"></td>
+</tr>
+<tr>
+<td>件数</td>
+<td><input type="text" name="textfield9" id="textfield171"></td>
+<td><input type="text" name="textfield9" id="textfield172"></td>
+<td><input type="text" name="textfield9" id="textfield173"></td>
+<td><input type="text" name="textfield9" id="textfield174"></td>
+<td><input type="text" name="textfield9" id="textfield175"></td>
+<td><input type="text" name="textfield9" id="textfield176"></td>
+<td><input type="text" name="textfield9" id="textfield177"></td>
+<td><input type="text" name="textfield9" id="textfield178"></td>
+<td><input type="text" name="textfield9" id="textfield178"></td>
+<td><input type="text" name="textfield9" id="textfield178"></td>
+<td><input type="text" name="textfield9" id="textfield178"></td>
+<td><input type="text" name="textfield9" id="textfield178"></td>
+</tr>
+<tr>
+<td rowspan="3" class="month">2月</td>
+<td>売上</td>
+<td><input type="text" name="textfield9" id="textfield164"></td>
+<td><input type="text" name="textfield9" id="textfield165"></td>
+<td><input type="text" name="textfield9" id="textfield166"></td>
+<td><input type="text" name="textfield9" id="textfield167"></td>
+<td><input type="text" name="textfield9" id="textfield168"></td>
+<td><input type="text" name="textfield9" id="textfield169"></td>
+<td><input type="text" name="textfield9" id="textfield170"></td>
+<td><input type="text" name="textfield9" id="textfield170"></td>
+<td><input type="text" name="textfield9" id="textfield170"></td>
+<td><input type="text" name="textfield9" id="textfield170"></td>
+<td><input type="text" name="textfield9" id="textfield170"></td>
+<td><input type="text" name="textfield9" id="textfield170"></td>
+</tr>
+<tr>
+<td>利益</td>
+<td><input type="text" name="textfield9" id="textfield157"></td>
+<td><input type="text" name="textfield9" id="textfield158"></td>
+<td><input type="text" name="textfield9" id="textfield159"></td>
+<td><input type="text" name="textfield9" id="textfield160"></td>
+<td><input type="text" name="textfield9" id="textfield161"></td>
+<td><input type="text" name="textfield9" id="textfield162"></td>
+<td><input type="text" name="textfield9" id="textfield163"></td>
+<td><input type="text" name="textfield9" id="textfield163"></td>
+<td><input type="text" name="textfield9" id="textfield163"></td>
+<td><input type="text" name="textfield9" id="textfield163"></td>
+<td><input type="text" name="textfield9" id="textfield163"></td>
+<td><input type="text" name="textfield9" id="textfield163"></td>
+</tr>
+<tr>
+<td>件数</td>
+<td><input type="text" name="textfield9" id="textfield150"></td>
+<td><input type="text" name="textfield9" id="textfield151"></td>
+<td><input type="text" name="textfield9" id="textfield152"></td>
+<td><input type="text" name="textfield9" id="textfield153"></td>
+<td><input type="text" name="textfield9" id="textfield154"></td>
+<td><input type="text" name="textfield9" id="textfield155"></td>
+<td><input type="text" name="textfield9" id="textfield156"></td>
+<td><input type="text" name="textfield9" id="textfield156"></td>
+<td><input type="text" name="textfield9" id="textfield156"></td>
+<td><input type="text" name="textfield9" id="textfield156"></td>
+<td><input type="text" name="textfield9" id="textfield156"></td>
+<td><input type="text" name="textfield9" id="textfield156"></td>
+</tr>
+<tr>
+<td rowspan="3" class="month">3月</td>
+<td>売上</td>
+<td><input type="text" name="textfield9" id="textfield49"></td>
+<td><input type="text" name="textfield9" id="textfield50"></td>
+<td><input type="text" name="textfield9" id="textfield51"></td>
+<td><input type="text" name="textfield9" id="textfield52"></td>
+<td><input type="text" name="textfield9" id="textfield53"></td>
+<td><input type="text" name="textfield9" id="textfield54"></td>
+<td><input type="text" name="textfield9" id="textfield55"></td>
+<td><input type="text" name="textfield9" id="textfield55"></td>
+<td><input type="text" name="textfield9" id="textfield55"></td>
+<td><input type="text" name="textfield9" id="textfield55"></td>
+<td><input type="text" name="textfield9" id="textfield55"></td>
+<td><input type="text" name="textfield9" id="textfield55"></td>
+</tr>
+<tr>
+<td>利益</td>
+<td><input type="text" name="textfield9" id="textfield41"></td>
+<td><input type="text" name="textfield9" id="textfield42"></td>
+<td><input type="text" name="textfield9" id="textfield43"></td>
+<td><input type="text" name="textfield9" id="textfield44"></td>
+<td><input type="text" name="textfield9" id="textfield45"></td>
+<td><input type="text" name="textfield9" id="textfield46"></td>
+<td><input type="text" name="textfield9" id="textfield47"></td>
+<td><input type="text" name="textfield9" id="textfield47"></td>
+<td><input type="text" name="textfield9" id="textfield47"></td>
+<td><input type="text" name="textfield9" id="textfield47"></td>
+<td><input type="text" name="textfield9" id="textfield47"></td>
+<td><input type="text" name="textfield9" id="textfield47"></td>
+</tr>
+<tr>
+<td>件数</td>
+<td><input type="text" name="textfield9" id="textfield33"></td>
+<td><input type="text" name="textfield9" id="textfield34"></td>
+<td><input type="text" name="textfield9" id="textfield35"></td>
+<td><input type="text" name="textfield9" id="textfield36"></td>
+<td><input type="text" name="textfield9" id="textfield37"></td>
+<td><input type="text" name="textfield9" id="textfield38"></td>
+<td><input type="text" name="textfield9" id="textfield39"></td>
+<td><input type="text" name="textfield9" id="textfield39"></td>
+<td><input type="text" name="textfield9" id="textfield39"></td>
+<td><input type="text" name="textfield9" id="textfield39"></td>
+<td><input type="text" name="textfield9" id="textfield39"></td>
+<td><input type="text" name="textfield9" id="textfield39"></td>
+</tr>
+                 </tbody>
+              </table><!-- #TblResult -->
+            </form><!-- #form2 -->
+
+
+
+</section>
+
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+    <!-- #container -->
+  </div><!-- #wrapperInner -->
+</div><!-- #wrapper -->
+<div id="foot"></div>
+<script src="js/component.js?v=20200531_20200612"></script>
+
+
+
+  
+
+</body>
+</html>

@@ -325,3 +325,12 @@ header { margin-left: auto; margin-right: auto; }
 .sale-list .kaishu-table .money{width: 8%;}
 .sale-list .kaishu-table .t-day{width: 6%;}
 .sale-list .kaishu-table  .total{text-align: right;}
+
+.goal-set section{font-family: 'Noto Sans JP', sans-serif;position: relative;justify-content: space-between;flex-direction: column;height: 800px;}
+.goal-set header{display: flex;align-items: flex-end;margin-bottom: 15px;}
+.goal-set header h1{}
+.goal-set header h2{margin-left: 30px;font-size: 130%;margin-right: 30px;}
+.goal-set header h3{font-size: 120%;}
+.goal-set .table table {width: 100%;border-top: 1px solid gray;border-right: 1px solid gray;max-height: 90%;min-height: 50%;font-size: 70%;}
+.goal-set .table th{background: #eee;}
+.goal-set .table th,.goal-set .table td{border-bottom: 1px solid gray; border-left: 1px solid gray;padding: 2px;line-height: 110%;}

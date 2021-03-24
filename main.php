@@ -31,10 +31,10 @@
             <a href="/estimate-list.php"><img src="img/main-c1-icon2.png" width="225" height="85" alt=""></a>
             
             <a href="customer-reception-list.html"><img src="img/main-c1-icon9.png" width="225" height="85" alt=""></a>
-            <a href="/order-list.php"><img src="img/main-c1-icon4.png" width="225" height="85" alt=""></a>
+            <a href="order-list.php"><img src="img/main-c1-icon4.png" width="225" height="85" alt=""></a>
             
             <a href="claim-list.html"><img src="img/main-c1-icon8.png" width="225" height="85" alt=""></a>
-            <a href="/sales-list.php"><img src="img/main-c1-icon5.png" width="225" height="85" alt=""></a>
+            <a href="../sales-list.html"><img src="img/main-c1-icon5.png" width="225" height="85" alt=""></a>
             <a href="/sales-per-customer.php"><img src="img/main-c1-icon6.png" width="225" height="85" alt=""></a>
           </div><!-- .main-1 -->
           <div class="main-2">
@@ -44,6 +44,7 @@
             <a href="/material-list.php"><img src="img/main-c2-icon4.png" width="225" height="85" alt=""></a>
             <a href="/material-multi-edit.php"><img src="img/main-c2-icon7.png" width="225" height="85" alt=""></a>
             <a href="/contractor-list.php"><img src="img/main-c2-icon5.png" width="225" height="85" alt=""></a>
+            <a href="../housemaker-list.html"><img src="img/main-c2-icon8.png" width="225" height="85" alt=""></a>
           </div><!-- .main-2 -->
           <div class="main-3">
             <a href="/heading-edit.php"><img src="img/main-c3-icon1.png" width="225" height="85" alt=""></a>
@@ -57,7 +58,7 @@
             <a href="/section-edit.php"><img src="img/main-c4-icon4.png" width="225" height="85" alt=""></a>
             <a href="/staff-edit.php"><img src="img/main-c4-icon2.png" width="225" height="85" alt=""></a>
             <a href="/option-edit.php"><img src="img/main-c4-icon3.png" width="225" height="85" alt=""></a>
-          </div><!-- .main-4 -->
+          <a href="system-goalsetting.html"><img src="img/main-c4-icon5.png" width="225" height="85" alt=""></a></div><!-- .main-4 -->
         </div><!-- .main-page -->
         <div class="clear"><hr></div>
       </div><!-- #container-inner -->

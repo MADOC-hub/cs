@@ -2,7 +2,7 @@
 /* 全体
 ============================================================================================================*/
 
-.system{font-family: 'Noto Sans JP', sans-serif;
+.system{font-family: 'Noto Sans JP', sans-serif; 
 .a-btm{text-align: center;
 a {border: 1px solid gray;padding: 5px;margin: 3px;color: black;font-size: 110%;display: block;background: rgba(225,225,225,1.00);white-space: nowrap;}
 }
@@ -86,7 +86,7 @@ li{margin-left: 5px;}
 
 }
 h2{color:rgba(32,40,70,1.00);@include flex-sb();align-items: center;
-span{display: block;background: red;padding: 3px;font-size: 60%;color: black;font-style: normal;@include line();color: white;
+span{display: block;background: red;padding: 3px;font-size: 80%;color: black;font-style: normal;@include line();color: white;
 }
 dl{@include flex-sb();border: 1px solid gray;padding: 2px;
 dt{padding: 2px;font-size: 60%;display: flex;justify-content: center;align-items: center;padding-left: 5px;padding-right: 5px;}
@@ -255,4 +255,11 @@ h2 li{min-width: 100px;border: rgba(203,203,203,1.00);margin: 2px;text-align: ce
 h2 .sale-result {background: rgba(185,21,24,1.00);color: white;}
 h2 .claim-result {background:rgba(24,60,144,1.00);color: white;}
 .sm-cal input{width: 70px;font-size: 80%;}
+
+
+
+.goal-set{
+td input{text-align: right;border: 0; }
+
+}
 }

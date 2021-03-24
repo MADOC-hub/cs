@@ -1,0 +1,684 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1000">
+<title>顧客別売上一覧｜CSシステム</title>
+<link type="text/css" rel="stylesheet" href="css/style.css?v=20210322">
+<link rel="shortcut icon" href="">
+<script src="js/jquery-2.2.4.min.js"></script>
+<script src="js/jquery-ui.min.js"></script>
+<script src="js/jquery.ui-1.10.4.datepicker.min.js"></script>
+<script src="js/InputControl-v3.js?v=20210322"></script>
+<script src="js/modal.js?v=20210322"></script>
+<!--[if lt IE 9]>
+<script src="//cdn.jsdelivr.net/html5shiv/3.7.2/html5shiv.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+<script>
+function doSearch() {
+  $("div.error-text").remove();
+  document.form1.submit();
+}
+
+function doSubmitForm3(customer) {
+  document.form3.customer.value = customer;
+  document.form3.submit();
+  document.form3.customer.value = "";
+  return false;
+}
+
+function doSort(key) {
+	if (key != "") {
+		var theForm = document.form1;
+		theForm.Sort.value = key;
+		theForm.submit();
+		theForm.Sort.value = "";
+	}
+
+	return false;
+}
+
+$(function() {
+  $("input.gofwd,select.gofwd").on("keydown", function(e) {
+  	doAdvanceFocus(this, e);
+  });
+
+  $("#btn-print").click(function(){
+    $(".modal-overlay").click();
+
+    if ($("input.chkPrint:checked").length > 0) {
+      document.form2.format.value = document.form4.format.value;
+      document.form2.submit();
+      document.form2.format.value = "";
+    } else {
+      alert("印刷対象が選択されていません。");
+    }
+
+    return false;
+  });
+
+  $("input#checkAll").click(function(){
+    var context = this.form;
+    var isChecked = $(this).prop("checked");
+
+    $("input.chkPrint", context).each(function(){
+      $(this).prop("checked", isChecked);
+    });
+  });
+
+  $("input.chkPrint").click(function(){
+    if (!$(this).prop("checked") && $("input#checkAll").prop("checked")) {
+      $("input#checkAll").prop("checked", false);
+    }
+  });
+});
+</script>
+</head>
+<body class="page-mitsumori">
+<div id="wrapper">
+  <div id="wrapperInner">
+    <header>
+      <span>
+        <a href="user-edit.php">株式会社日弘ヒーティング</a>
+      </span>
+      <div class="head">
+        <a href="main.php"><div class="head-name">CSシステム</div></a>
+        <div class="head-menu2">
+          <span class="head-print"><input type="button" class="modal-open" value="帳票印刷" data-target="modal-print-menu"></span>
+        </div><!-- .head-menu2 -->
+        <div class="clear"><hr></div>
+      </div><!-- .head -->
+    </header>
+
+    <div id="container">
+      <div id="container-inner">
+        <h2>顧客別売上一覧：売上検索</h2>
+        <div class="mitsumori">
+
+          <form name="form1" id="form1" action="" method="POST">
+            <input type="hidden" name="Sort" value="">
+
+            <table id="search-condition" class="regist-table" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <th>対象月</th>
+                <td>
+                  <select name="year" id="sel-year" class="gofwd">
+                    <option value="2021" selected>2021</option>
+                    <option value="2020">2020</option>
+                    <option value="2019">2019</option>
+                    <option value="2018">2018</option>
+                    <option value="2017">2017</option>
+                    <option value="2016">2016</option>
+                    <option value="2015">2015</option>
+                    <option value="2014">2014</option>
+                    <option value="2013">2013</option>
+                    <option value="2012">2012</option>
+                    <option value="2011">2011</option>
+                    <option value="2010">2010</option>
+                    <option value="2009">2009</option>
+                    <option value="2008">2008</option>
+                    <option value="2007">2007</option>
+                    <option value="2006">2006</option>
+                    <option value="2005">2005</option>
+                    <option value="2004">2004</option>
+                  </select>
+                  年
+                  <select name="month" id="sel-month" class="gofwd">
+                    <option value="1">&nbsp;1</option>
+                    <option value="2">&nbsp;2</option>
+                    <option value="3" selected>&nbsp;3</option>
+                    <option value="4">&nbsp;4</option>
+                    <option value="5">&nbsp;5</option>
+                    <option value="6">&nbsp;6</option>
+                    <option value="7">&nbsp;7</option>
+                    <option value="8">&nbsp;8</option>
+                    <option value="9">&nbsp;9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                  </select>
+                  月
+                </td>
+              </tr>
+            </table><!-- #search-condition -->
+
+            <div class="regi-btn">
+              <div class="search-btn">
+                <input type="button" class="input" value="検　索" onclick="return doSearch();">
+              </div><!-- .search-btn -->
+            </div><!-- .regi-btn -->
+
+
+            <div class="clear"><hr></div>
+
+          </form><!-- #form1 -->
+
+          <br><hr><br>
+
+          <div class="dashuboard">
+            <h2>直近の一ヶ月　33件　</h2>
+
+            <form name="form2" id="form2" action="print-sales-per-customer.php" target="_blank" method="POST">
+              <input type="hidden" name="year" value="2021">
+              <input type="hidden" name="month" value="3">
+              <input type="hidden" name="format" value="">
+              <table id="TblResult" border="0" cellspacing="0" cellpadding="0">
+                <thead>
+                  <tr>
+                    <th nowrap class="w-30 center"><input type="checkbox" name="checkAll" id="checkAll" value="1"></th>
+                    <th nowrap>顧客名</th>
+                    <th nowrap>前年売上高</th>
+                    <th nowrap>前年粗利益</th>
+                    <th nowrap>粗利率</th>
+                    <th nowrap>当月売上高</th>
+                    <th nowrap>当月粗利益</th>
+                    <th nowrap>粗利率</th>
+                    <th nowrap>今期累計売上</th>
+                    <th nowrap>今期累計粗利</th>
+                    <th nowrap>粗利率</th>
+                    <th nowrap>前年比</th>
+                  </tr>
+                </thead>
+                <tbody>
+
+                   <tr>
+                    <td class="center"><input type="checkbox" name="ids[]" id="row-1" class="chkPrint" value="172"></td>
+                    <td><a href="" onclick="return doSubmitForm3('172');">北日本建物総合管理（株）</a></td>
+                    <td class="mn-td">78,000</td>
+                    <td class="mn-td">78,000</td>
+                    <td class="mn-td">100%</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">―</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">―</td>
+                    <td class="mn-td">―</td>
+                  </tr>
+                   <tr>
+                    <td class="center"><input type="checkbox" name="ids[]" id="row-2" class="chkPrint" value="226"></td>
+                    <td><a href="" onclick="return doSubmitForm3('226');">北日本ビル管理（株）</a></td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">―</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">―</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">―</td>
+                    <td class="mn-td">―</td>
+                  </tr>
+                   <tr>
+                    <td class="center"><input type="checkbox" name="ids[]" id="row-3" class="chkPrint" value="609"></td>
+                    <td><a href="" onclick="return doSubmitForm3('609');">(有)池田牧場（池田　幸一・勲）</a></td>
+                    <td class="mn-td">250,000</td>
+                    <td class="mn-td">133,307</td>
+                    <td class="mn-td">53.32%</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">―</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">―</td>
+                    <td class="mn-td">―</td>
+                  </tr>
+                   <tr>
+                    <td class="center"><input type="checkbox" name="ids[]" id="row-4" class="chkPrint" value="1607"></td>
+                    <td><a href="" onclick="return doSubmitForm3('1607');">㈱小林プランニング</a></td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">―</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">―</td>
+                    <td class="mn-td">33,460</td>
+                    <td class="mn-td">32,023</td>
+                    <td class="mn-td">95.71%</td>
+                    <td class="mn-td">―</td>
+                  </tr>
+                   <tr>
+                    <td class="center"><input type="checkbox" name="ids[]" id="row-5" class="chkPrint" value="2581"></td>
+                    <td><a href="" onclick="return doSubmitForm3('2581');">サッポロライフケア㈱</a></td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">―</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">―</td>
+                    <td class="mn-td">41,000</td>
+                    <td class="mn-td">35,420</td>
+                    <td class="mn-td">86.39%</td>
+                    <td class="mn-td">―</td>
+                  </tr>
+                   <tr>
+                    <td class="center"><input type="checkbox" name="ids[]" id="row-6" class="chkPrint" value="2892"></td>
+                    <td><a href="" onclick="return doSubmitForm3('2892');">ビューティサロンスイングⅡ</a></td>
+                    <td class="mn-td">36,400</td>
+                    <td class="mn-td">36,390</td>
+                    <td class="mn-td">99.97%</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">―</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">―</td>
+                    <td class="mn-td">―</td>
+                  </tr>
+                   <tr>
+                    <td class="center"><input type="checkbox" name="ids[]" id="row-7" class="chkPrint" value="4439"></td>
+                    <td><a href="" onclick="return doSubmitForm3('4439');">山藤内科医院　山藤　雅弘</a></td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">―</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">―</td>
+                    <td class="mn-td">345,000</td>
+                    <td class="mn-td">214,342</td>
+                    <td class="mn-td">62.13%</td>
+                    <td class="mn-td">―</td>
+                  </tr>
+                   <tr>
+                    <td class="center"><input type="checkbox" name="ids[]" id="row-8" class="chkPrint" value="4480"></td>
+                    <td><a href="" onclick="return doSubmitForm3('4480');">今田歯科医院</a></td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">―</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">―</td>
+                    <td class="mn-td">137,400</td>
+                    <td class="mn-td">130,848</td>
+                    <td class="mn-td">95.23%</td>
+                    <td class="mn-td">―</td>
+                  </tr>
+                   <tr>
+                    <td class="center"><input type="checkbox" name="ids[]" id="row-9" class="chkPrint" value="6956"></td>
+                    <td><a href="" onclick="return doSubmitForm3('6956');">（株）三五工務店</a></td>
+                    <td class="mn-td">435,000</td>
+                    <td class="mn-td">230,964</td>
+                    <td class="mn-td">53.10%</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">―</td>
+                    <td class="mn-td">317,650</td>
+                    <td class="mn-td">161,379</td>
+                    <td class="mn-td">50.80%</td>
+                    <td class="mn-td">69.87%</td>
+                  </tr>
+                   <tr>
+                    <td class="center"><input type="checkbox" name="ids[]" id="row-10" class="chkPrint" value="7085"></td>
+                    <td><a href="" onclick="return doSubmitForm3('7085');">（株）北海道日立</a></td>
+                    <td class="mn-td">312,440</td>
+                    <td class="mn-td">271,220</td>
+                    <td class="mn-td">86.81%</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">―</td>
+                    <td class="mn-td">185,800</td>
+                    <td class="mn-td">177,600</td>
+                    <td class="mn-td">95.59%</td>
+                    <td class="mn-td">65.48%</td>
+                  </tr>
+                   <tr>
+                    <td class="center"><input type="checkbox" name="ids[]" id="row-11" class="chkPrint" value="7676"></td>
+                    <td><a href="" onclick="return doSubmitForm3('7676');">（有）マルフジハナ企画　藤枝  敬子</a></td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">―</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">―</td>
+                    <td class="mn-td">427,273</td>
+                    <td class="mn-td">227,750</td>
+                    <td class="mn-td">53.30%</td>
+                    <td class="mn-td">―</td>
+                  </tr>
+                   <tr>
+                    <td class="center"><input type="checkbox" name="ids[]" id="row-12" class="chkPrint" value="7758"></td>
+                    <td><a href="" onclick="return doSubmitForm3('7758');">（株）ホーム企画センター</a></td>
+                    <td class="mn-td">1,284,882</td>
+                    <td class="mn-td">838,472</td>
+                    <td class="mn-td">65.26%</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">―</td>
+                    <td class="mn-td">1,182,816</td>
+                    <td class="mn-td">938,911</td>
+                    <td class="mn-td">79.38%</td>
+                    <td class="mn-td">111.98%</td>
+                  </tr>
+                   <tr>
+                    <td class="center"><input type="checkbox" name="ids[]" id="row-13" class="chkPrint" value="8506"></td>
+                    <td><a href="" onclick="return doSubmitForm3('8506');">（有）リビングドクター</a></td>
+                    <td class="mn-td">3,142,187</td>
+                    <td class="mn-td">1,643,081</td>
+                    <td class="mn-td">52.29%</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">―</td>
+                    <td class="mn-td">250,800</td>
+                    <td class="mn-td">142,781</td>
+                    <td class="mn-td">56.93%</td>
+                    <td class="mn-td">8.69%</td>
+                  </tr>
+                   <tr>
+                    <td class="center"><input type="checkbox" name="ids[]" id="row-14" class="chkPrint" value="9022"></td>
+                    <td><a href="" onclick="return doSubmitForm3('9022');">（株）宮崎自動車工業</a></td>
+                    <td class="mn-td">26,000</td>
+                    <td class="mn-td">23,210</td>
+                    <td class="mn-td">89.27%</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">―</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">―</td>
+                    <td class="mn-td">―</td>
+                  </tr>
+                   <tr>
+                    <td class="center"><input type="checkbox" name="ids[]" id="row-15" class="chkPrint" value="10129"></td>
+                    <td><a href="" onclick="return doSubmitForm3('10129');">株)北海道グリーンメンテナンス</a></td>
+                    <td class="mn-td">5,000</td>
+                    <td class="mn-td">5,000</td>
+                    <td class="mn-td">100%</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">―</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">―</td>
+                    <td class="mn-td">―</td>
+                  </tr>
+                   <tr>
+                    <td class="center"><input type="checkbox" name="ids[]" id="row-16" class="chkPrint" value="10369"></td>
+                    <td><a href="" onclick="return doSubmitForm3('10369');">大進ホ－ム（株）</a></td>
+                    <td class="mn-td">846,000</td>
+                    <td class="mn-td">522,247</td>
+                    <td class="mn-td">61.73%</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">―</td>
+                    <td class="mn-td">1,008,500</td>
+                    <td class="mn-td">611,824</td>
+                    <td class="mn-td">60.67%</td>
+                    <td class="mn-td">117.15%</td>
+                  </tr>
+                   <tr>
+                    <td class="center"><input type="checkbox" name="ids[]" id="row-17" class="chkPrint" value="10535"></td>
+                    <td><a href="" onclick="return doSubmitForm3('10535');">サンポット（株）</a></td>
+                    <td class="mn-td">128,400</td>
+                    <td class="mn-td">128,400</td>
+                    <td class="mn-td">100%</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">―</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">―</td>
+                    <td class="mn-td">―</td>
+                  </tr>
+                   <tr>
+                    <td class="center"><input type="checkbox" name="ids[]" id="row-18" class="chkPrint" value="10697"></td>
+                    <td><a href="" onclick="return doSubmitForm3('10697');">北海道セキスイファミエス（株）</a></td>
+                    <td class="mn-td">71,862,726</td>
+                    <td class="mn-td">42,351,420</td>
+                    <td class="mn-td">58.93%</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">―</td>
+                    <td class="mn-td">31,278,166</td>
+                    <td class="mn-td">18,558,217</td>
+                    <td class="mn-td">59.33%</td>
+                    <td class="mn-td">43.82%</td>
+                  </tr>
+                   <tr>
+                    <td class="center"><input type="checkbox" name="ids[]" id="row-19" class="chkPrint" value="10783"></td>
+                    <td><a href="" onclick="return doSubmitForm3('10783');">（有）丸建  金田建築事務所</a></td>
+                    <td class="mn-td">260,000</td>
+                    <td class="mn-td">134,417</td>
+                    <td class="mn-td">51.70%</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">―</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">―</td>
+                    <td class="mn-td">―</td>
+                  </tr>
+                   <tr>
+                    <td class="center"><input type="checkbox" name="ids[]" id="row-20" class="chkPrint" value="12040"></td>
+                    <td><a href="" onclick="return doSubmitForm3('12040');">内藤　功　（株）サッポロエーダイ</a></td>
+                    <td class="mn-td">181,818</td>
+                    <td class="mn-td">100,558</td>
+                    <td class="mn-td">55.31%</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">―</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">―</td>
+                    <td class="mn-td">―</td>
+                  </tr>
+                   <tr>
+                    <td class="center"><input type="checkbox" name="ids[]" id="row-21" class="chkPrint" value="12433"></td>
+                    <td><a href="" onclick="return doSubmitForm3('12433');">北海道エア・ウォーター㈱</a></td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">―</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">―</td>
+                    <td class="mn-td">220,000</td>
+                    <td class="mn-td">109,368</td>
+                    <td class="mn-td">49.71%</td>
+                    <td class="mn-td">―</td>
+                  </tr>
+                   <tr>
+                    <td class="center"><input type="checkbox" name="ids[]" id="row-22" class="chkPrint" value="12491"></td>
+                    <td><a href="" onclick="return doSubmitForm3('12491');">（株）建設行政新聞社</a></td>
+                    <td class="mn-td">25,527</td>
+                    <td class="mn-td">22,737</td>
+                    <td class="mn-td">89.07%</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">―</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">―</td>
+                    <td class="mn-td">―</td>
+                  </tr>
+                   <tr>
+                    <td class="center"><input type="checkbox" name="ids[]" id="row-23" class="chkPrint" value="12649"></td>
+                    <td><a href="" onclick="return doSubmitForm3('12649');">グループホーム虹の家　白石</a></td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">―</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">―</td>
+                    <td class="mn-td">64,200</td>
+                    <td class="mn-td">54,670</td>
+                    <td class="mn-td">85.16%</td>
+                    <td class="mn-td">―</td>
+                  </tr>
+                   <tr>
+                    <td class="center"><input type="checkbox" name="ids[]" id="row-24" class="chkPrint" value="13956"></td>
+                    <td><a href="" onclick="return doSubmitForm3('13956');">シンエイホ－ム（株）</a></td>
+                    <td class="mn-td">1,520,736</td>
+                    <td class="mn-td">1,400,709</td>
+                    <td class="mn-td">92.11%</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">―</td>
+                    <td class="mn-td">2,398,642</td>
+                    <td class="mn-td">2,059,749</td>
+                    <td class="mn-td">85.87%</td>
+                    <td class="mn-td">147.05%</td>
+                  </tr>
+                   <tr>
+                    <td class="center"><input type="checkbox" name="ids[]" id="row-25" class="chkPrint" value="14934"></td>
+                    <td><a href="" onclick="return doSubmitForm3('14934');">（株）ホクセイ・ホーム</a></td>
+                    <td class="mn-td">20,000</td>
+                    <td class="mn-td">20,000</td>
+                    <td class="mn-td">100%</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">―</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">―</td>
+                    <td class="mn-td">―</td>
+                  </tr>
+                   <tr>
+                    <td class="center"><input type="checkbox" name="ids[]" id="row-26" class="chkPrint" value="15608"></td>
+                    <td><a href="" onclick="return doSubmitForm3('15608');">（株）宮崎組</a></td>
+                    <td class="mn-td">30,000</td>
+                    <td class="mn-td">21,650</td>
+                    <td class="mn-td">72.17%</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">―</td>
+                    <td class="mn-td">260,000</td>
+                    <td class="mn-td">142,582</td>
+                    <td class="mn-td">54.84%</td>
+                    <td class="mn-td">658.58%</td>
+                  </tr>
+                   <tr>
+                    <td class="center"><input type="checkbox" name="ids[]" id="row-27" class="chkPrint" value="16338"></td>
+                    <td><a href="" onclick="return doSubmitForm3('16338');">栗山ペット動物病院（長原克己）</a></td>
+                    <td class="mn-td">31,000</td>
+                    <td class="mn-td">28,200</td>
+                    <td class="mn-td">90.97%</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">―</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">―</td>
+                    <td class="mn-td">―</td>
+                  </tr>
+                   <tr>
+                    <td class="center"><input type="checkbox" name="ids[]" id="row-28" class="chkPrint" value="17098"></td>
+                    <td><a href="" onclick="return doSubmitForm3('17098');">広瀬建設工業（株）</a></td>
+                    <td class="mn-td">103,500</td>
+                    <td class="mn-td">93,524</td>
+                    <td class="mn-td">90.36%</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">―</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">―</td>
+                    <td class="mn-td">―</td>
+                  </tr>
+                   <tr>
+                    <td class="center"><input type="checkbox" name="ids[]" id="row-29" class="chkPrint" value="17467"></td>
+                    <td><a href="" onclick="return doSubmitForm3('17467');">㈱丸高ハウス</a></td>
+                    <td class="mn-td">71,020</td>
+                    <td class="mn-td">65,940</td>
+                    <td class="mn-td">92.85%</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">―</td>
+                    <td class="mn-td">45,000</td>
+                    <td class="mn-td">45,000</td>
+                    <td class="mn-td">100%</td>
+                    <td class="mn-td">68.24%</td>
+                  </tr>
+                   <tr>
+                    <td class="center"><input type="checkbox" name="ids[]" id="row-30" class="chkPrint" value="18084"></td>
+                    <td><a href="" onclick="return doSubmitForm3('18084');">（株）三津橋</a></td>
+                    <td class="mn-td">130,000</td>
+                    <td class="mn-td">68,319</td>
+                    <td class="mn-td">52.55%</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">―</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">―</td>
+                    <td class="mn-td">―</td>
+                  </tr>
+                   <tr>
+                    <td class="center"><input type="checkbox" name="ids[]" id="row-31" class="chkPrint" value="18381"></td>
+                    <td><a href="" onclick="return doSubmitForm3('18381');">宮本土建工業（株）</a></td>
+                    <td class="mn-td">157,407</td>
+                    <td class="mn-td">69,572</td>
+                    <td class="mn-td">44.20%</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">―</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">―</td>
+                    <td class="mn-td">―</td>
+                  </tr>
+                   <tr>
+                    <td class="center"><input type="checkbox" name="ids[]" id="row-32" class="chkPrint" value="18870"></td>
+                    <td><a href="" onclick="return doSubmitForm3('18870');">ローソン函館新道店　折戸　優典</a></td>
+                    <td class="mn-td">24,110</td>
+                    <td class="mn-td">22,049</td>
+                    <td class="mn-td">91.45%</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">―</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">―</td>
+                    <td class="mn-td">―</td>
+                  </tr>
+                   <tr>
+                    <td class="center"><input type="checkbox" name="ids[]" id="row-33" class="chkPrint" value="Personal:5-15-21-23-27-35-43-44-53-59-60-71-74-75-81-88-92-96-97-101-119-123-130-136-137-144-160-192-199-203-232-233-251-273-277-279-290-297-302-308-309-314-315-319-323-324-329-330-331-338-346-356-358-364-367-368-369-371-374-375-376-378-380-381-386-390-392-397-398-402-407-412-418-420-428-430-437-444-461-468-476-479-483-485-494-499-503-506-514-526-541-542-544-550-569-570-578-579-583-590-603-605-607-611-615-627-629-639-658-666-673-688-691-693-698-706-709-710-714-722-728-736-738-739-743-783-793-799-805-807-823-831-843-851-857-861-864-866-869-870-871-885-886-887-889-896-899-906-915-958-973-987-989-1000-1009-1019-1029-1053-1063-1068-1075-1076-1095-1099-1110-1116-1120-1122-1144-1147-1152-1157-1164-1165-1177-1198-1199-1200-1209-1210-1228-1229-1230-1238-1248-1250-1256-1260-1263-1272-1292-1301-1307-1314-1326-1328-1329-1343-1348-1350-1361-1363-1366-1375-1396-1398-1400-1406-1412-1416-1425-1449-1465-1472-1476-1481-1487-1491-1499-1508-1518-1529-1537-1562-1563-1564-1571-1577-1588-1589-1604-1612-1625-1626-1631-1632-1636-1638-1650-1656-1658-1664-1666-1669-1673-1678-1698-1707-1715-1718-1723-1731-1732-1734-1736-1746-1766-1769-1771-1796-1804-1806-1811-1815-1821-1822-1828-1834-1835-1839-1843-1859-1861-1862-1865-1869-1882-1892-1898-1912-1915-1929-1937-1941-1945-1951-1956-1957-1963-1974-1988-1994-1999-2000-2005-2022-2032-2044-2047-2052-2054-2066-2067-2073-2093-2095-2096-2099-2103-2124-2126-2128-2129-2131-2135-2149-2159-2164-2181-2191-2194-2199-2200-2201-2207-2208-2209-2212-2214-2216-2223-2230-2247-2257-2263-2273-2292-2300-2301-2307-2318-2322-2323-2325-2326-2327-2343-2344-2345-2370-2389-2395-2402-2403-2413-2416-2419-2423-2430-2436-2438-2440-2446-2447-2453-2454-2465-2471-2473-2477-2483-2501-2506-2509-2511-2521-2530-2533-2538-2551-2566-2568-2579-2587-2589-2591-2598-2600-2613-2614-2619-2620-2644-2654-2658-2668-2677-2686-2690-2696-2714-2716-2717-2718-2721-2723-2727-2740-2745-2754-2756-2763-2764-2772-2776-2780-2782-2783-2785-2786-2787-2790-2791-2800-2804-2805-2829-2830-2834-2839-2889-2894-2896-2905-2913-2932-2937-2951-2953-2958-2959-2966-2969-2973-2990-2992-2997-2998-3016-3036-3038-3046-3053-3054-3060-3063-3077-3078-3081-3093-3104-3113-3117-3123-3128-3135-3137-3146-3167-3176-3178-3181-3182-3189-3190-3213-3216-3222-3223-3225-3228-3230-3236-3239-3243-3247-3248-3255-3257-3270-3271-3272-3308-3310-3316-3321-3329-3337-3340-3341-3345-3352-3353-3354-3357-3359-3363-3365-3369-3378-3379-3386-3387-3393-3398-3407-3420-3433-3438-3440-3454-3456-3460-3465-3467-3469-3490-3499-3502-3507-3508-3509-3516-3534-3551-3562-3572-3574-3583-3604-3609-3621-3630-3637-3646-3650-3653-3654-3656-3657-3659-3669-3684-3693-3703-3714-3729-3730-3735-3740-3748-3758-3770-3771-3777-3798-3804-3835-3844-3849-3855-3889-3917-3923-3926-3929-3932-3934-3944-3954-3955-3956-3960-3972-3973-3974-3975-3981-3985-3986-3987-3993-3996-4008-4009-4010-4013-4017-4018-4048-4063-4075-4085-4093-4096-4105-4107-4108-4111-4114-4125-4127-4129-4132-4141-4145-4148-4207-4217-4218-4225-4229-4240-4247-4249-4250-4270-4272-4281-4283-4287-4288-4289-4294-4298-4303-4304-4316-4327-4329-4335-4344-4368-4369-4374-4385-4392-4394-4395-4398-4399-4406-4412-4426-4436-4450-4461-4491-4493-4498-4505-4510-4517-4521-4524-4539-4551-4561-4563-4567-4570-4587-4590-4598-4621-4631-4632-4634-4643-4648-4660-4661-4667-4674-4678-4679-4701-4709-4711-4712-4713-4724-4727-4730-4736-4747-4764-4769-4777-4779-4781-4797-4808-4814-4816-4820-4823-4831-4837-4841-4858-4866-4868-4876-4877-4884-4885-4891-4915-4925-4926-4930-4932-4937-4945-4951-4955-4961-4965-4967-4972-4976-4978-4980-4989-4992-4998-5013-5020-5027-5061-5072-5079-5100-5101-5111-5113-5114-5117-5121-5128-5130-5135-5138-5164-5167-5182-5185-5189-5199-5209-5215-5225-5235-5242-5255-5256-5257-5270-5272-5280-5283-5307-5308-5315-5322-5323-5333-5341-5342-5349-5359-5365-5368-5375-5379-5381-5389-5390-5413-5416-5417-5429-5438-5445-5454-5470-5493-5499-5504-5511-5517-5518-5524-5533-5540-5555-5562-5564-5569-5574-5599-5606-5616-5625-5632-5649-5656-5658-5688-5697-5702-5712-5717-5734-5749-5757-5769-5784-5791-5794-5795-5800-5810-5816-5825-5836-5840-5843-5845-5862-5863-5867-5868-5869-5870-5880-5892-5895-5904-5933-5939-5944-5949-5950-5978-5980-5990-5992-6005-6012-6015-6025-6038-6041-6050-6061-6080-6091-6092-6095-6097-6099-6104-6107-6125-6165-6167-6172-6184-6186-6205-6225-6229-6233-6240-6247-6249-6252-6257-6258-6261-6279-6282-6283-6306-6315-6327-6328-6329-6334-6351-6353-6355-6356-6365-6371-6383-6388-6393-6405-6428-6430-6436-6439-6450-6451-6456-6472-6475-6477-6480-6482-6493-6495-6498-6504-6509-6511-6519-6532-6534-6537-6540-6546-6547-6549-6553-6556-6567-6573-6585-6586-6608-6613-6614-6634-6639-6659-6663-6669-6670-6671-6675-6680-6685-6693-6697-6699-6701-6721-6728-6729-6734-6737-6743-6752-6757-6760-6771-6775-6780-6781-6784-6789-6790-6798-6799-6800-6809-6812-6818-6820-6846-6847-6858-6861-6864-6868-6884-6889-6896-6899-6919-6924-6926-6934-6937-6944-6965-6975-6991-6994-6995-7022-7026-7038-7039-7060-7093-7099-7104-7109-7115-7129-7130-7151-7153-7155-7171-7173-7177-7179-7183-7189-7191-7193-7195-7201-7204-7226-7235-7241-7264-7276-7278-7279-7286-7287-7295-7296-7298-7302-7305-7309-7316-7317-7318-7327-7331-7345-7346-7348-7350-7357-7364-7368-7370-7395-7400-7407-7408-7415-7419-7427-7430-7433-7438-7440-7466-7467-7487-7489-7494-7497-7514-7532-7536-7546-7549-7551-7552-7566-7572-7578-7579-7581-7588-7592-7601-7602-7609-7611-7613-7623-7640-7642-7643-7645-7649-7653-7654-7655-7663-7679-7682-7685-7697-7703-7705-7718-7727-7730-7743-7752-7764-7766-7776-7777-7780-7788-7789-7790-7793-7799-7816-7817-7824-7873-7878-7889-7897-7904-7910-7921-7926-7933-7946-7956-7961-7962-7968-7969-7971-7972-7981-7989-7993-7997-7998-7999-8007-8009-8015-8016-8018-8019-8024-8032-8034-8036-8045-8062-8068-8078-8079-8080-8086-8087-8090-8092-8094-8098-8106-8116-8125-8126-8128-8132-8136-8141-8143-8144-8151-8152-8154-8158-8181-8185-8192-8193-8209-8221-8224-8227-8249-8253-8258-8259-8279-8286-8296-8306-8309-8316-8321-8325-8328-8332-8381-8382-8384-8387-8388-8391-8396-8403-8405-8406-8414-8415-8425-8435-8442-8455-8489-8496-8497-8501-8503-8511-8535-8536-8548-8555-8562-8585-8588-8589-8593-8598-8599-8604-8605-8615-8617-8619-8623-8627-8628-8629-8632-8635-8646-8649-8663-8665-8669-8677-8681-8683-8688-8706-8707-8717-8719-8723-8727-8734-8753-8779-8798-8805-8812-8817-8818-8820-8823-8835-8846-8847-8850-8851-8858-8874-8881-8882-8883-8886-8892-8903-8907-8921-8926-8931-8935-8938-8943-8946-8952-8958-8963-8976-8983-8986-8987-8988-8998-9001-9019-9024-9029-9032-9038-9039-9050-9055-9073-9076-9084-9089-9091-9092-9095-9098-9105-9122-9126-9144-9150-9151-9158-9159-9161-9167-9174-9176-9177-9180-9183-9187-9200-9202-9203-9207-9208-9214-9228-9238-9246-9248-9264-9266-9267-9273-9280-9283-9302-9308-9329-9354-9355-9366-9368-9371-9384-9389-9393-9406-9415-9421-9432-9433-9436-9439-9449-9455-9464-9469-9497-9501-9505-9506-9507-9509-9513-9521-9540-9544-9549-9551-9556-9565-9573-9582-9598-9605-9608-9614-9620-9622-9627-9630-9641-9646-9648-9650-9652-9671-9673-9684-9699-9703-9708-9719-9720-9725-9728-9729-9733-9740-9747-9752-9757-9765-9768-9774-9776-9778-9781-9784-9785-9789-9799-9805-9811-9821-9824-9831-9832-9841-9843-9845-9848-9862-9866-9867-9876-9886-9889-9891-9900-9901-9909-9913-9915-9919-9920-9921-9923-9927-9937-9945-9959-9967-9977-9978-9981-9985-10005-10008-10020-10022-10023-10024-10028-10039-10040-10044-10089-10102-10106-10119-10121-10132-10137-10145-10153-10156-10160-10166-10171-10178-10183-10185-10187-10194-10201-10202-10206-10209-10224-10226-10227-10236-10239-10255-10256-10268-10269-10270-10286-10293-10294-10295-10298-10301-10317-10318-10345-10352-10355-10356-10362-10363-10370-10371-10376-10379-10395-10403-10405-10412-10413-10416-10420-10430-10435-10439-10450-10458-10459-10468-10470-10477-10480-10500-10519-10521-10523-10530-10533-10542-10543-10545-10546-10553-10560-10563-10564-10574-10577-10581-10582-10586-10593-10601-10602-10610-10612-10613-10614-10626-10629-10637-10641-10644-10654-10657-10658-10659-10660-10661-10668-10679-10680-10684-10686-10687-10689-10696-10698-10699-10700-10702-10703-10705-10712-10714-10722-10724-10729-10733-10739-10740-10743-10751-10758-10760-10774-10778-10789-10791-10803-10805-10811-10816-10817-10824-10845-10854-10862-10867-10871-10884-10891-10898-10911-10919-10933-10934-10935-10937-10941-10946-10947-10949-10952-10954-10970-10971-10972-10973-10977-10984-10992-10998-11011-11016-11017-11028-11033-11035-11040-11078-11080-11083-11089-11091-11095-11104-11105-11108-11133-11135-11136-11137-11141-11143-11146-11164-11170-11174-11175-11177-11180-11187-11189-11198-11203-11205-11213-11214-11221-11228-11238-11243-11246-11267-11268-11288-11302-11313-11316-11336-11340-11346-11351-11367-11370-11374-11376-11377-11378-11381-11385-11387-11393-11398-11417-11427-11429-11432-11443-11447-11449-11462-11463-11466-11474-11478-11488-11494-11509-11513-11523-11524-11529-11530-11532-11546-11547-11550-11552-11563-11564-11569-11570-11583-11593-11594-11596-11602-11610-11614-11626-11643-11649-11652-11672-11675-11690-11699-11702-11708-11713-11715-11731-11739-11741-11742-11743-11750-11752-11754-11756-11762-11767-11768-11769-11774-11777-11780-11782-11785-11799-11809-11814-11816-11826-11827-11840-11845-11852-11858-11865-11867-11876-11889-11897-11900-11909-11914-11924-11938-11965-11976-11982-11987-11990-11995-12000-12015-12020-12030-12033-12050-12056-12058-12059-12062-12082-12090-12095-12107-12108-12112-12114-12115-12119-12121-12126-12132-12133-12134-12141-12156-12161-12172-12173-12181-12183-12184-12186-12190-12192-12196-12197-12202-12204-12208-12211-12229-12231-12234-12237-12241-12250-12253-12256-12259-12272-12275-12287-12292-12294-12297-12299-12309-12324-12328-12334-12338-12339-12346-12347-12348-12349-12353-12360-12366-12369-12372-12373-12386-12387-12402-12410-12412-12416-12418-12423-12424-12425-12438-12440-12444-12450-12455-12468-12470-12473-12482-12490-12494-12515-12520-12521-12539-12540-12543-12546-12550-12561-12565-12577-12579-12581-12590-12603-12621-12628-12636-12644-12647-12656-12669-12684-12687-12693-12694-12696-12709-12711-12715-12726-12729-12734-12744-12747-12756-12767-12772-12774-12777-12788-12794-12796-12800-12813-12816-12828-12830-12832-12845-12847-12848-12853-12863-12864-12877-12904-12914-12921-12924-12928-12942-12945-12950-12952-12955-12961-12969-12987-12995-12996-13003-13009-13016-13020-13021-13025-13028-13030-13034-13035-13075-13078-13081-13102-13103-13114-13117-13120-13123-13125-13127-13129-13136-13138-13141-13142-13149-13156-13161-13173-13178-13181-13207-13209-13213-13225-13229-13232-13241-13245-13247-13259-13265-13267-13270-13277-13296-13299-13302-13303-13311-13314-13322-13325-13331-13335-13339-13345-13356-13357-13362-13380-13381-13391-13396-13398-13413-13416-13423-13425-13430-13438-13451-13458-13464-13467-13478-13487-13495-13504-13505-13507-13510-13516-13534-13539-13544-13548-13550-13555-13557-13565-13567-13580-13582-13590-13596-13599-13600-13611-13612-13619-13630-13639-13657-13672-13673-13674-13676-13683-13690-13697-13703-13707-13709-13715-13721-13727-13736-13738-13743-13749-13764-13771-13774-13778-13781-13795-13801-13804-13805-13807-13813-13816-13818-13822-13826-13838-13853-13861-13866-13872-13874-13875-13881-13910-13918-13921-13922-13931-13935-13936-13945-13949-13950-13951-13952-13959-13965-13973-13976-13982-13988-13990-13992-14005-14006-14007-14012-14023-14025-14040-14049-14053-14060-14070-14074-14076-14078-14080-14081-14092-14109-14111-14115-14121-14135-14139-14140-14142-14153-14155-14163-14170-14183-14201-14223-14227-14237-14240-14274-14281-14282-14285-14289-14291-14295-14299-14309-14313-14316-14350-14359-14364-14372-14375-14389-14392-14411-14413-14415-14419-14421-14441-14448-14449-14455-14456-14459-14466-14471-14474-14475-14481-14490-14493-14514-14550-14561-14563-14565-14573-14585-14586-14590-14591-14600-14603-14640-14643-14650-14655-14662-14666-14672-14675-14693-14706-14715-14725-14735-14741-14742-14743-14745-14754-14764-14775-14783-14787-14803-14834-14858-14869-14883-14885-14898-14899-14912-14916-14949-14952-14965-14970-14974-14977-14984-15006-15013-15034-15041-15054-15056-15066-15079-15086-15101-15113-15118-15120-15132-15139-15142-15146-15155-15179-15182-15183-15190-15196-15204-15208-15212-15239-15241-15252-15269-15271-15284-15290-15292-15297-15306-15307-15310-15315-15322-15335-15338-15348-15352-15353-15369-15376-15381-15384-15387-15393-15402-15403-15413-15415-15418-15430-15440-15454-15456-15479-15480-15488-15503-15520-15535-15544-15550-15552-15555-15558-15559-15568-15571-15585-15586-15592-15593-15600-15605-15611-15621-15627-15629-15633-15638-15643-15646-15647-15655-15661-15681-15693-15697-15716-15717-15725-15740-15756-15758-15763-15784-15790-15803-15806-15807-15810-15814-15832-15854-15884-15895-15898-15899-15910-15946-15966-15970-15971-15973-15978-15991-15995-16012-16021-16025-16026-16035-16037-16047-16048-16051-16063-16072-16086-16099-16104-16108-16115-16117-16136-16146-16151-16158-16166-16174-16176-16177-16198-16200-16203-16211-16225-16239-16241-16243-16246-16249-16254-16269-16271-16284-16285-16286-16287-16288-16291-16292-16300-16304-16307-16313-16314-16315-16341-16388-16389-16391-16399-16406-16420-16424-16436-16471-16474-16479-16483-16485-16487-16499-16510-16517-16524-16525-16536-16547-16555-16574-16579-16589-16593-16594-16598-16600-16605-16628-16634-16646-16647-16649-16661-16663-16681-16683-16703-16705-16715-16722-16751-16761-16763-16785-16794-16800-16814-16815-16821-16838-16839-16841-16844-16845-16846-16856-16874-16892-16914-16915-16922-16927-16929-16936-16938-16946-16954-16959-16970-16977-16980-16991-16995-17005-17007-17016-17022-17043-17045-17047-17053-17074-17096-17109-17117-17120-17128-17134-17159-17160-17165-17171-17175-17177-17192-17193-17196-17205-17209-17213-17214-17225-17227-17228-17233-17249-17255-17258-17260-17289-17295-17305-17310-17314-17347-17359-17370-17400-17405-17420-17424-17427-17434-17472-17481-17492-17494-17500-17502-17509-17512-17523-17545-17549-17550-17560-17568-17585-17587-17590-17597-17604-17621-17624-17625-17631-17633-17638-17645-17649-17650-17660-17666-17667-17668-17669-17675-17683-17685-17694-17710-17712-17723-17735-17743-17744-17746-17754-17765-17777-17788-17810-17811-17813-17814-17821-17825-17837-17845-17846-17848-17853-17854-17861-17872-17873-17880-17885-17889-17906-17923-17924-17925-17929-17930-17934-17938-17946-17947-17949-17951-17952-17958-17967-17968-17969-17970-17994-18007-18014-18015-18022-18024-18025-18034-18062-18063-18073-18074-18076-18090-18091-18094-18101-18102-18110-18111-18112-18121-18123-18124-18133-18135-18142-18145-18148-18168-18176-18183-18190-18192-18193-18214-18237-18248-18252-18261-18272-18276-18277-18281-18286-18296-18297-18319-18321-18339-18353-18356-18359-18360-18368-18371-18383-18389-18402-18406-18408-18414-18431-18435-18449-18455-18486-18496-18515-18520-18532-18536-18551-18564-18568-18576-18603-18616-18631-18633-18635-18637-18646-18661-18666-18678-18680-18708-18710-18721-18728-18729-18730-18736-18738-18740-18743-18750-18754-18764-18766-18773-18813-18814-18832-18836-18838-18841-18843-18858-18873-18878-18881-18886-18889-18892-18909-18914-18917-18919-18921-18956-18971-18972-19001-19010-19011-19017-19020-19027-19028-19032-19042-19046-19048-19055-19061-19095-19100-19114-19116-19118-19119-19121-19129-19142-19144-19153-19161-19166-19167-19187-19195-19205-19213-19225-19228-19266-19275-19276-19285-19286-19294-19303-19306-19308-19317-19318-19319-19325-19331-19334-19341-19353-19357-19358-19365-19370-19379-19387-19390-19394-19398-19401-19421-19423-19431-19435-19436-19437-19475-19485-19489-19498-19505-19506-19507-19513-19520-19524-19526-19530-19537-19549-19552-19556-19557-19565-19576-19583-19608-19617-19619-19622-19624-19625-19627-19631-19637-19655-19664-19677-19688-19690-19733-19746-19753-19755-19772-19779-19784-19809-19842-19872-19889-19913-19940-19945-19956-19958-19970-20002-20010-20015-20016-20027-20039-20047-20066-20074-20078-20085-20087-20091-20100-20108-20134-20158-20175-20181-20192-20200-20209-20211-20214-20222-20248-20253-20257-20261-20266-20273-20277-20306-20314-20317-20327-20343-20344-20350-20363-20366-20369-20371-20377-20388-20404-20405-20419-20431-20443-20447-20454-20462-20471-20473-20509-20511-20517-20528-20542-20543-20563-20581-20590-20598-20612-20613-20620-20628-20648-20653-20659-20662-20665-20668-20672-20697-20730-20737-20746-20753-20754-20755-20761-20771-20775-20779-20799-20831-20839-20844-20862-20863-20868-20876-20909-20928-20951-20969-20976-20984-20985-20986-20987-20997-20999-21012-21013-21019-21021-21027-21031-21033-21044-21056-21061-21066-21070-21074-21087-21091-21095-21102-21117-21125-21141-21149-21152-21163-21166-21199-21214-21215-21237-21259-21263-21270-21272-21275-21277-21278-21299-21308-21325-21326-21328-21334-21336-21338-21346-21348-21373-21382-21397-21408-21410-21414-21419-21433-21434-21439-21452-21455-21461-21467-21473-21476-21488-21503-21504-21511-21514-21520-21522-21543-21556-21564-21585-21588-21599-21614-21625-21627-21645-21646-21647-21655-21657-21665-21674-21685-21705-21708-21720-21722-21724-21730-21732-21737-21746-21747-21762-21763-21764-21790-21807-21814-21817-21827-21833-21834-21838-21843-21851-21858-21870-21872-21873-21874-21876-21889-21892-21907-21909-21933-21947-21982-22001-22002-22003-22004-22010-22020-22042-22053-22057-22058-22065-22068-22070-22087-22097-22100-22103-22107-22109-22111-22114-22116-22120-22130-22138-22148-22149-22159-22176-22179-22195-22197-22210-22213-22222-22233-22235-22236-22238-22253-22254-22259-22266-22270-22276-22288-22302-22306-22308-22317-22328-22339-22351-22353-22355-22372-22373-22376-22378-22391-22392-22395-22407-22421-22436-22450-22499-22502-22504-22519-22536-22561-22563-22566-22612-22616-22623-22624-22626-22635-22637-22648-22658-22664-22667-22670-22693-22694-22698-22706-22730-22736-22743-22748-22756-22769-22770-22784-22789-22803-22809-22816-22845-22848-22849-22852-22857-22876-22884-22898-22902-22908-22909-22917-22925-22928-22938-22958-22982-22994-23015-23021-23026-23035-23040-23046-23053-23063-23071-23084-23085-23088-23101-23122-23125-23134-23150-23157-23159-23170-23173-23180-23185-23186-23191-23205-23206-23257-23263-23266-23282-23289-23290-23313-23321-23328-23340-23343-23373-23376-23380-23382-23385-23396-23407-23415-23417-23421-23423-23428-23437-23448-23454-23465-23468-23490-23495-23504-23513-23516-23554-23597-23598-23612-23619-23630-23639-23645-23646-23653-23659-23661-23670-23673-23675-23678-23681-23696-23712-23718-23732-23741-23745-23755-23760-23772-23778-23783-23804-23828-23830-23831-23833-23840-23842-23851-23869-23881-23898-23907-23909-23916-23919-23921-23925-23927-23941-23951-23961-23978-23985-23989-23993-24000-24003-24007-24008-24030-24044-24046-24080-24083-24099-24100-24111-24120-24123-24128-24132-24134-24146-24147-24154-24162-24164-24177-24178-24180-24182-24183-24190-24201-24207-24208-24210-24228-24232-24236-24247-24258-24259-24260-24267-24273-24281-24295-24299-24303-24306-24311-24318-24321-24347-24348-24362-24367-24373-24377-24382-24410-24437-24443-24451-24452-24453-24455-24458-24460-24461-24485-24488-24491-24506-24507-24512-24513-24518-24531-24564-24565-24572-24578-24588-24600-24604-24613-24635-24636-24642-24644-24650-24657-24659-24675-24677-24687-24689-24691-24695-24711-24715-24717-24721-24727-24743-24754-24756-24758-24762-24763-24785-24787-24788-24794-24797-24802-24806-25149-25260-25309-25394-25516-25535-25539-25542-25544-25545-25547-25549-25553-25579-25885-25966-26048-26052-26091-26092-26096-26101-26113"></td>
+                    <td><a href="" onclick="return doSubmitForm3('Personal:5-15-21-23-27-35-43-44-53-59-60-71-74-75-81-88-92-96-97-101-119-123-130-136-137-144-160-192-199-203-232-233-251-273-277-279-290-297-302-308-309-314-315-319-323-324-329-330-331-338-346-356-358-364-367-368-369-371-374-375-376-378-380-381-386-390-392-397-398-402-407-412-418-420-428-430-437-444-461-468-476-479-483-485-494-499-503-506-514-526-541-542-544-550-569-570-578-579-583-590-603-605-607-611-615-627-629-639-658-666-673-688-691-693-698-706-709-710-714-722-728-736-738-739-743-783-793-799-805-807-823-831-843-851-857-861-864-866-869-870-871-885-886-887-889-896-899-906-915-958-973-987-989-1000-1009-1019-1029-1053-1063-1068-1075-1076-1095-1099-1110-1116-1120-1122-1144-1147-1152-1157-1164-1165-1177-1198-1199-1200-1209-1210-1228-1229-1230-1238-1248-1250-1256-1260-1263-1272-1292-1301-1307-1314-1326-1328-1329-1343-1348-1350-1361-1363-1366-1375-1396-1398-1400-1406-1412-1416-1425-1449-1465-1472-1476-1481-1487-1491-1499-1508-1518-1529-1537-1562-1563-1564-1571-1577-1588-1589-1604-1612-1625-1626-1631-1632-1636-1638-1650-1656-1658-1664-1666-1669-1673-1678-1698-1707-1715-1718-1723-1731-1732-1734-1736-1746-1766-1769-1771-1796-1804-1806-1811-1815-1821-1822-1828-1834-1835-1839-1843-1859-1861-1862-1865-1869-1882-1892-1898-1912-1915-1929-1937-1941-1945-1951-1956-1957-1963-1974-1988-1994-1999-2000-2005-2022-2032-2044-2047-2052-2054-2066-2067-2073-2093-2095-2096-2099-2103-2124-2126-2128-2129-2131-2135-2149-2159-2164-2181-2191-2194-2199-2200-2201-2207-2208-2209-2212-2214-2216-2223-2230-2247-2257-2263-2273-2292-2300-2301-2307-2318-2322-2323-2325-2326-2327-2343-2344-2345-2370-2389-2395-2402-2403-2413-2416-2419-2423-2430-2436-2438-2440-2446-2447-2453-2454-2465-2471-2473-2477-2483-2501-2506-2509-2511-2521-2530-2533-2538-2551-2566-2568-2579-2587-2589-2591-2598-2600-2613-2614-2619-2620-2644-2654-2658-2668-2677-2686-2690-2696-2714-2716-2717-2718-2721-2723-2727-2740-2745-2754-2756-2763-2764-2772-2776-2780-2782-2783-2785-2786-2787-2790-2791-2800-2804-2805-2829-2830-2834-2839-2889-2894-2896-2905-2913-2932-2937-2951-2953-2958-2959-2966-2969-2973-2990-2992-2997-2998-3016-3036-3038-3046-3053-3054-3060-3063-3077-3078-3081-3093-3104-3113-3117-3123-3128-3135-3137-3146-3167-3176-3178-3181-3182-3189-3190-3213-3216-3222-3223-3225-3228-3230-3236-3239-3243-3247-3248-3255-3257-3270-3271-3272-3308-3310-3316-3321-3329-3337-3340-3341-3345-3352-3353-3354-3357-3359-3363-3365-3369-3378-3379-3386-3387-3393-3398-3407-3420-3433-3438-3440-3454-3456-3460-3465-3467-3469-3490-3499-3502-3507-3508-3509-3516-3534-3551-3562-3572-3574-3583-3604-3609-3621-3630-3637-3646-3650-3653-3654-3656-3657-3659-3669-3684-3693-3703-3714-3729-3730-3735-3740-3748-3758-3770-3771-3777-3798-3804-3835-3844-3849-3855-3889-3917-3923-3926-3929-3932-3934-3944-3954-3955-3956-3960-3972-3973-3974-3975-3981-3985-3986-3987-3993-3996-4008-4009-4010-4013-4017-4018-4048-4063-4075-4085-4093-4096-4105-4107-4108-4111-4114-4125-4127-4129-4132-4141-4145-4148-4207-4217-4218-4225-4229-4240-4247-4249-4250-4270-4272-4281-4283-4287-4288-4289-4294-4298-4303-4304-4316-4327-4329-4335-4344-4368-4369-4374-4385-4392-4394-4395-4398-4399-4406-4412-4426-4436-4450-4461-4491-4493-4498-4505-4510-4517-4521-4524-4539-4551-4561-4563-4567-4570-4587-4590-4598-4621-4631-4632-4634-4643-4648-4660-4661-4667-4674-4678-4679-4701-4709-4711-4712-4713-4724-4727-4730-4736-4747-4764-4769-4777-4779-4781-4797-4808-4814-4816-4820-4823-4831-4837-4841-4858-4866-4868-4876-4877-4884-4885-4891-4915-4925-4926-4930-4932-4937-4945-4951-4955-4961-4965-4967-4972-4976-4978-4980-4989-4992-4998-5013-5020-5027-5061-5072-5079-5100-5101-5111-5113-5114-5117-5121-5128-5130-5135-5138-5164-5167-5182-5185-5189-5199-5209-5215-5225-5235-5242-5255-5256-5257-5270-5272-5280-5283-5307-5308-5315-5322-5323-5333-5341-5342-5349-5359-5365-5368-5375-5379-5381-5389-5390-5413-5416-5417-5429-5438-5445-5454-5470-5493-5499-5504-5511-5517-5518-5524-5533-5540-5555-5562-5564-5569-5574-5599-5606-5616-5625-5632-5649-5656-5658-5688-5697-5702-5712-5717-5734-5749-5757-5769-5784-5791-5794-5795-5800-5810-5816-5825-5836-5840-5843-5845-5862-5863-5867-5868-5869-5870-5880-5892-5895-5904-5933-5939-5944-5949-5950-5978-5980-5990-5992-6005-6012-6015-6025-6038-6041-6050-6061-6080-6091-6092-6095-6097-6099-6104-6107-6125-6165-6167-6172-6184-6186-6205-6225-6229-6233-6240-6247-6249-6252-6257-6258-6261-6279-6282-6283-6306-6315-6327-6328-6329-6334-6351-6353-6355-6356-6365-6371-6383-6388-6393-6405-6428-6430-6436-6439-6450-6451-6456-6472-6475-6477-6480-6482-6493-6495-6498-6504-6509-6511-6519-6532-6534-6537-6540-6546-6547-6549-6553-6556-6567-6573-6585-6586-6608-6613-6614-6634-6639-6659-6663-6669-6670-6671-6675-6680-6685-6693-6697-6699-6701-6721-6728-6729-6734-6737-6743-6752-6757-6760-6771-6775-6780-6781-6784-6789-6790-6798-6799-6800-6809-6812-6818-6820-6846-6847-6858-6861-6864-6868-6884-6889-6896-6899-6919-6924-6926-6934-6937-6944-6965-6975-6991-6994-6995-7022-7026-7038-7039-7060-7093-7099-7104-7109-7115-7129-7130-7151-7153-7155-7171-7173-7177-7179-7183-7189-7191-7193-7195-7201-7204-7226-7235-7241-7264-7276-7278-7279-7286-7287-7295-7296-7298-7302-7305-7309-7316-7317-7318-7327-7331-7345-7346-7348-7350-7357-7364-7368-7370-7395-7400-7407-7408-7415-7419-7427-7430-7433-7438-7440-7466-7467-7487-7489-7494-7497-7514-7532-7536-7546-7549-7551-7552-7566-7572-7578-7579-7581-7588-7592-7601-7602-7609-7611-7613-7623-7640-7642-7643-7645-7649-7653-7654-7655-7663-7679-7682-7685-7697-7703-7705-7718-7727-7730-7743-7752-7764-7766-7776-7777-7780-7788-7789-7790-7793-7799-7816-7817-7824-7873-7878-7889-7897-7904-7910-7921-7926-7933-7946-7956-7961-7962-7968-7969-7971-7972-7981-7989-7993-7997-7998-7999-8007-8009-8015-8016-8018-8019-8024-8032-8034-8036-8045-8062-8068-8078-8079-8080-8086-8087-8090-8092-8094-8098-8106-8116-8125-8126-8128-8132-8136-8141-8143-8144-8151-8152-8154-8158-8181-8185-8192-8193-8209-8221-8224-8227-8249-8253-8258-8259-8279-8286-8296-8306-8309-8316-8321-8325-8328-8332-8381-8382-8384-8387-8388-8391-8396-8403-8405-8406-8414-8415-8425-8435-8442-8455-8489-8496-8497-8501-8503-8511-8535-8536-8548-8555-8562-8585-8588-8589-8593-8598-8599-8604-8605-8615-8617-8619-8623-8627-8628-8629-8632-8635-8646-8649-8663-8665-8669-8677-8681-8683-8688-8706-8707-8717-8719-8723-8727-8734-8753-8779-8798-8805-8812-8817-8818-8820-8823-8835-8846-8847-8850-8851-8858-8874-8881-8882-8883-8886-8892-8903-8907-8921-8926-8931-8935-8938-8943-8946-8952-8958-8963-8976-8983-8986-8987-8988-8998-9001-9019-9024-9029-9032-9038-9039-9050-9055-9073-9076-9084-9089-9091-9092-9095-9098-9105-9122-9126-9144-9150-9151-9158-9159-9161-9167-9174-9176-9177-9180-9183-9187-9200-9202-9203-9207-9208-9214-9228-9238-9246-9248-9264-9266-9267-9273-9280-9283-9302-9308-9329-9354-9355-9366-9368-9371-9384-9389-9393-9406-9415-9421-9432-9433-9436-9439-9449-9455-9464-9469-9497-9501-9505-9506-9507-9509-9513-9521-9540-9544-9549-9551-9556-9565-9573-9582-9598-9605-9608-9614-9620-9622-9627-9630-9641-9646-9648-9650-9652-9671-9673-9684-9699-9703-9708-9719-9720-9725-9728-9729-9733-9740-9747-9752-9757-9765-9768-9774-9776-9778-9781-9784-9785-9789-9799-9805-9811-9821-9824-9831-9832-9841-9843-9845-9848-9862-9866-9867-9876-9886-9889-9891-9900-9901-9909-9913-9915-9919-9920-9921-9923-9927-9937-9945-9959-9967-9977-9978-9981-9985-10005-10008-10020-10022-10023-10024-10028-10039-10040-10044-10089-10102-10106-10119-10121-10132-10137-10145-10153-10156-10160-10166-10171-10178-10183-10185-10187-10194-10201-10202-10206-10209-10224-10226-10227-10236-10239-10255-10256-10268-10269-10270-10286-10293-10294-10295-10298-10301-10317-10318-10345-10352-10355-10356-10362-10363-10370-10371-10376-10379-10395-10403-10405-10412-10413-10416-10420-10430-10435-10439-10450-10458-10459-10468-10470-10477-10480-10500-10519-10521-10523-10530-10533-10542-10543-10545-10546-10553-10560-10563-10564-10574-10577-10581-10582-10586-10593-10601-10602-10610-10612-10613-10614-10626-10629-10637-10641-10644-10654-10657-10658-10659-10660-10661-10668-10679-10680-10684-10686-10687-10689-10696-10698-10699-10700-10702-10703-10705-10712-10714-10722-10724-10729-10733-10739-10740-10743-10751-10758-10760-10774-10778-10789-10791-10803-10805-10811-10816-10817-10824-10845-10854-10862-10867-10871-10884-10891-10898-10911-10919-10933-10934-10935-10937-10941-10946-10947-10949-10952-10954-10970-10971-10972-10973-10977-10984-10992-10998-11011-11016-11017-11028-11033-11035-11040-11078-11080-11083-11089-11091-11095-11104-11105-11108-11133-11135-11136-11137-11141-11143-11146-11164-11170-11174-11175-11177-11180-11187-11189-11198-11203-11205-11213-11214-11221-11228-11238-11243-11246-11267-11268-11288-11302-11313-11316-11336-11340-11346-11351-11367-11370-11374-11376-11377-11378-11381-11385-11387-11393-11398-11417-11427-11429-11432-11443-11447-11449-11462-11463-11466-11474-11478-11488-11494-11509-11513-11523-11524-11529-11530-11532-11546-11547-11550-11552-11563-11564-11569-11570-11583-11593-11594-11596-11602-11610-11614-11626-11643-11649-11652-11672-11675-11690-11699-11702-11708-11713-11715-11731-11739-11741-11742-11743-11750-11752-11754-11756-11762-11767-11768-11769-11774-11777-11780-11782-11785-11799-11809-11814-11816-11826-11827-11840-11845-11852-11858-11865-11867-11876-11889-11897-11900-11909-11914-11924-11938-11965-11976-11982-11987-11990-11995-12000-12015-12020-12030-12033-12050-12056-12058-12059-12062-12082-12090-12095-12107-12108-12112-12114-12115-12119-12121-12126-12132-12133-12134-12141-12156-12161-12172-12173-12181-12183-12184-12186-12190-12192-12196-12197-12202-12204-12208-12211-12229-12231-12234-12237-12241-12250-12253-12256-12259-12272-12275-12287-12292-12294-12297-12299-12309-12324-12328-12334-12338-12339-12346-12347-12348-12349-12353-12360-12366-12369-12372-12373-12386-12387-12402-12410-12412-12416-12418-12423-12424-12425-12438-12440-12444-12450-12455-12468-12470-12473-12482-12490-12494-12515-12520-12521-12539-12540-12543-12546-12550-12561-12565-12577-12579-12581-12590-12603-12621-12628-12636-12644-12647-12656-12669-12684-12687-12693-12694-12696-12709-12711-12715-12726-12729-12734-12744-12747-12756-12767-12772-12774-12777-12788-12794-12796-12800-12813-12816-12828-12830-12832-12845-12847-12848-12853-12863-12864-12877-12904-12914-12921-12924-12928-12942-12945-12950-12952-12955-12961-12969-12987-12995-12996-13003-13009-13016-13020-13021-13025-13028-13030-13034-13035-13075-13078-13081-13102-13103-13114-13117-13120-13123-13125-13127-13129-13136-13138-13141-13142-13149-13156-13161-13173-13178-13181-13207-13209-13213-13225-13229-13232-13241-13245-13247-13259-13265-13267-13270-13277-13296-13299-13302-13303-13311-13314-13322-13325-13331-13335-13339-13345-13356-13357-13362-13380-13381-13391-13396-13398-13413-13416-13423-13425-13430-13438-13451-13458-13464-13467-13478-13487-13495-13504-13505-13507-13510-13516-13534-13539-13544-13548-13550-13555-13557-13565-13567-13580-13582-13590-13596-13599-13600-13611-13612-13619-13630-13639-13657-13672-13673-13674-13676-13683-13690-13697-13703-13707-13709-13715-13721-13727-13736-13738-13743-13749-13764-13771-13774-13778-13781-13795-13801-13804-13805-13807-13813-13816-13818-13822-13826-13838-13853-13861-13866-13872-13874-13875-13881-13910-13918-13921-13922-13931-13935-13936-13945-13949-13950-13951-13952-13959-13965-13973-13976-13982-13988-13990-13992-14005-14006-14007-14012-14023-14025-14040-14049-14053-14060-14070-14074-14076-14078-14080-14081-14092-14109-14111-14115-14121-14135-14139-14140-14142-14153-14155-14163-14170-14183-14201-14223-14227-14237-14240-14274-14281-14282-14285-14289-14291-14295-14299-14309-14313-14316-14350-14359-14364-14372-14375-14389-14392-14411-14413-14415-14419-14421-14441-14448-14449-14455-14456-14459-14466-14471-14474-14475-14481-14490-14493-14514-14550-14561-14563-14565-14573-14585-14586-14590-14591-14600-14603-14640-14643-14650-14655-14662-14666-14672-14675-14693-14706-14715-14725-14735-14741-14742-14743-14745-14754-14764-14775-14783-14787-14803-14834-14858-14869-14883-14885-14898-14899-14912-14916-14949-14952-14965-14970-14974-14977-14984-15006-15013-15034-15041-15054-15056-15066-15079-15086-15101-15113-15118-15120-15132-15139-15142-15146-15155-15179-15182-15183-15190-15196-15204-15208-15212-15239-15241-15252-15269-15271-15284-15290-15292-15297-15306-15307-15310-15315-15322-15335-15338-15348-15352-15353-15369-15376-15381-15384-15387-15393-15402-15403-15413-15415-15418-15430-15440-15454-15456-15479-15480-15488-15503-15520-15535-15544-15550-15552-15555-15558-15559-15568-15571-15585-15586-15592-15593-15600-15605-15611-15621-15627-15629-15633-15638-15643-15646-15647-15655-15661-15681-15693-15697-15716-15717-15725-15740-15756-15758-15763-15784-15790-15803-15806-15807-15810-15814-15832-15854-15884-15895-15898-15899-15910-15946-15966-15970-15971-15973-15978-15991-15995-16012-16021-16025-16026-16035-16037-16047-16048-16051-16063-16072-16086-16099-16104-16108-16115-16117-16136-16146-16151-16158-16166-16174-16176-16177-16198-16200-16203-16211-16225-16239-16241-16243-16246-16249-16254-16269-16271-16284-16285-16286-16287-16288-16291-16292-16300-16304-16307-16313-16314-16315-16341-16388-16389-16391-16399-16406-16420-16424-16436-16471-16474-16479-16483-16485-16487-16499-16510-16517-16524-16525-16536-16547-16555-16574-16579-16589-16593-16594-16598-16600-16605-16628-16634-16646-16647-16649-16661-16663-16681-16683-16703-16705-16715-16722-16751-16761-16763-16785-16794-16800-16814-16815-16821-16838-16839-16841-16844-16845-16846-16856-16874-16892-16914-16915-16922-16927-16929-16936-16938-16946-16954-16959-16970-16977-16980-16991-16995-17005-17007-17016-17022-17043-17045-17047-17053-17074-17096-17109-17117-17120-17128-17134-17159-17160-17165-17171-17175-17177-17192-17193-17196-17205-17209-17213-17214-17225-17227-17228-17233-17249-17255-17258-17260-17289-17295-17305-17310-17314-17347-17359-17370-17400-17405-17420-17424-17427-17434-17472-17481-17492-17494-17500-17502-17509-17512-17523-17545-17549-17550-17560-17568-17585-17587-17590-17597-17604-17621-17624-17625-17631-17633-17638-17645-17649-17650-17660-17666-17667-17668-17669-17675-17683-17685-17694-17710-17712-17723-17735-17743-17744-17746-17754-17765-17777-17788-17810-17811-17813-17814-17821-17825-17837-17845-17846-17848-17853-17854-17861-17872-17873-17880-17885-17889-17906-17923-17924-17925-17929-17930-17934-17938-17946-17947-17949-17951-17952-17958-17967-17968-17969-17970-17994-18007-18014-18015-18022-18024-18025-18034-18062-18063-18073-18074-18076-18090-18091-18094-18101-18102-18110-18111-18112-18121-18123-18124-18133-18135-18142-18145-18148-18168-18176-18183-18190-18192-18193-18214-18237-18248-18252-18261-18272-18276-18277-18281-18286-18296-18297-18319-18321-18339-18353-18356-18359-18360-18368-18371-18383-18389-18402-18406-18408-18414-18431-18435-18449-18455-18486-18496-18515-18520-18532-18536-18551-18564-18568-18576-18603-18616-18631-18633-18635-18637-18646-18661-18666-18678-18680-18708-18710-18721-18728-18729-18730-18736-18738-18740-18743-18750-18754-18764-18766-18773-18813-18814-18832-18836-18838-18841-18843-18858-18873-18878-18881-18886-18889-18892-18909-18914-18917-18919-18921-18956-18971-18972-19001-19010-19011-19017-19020-19027-19028-19032-19042-19046-19048-19055-19061-19095-19100-19114-19116-19118-19119-19121-19129-19142-19144-19153-19161-19166-19167-19187-19195-19205-19213-19225-19228-19266-19275-19276-19285-19286-19294-19303-19306-19308-19317-19318-19319-19325-19331-19334-19341-19353-19357-19358-19365-19370-19379-19387-19390-19394-19398-19401-19421-19423-19431-19435-19436-19437-19475-19485-19489-19498-19505-19506-19507-19513-19520-19524-19526-19530-19537-19549-19552-19556-19557-19565-19576-19583-19608-19617-19619-19622-19624-19625-19627-19631-19637-19655-19664-19677-19688-19690-19733-19746-19753-19755-19772-19779-19784-19809-19842-19872-19889-19913-19940-19945-19956-19958-19970-20002-20010-20015-20016-20027-20039-20047-20066-20074-20078-20085-20087-20091-20100-20108-20134-20158-20175-20181-20192-20200-20209-20211-20214-20222-20248-20253-20257-20261-20266-20273-20277-20306-20314-20317-20327-20343-20344-20350-20363-20366-20369-20371-20377-20388-20404-20405-20419-20431-20443-20447-20454-20462-20471-20473-20509-20511-20517-20528-20542-20543-20563-20581-20590-20598-20612-20613-20620-20628-20648-20653-20659-20662-20665-20668-20672-20697-20730-20737-20746-20753-20754-20755-20761-20771-20775-20779-20799-20831-20839-20844-20862-20863-20868-20876-20909-20928-20951-20969-20976-20984-20985-20986-20987-20997-20999-21012-21013-21019-21021-21027-21031-21033-21044-21056-21061-21066-21070-21074-21087-21091-21095-21102-21117-21125-21141-21149-21152-21163-21166-21199-21214-21215-21237-21259-21263-21270-21272-21275-21277-21278-21299-21308-21325-21326-21328-21334-21336-21338-21346-21348-21373-21382-21397-21408-21410-21414-21419-21433-21434-21439-21452-21455-21461-21467-21473-21476-21488-21503-21504-21511-21514-21520-21522-21543-21556-21564-21585-21588-21599-21614-21625-21627-21645-21646-21647-21655-21657-21665-21674-21685-21705-21708-21720-21722-21724-21730-21732-21737-21746-21747-21762-21763-21764-21790-21807-21814-21817-21827-21833-21834-21838-21843-21851-21858-21870-21872-21873-21874-21876-21889-21892-21907-21909-21933-21947-21982-22001-22002-22003-22004-22010-22020-22042-22053-22057-22058-22065-22068-22070-22087-22097-22100-22103-22107-22109-22111-22114-22116-22120-22130-22138-22148-22149-22159-22176-22179-22195-22197-22210-22213-22222-22233-22235-22236-22238-22253-22254-22259-22266-22270-22276-22288-22302-22306-22308-22317-22328-22339-22351-22353-22355-22372-22373-22376-22378-22391-22392-22395-22407-22421-22436-22450-22499-22502-22504-22519-22536-22561-22563-22566-22612-22616-22623-22624-22626-22635-22637-22648-22658-22664-22667-22670-22693-22694-22698-22706-22730-22736-22743-22748-22756-22769-22770-22784-22789-22803-22809-22816-22845-22848-22849-22852-22857-22876-22884-22898-22902-22908-22909-22917-22925-22928-22938-22958-22982-22994-23015-23021-23026-23035-23040-23046-23053-23063-23071-23084-23085-23088-23101-23122-23125-23134-23150-23157-23159-23170-23173-23180-23185-23186-23191-23205-23206-23257-23263-23266-23282-23289-23290-23313-23321-23328-23340-23343-23373-23376-23380-23382-23385-23396-23407-23415-23417-23421-23423-23428-23437-23448-23454-23465-23468-23490-23495-23504-23513-23516-23554-23597-23598-23612-23619-23630-23639-23645-23646-23653-23659-23661-23670-23673-23675-23678-23681-23696-23712-23718-23732-23741-23745-23755-23760-23772-23778-23783-23804-23828-23830-23831-23833-23840-23842-23851-23869-23881-23898-23907-23909-23916-23919-23921-23925-23927-23941-23951-23961-23978-23985-23989-23993-24000-24003-24007-24008-24030-24044-24046-24080-24083-24099-24100-24111-24120-24123-24128-24132-24134-24146-24147-24154-24162-24164-24177-24178-24180-24182-24183-24190-24201-24207-24208-24210-24228-24232-24236-24247-24258-24259-24260-24267-24273-24281-24295-24299-24303-24306-24311-24318-24321-24347-24348-24362-24367-24373-24377-24382-24410-24437-24443-24451-24452-24453-24455-24458-24460-24461-24485-24488-24491-24506-24507-24512-24513-24518-24531-24564-24565-24572-24578-24588-24600-24604-24613-24635-24636-24642-24644-24650-24657-24659-24675-24677-24687-24689-24691-24695-24711-24715-24717-24721-24727-24743-24754-24756-24758-24762-24763-24785-24787-24788-24794-24797-24802-24806-25149-25260-25309-25394-25516-25535-25539-25542-25544-25545-25547-25549-25553-25579-25885-25966-26048-26052-26091-26092-26096-26101-26113');">個人客</a></td>
+                    <td class="mn-td">256,982,122</td>
+                    <td class="mn-td">155,797,376</td>
+                    <td class="mn-td">60.63%</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">0</td>
+                    <td class="mn-td">―</td>
+                    <td class="mn-td">144,618,865</td>
+                    <td class="mn-td">94,010,961</td>
+                    <td class="mn-td">65.01%</td>
+                    <td class="mn-td">60.34%</td>
+                  </tr>
+                 </tbody>
+              </table><!-- #TblResult -->
+            </form><!-- #form2 -->
+            <form name="form3" id="form3" action="sales-per-type.php" method="GET">
+              <input type="hidden" name="customer" value="">
+              <input type="hidden" name="year" value="2021">
+              <input type="hidden" name="month" value="3">
+            </form><!-- #form3 -->
+          </div><!-- .dashuboard -->
+        </div><!-- .mitsumori -->
+        <div class="clear"><hr></div>
+      </div><!-- #container-inner -->
+    </div><!-- #container -->
+  </div><!-- #wrapperInner -->
+</div><!-- #wrapper -->
+
+<!-- ▼帳票印刷用ポップアップ -->
+<div id="modal-print-menu" class="modal-content">
+  <h2>売上一覧印刷オプション</h2>
+    <form name="form4" id="form4" method="" onSubmit="return false">
+      <label><input type="radio" name="format" value="1" checked>顧客別売上一覧　</label>
+      <label><input type="radio" name="format" value="2">前年対比売上一覧　</label>
+      <br><br>
+
+      <div class="regi-btn" align="center">
+        <span class="head-print">
+          <input type="button" id="btn-print" class="button-print" value="帳票印刷">
+        </span>
+      </div>
+    </form><!-- #form_print_option -->
+  <!-- .dashuboard -->
+</div><!-- #modal_print_menu -->
+<!-- ▲帳票印刷用ポップアップ -->
+
+<div id="foot"></div>
+<script src="js/component.js?v=20210322"></script>
+</body>
+</html>
